@@ -1,0 +1,167 @@
+@font-face {
+    font-family: "Nirmala UI";
+    src: url('../../fonts/nirmala_ui/nirmala-webfont.eot');
+    src: url('../../fonts/nirmala_ui/nirmala-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/nirmala_ui/nirmala-webfont.woff') format('woff'),
+         url('../../fonts/nirmala_ui/nirmala-webfont.ttf') format('truetype'),
+         url('../../fonts/nirmala_ui/nirmala-webfont.svg#nirmala_uiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;                                                                        
+}
+
+
+.js-css-menu {
+font-family:Arial, Helvetica, sans-serif;
+font-size : 13px;
+width : 1000px;
+height : auto;
+}
+.js-css-menu, .js-css-menu ul, .js-css-menu li {
+list-style : none;
+padding : 0;
+margin : 0 0 0 0;
+}
+.js-css-menu a {
+text-decoration : none;
+transition : all 0.15s ease-in-out;
+}
+.js-css-menu > li {
+display : inline-block;
+float : left;
+}
+.js-css-menu > li > a {
+color: #fff;
+padding: 10px 8px;
+display: block;
+font-size: 12px;
+}
+.js-css-menu > li:hover > a {
+background-color : #FC3C0E;
+color : #fff;
+display:list-item;
+}
+.js-css-menu > li div {
+display : block;
+z-index : 9999;
+position : absolute;
+width : auto;
+height : auto;
+visibility : hidden;
+padding : 20px;
+opacity : 0;
+transition : all 0.15s ease-in-out;
+}
+.js-css-menu > li div a {
+color : #fff;
+}
+.js-css-menu > li div a:hover, .js-css-menu > li div a:focus {
+color : #fff;
+}
+.js-css-menu li div a:hover {
+color : #330026;
+}
+.js-css-menu > li div ul {
+float : left;
+text-align:left;
+}
+.js-css-menu > li div ul li {
+line-height : 1.5em;
+padding : 10px 0 0 0;
+color : #fff;
+font-size : 12px;
+}
+.js-css-menu > li div ul:not(:first-child) {
+margin-left : 20px;
+margin-right : 20px;
+}
+.js-css-menu > li:hover div, .js-css-menu > li:focus div {
+color : #fefefe;
+background : #FC3C0E;
+color : #000;
+padding : 20px;
+padding-top : 10px;
+visibility : visible;
+z-index : 10000;
+opacity : 1;
+}
+.end_l_menu {
+float : right;
+width : auto;
+height : auto;
+}
+.js-css-menu.vertical {
+width : 800px;
+}
+.js-css-menu.vertical > li {
+display : block;
+float : none;
+position : relative;
+}
+.js-css-menu.vertical > li div {
+width : 150px;
+left : 101px;
+top : 0;
+}
+.js-css-menu.rounded {
+border-radius : 3px;
+}
+.js-css-menu.rounded > li:first-child > a {
+border-top-left-radius : 2px;
+border-bottom-left-radius : 2px;
+}
+.js-css-menu.rounded > li:last-child > a {
+border-top-right-radius : 2px;
+border-bottom-right-radius : 2px;
+}
+.js-css-menu.rounded > li div {
+border-radius : 3px;
+border-top-left-radius : 0;
+}
+.js-css-menu.rounded.vertical > li:first-child > a {
+border-bottom-left-radius : 0;
+border-top-right-radius : 2px;
+}
+.js-css-menu.rounded.vertical > li:last-child > a {
+border-top-right-radius : 0;
+border-bottom-left-radius : 2px;
+}
+.js-css-menu.shadow, .js-css-menu.shadow div {
+box-shadow : 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+@media (max-width:800px) {
+.js-css-menu.responsive, .js-css-menu.responsive > li {
+width : auto !important ;
+display : block;
+float : none;
+}
+.js-css-menu.responsive > li:first-child > a {
+border-bottom-left-radius : 0 !important ;
+border-bottom-right-radius : 0 !important ;
+}
+.js-css-menu.responsive > li:last-child > a {
+border-top-left-radius : 0 !important ;
+border-top-right-radius : 0 !important ;
+}
+.js-css-menu.responsive > li div {
+display : none !important ;
+}
+}
+
+
+.fixed {
+    position:fixed;
+    top:25px;sss
+	z-index:9999;
+	width:100% !important;
+	padding:0px;
+}
+.fixed_nav{
+	width:1004px;
+	height:auto;
+	margin:10px auto;
+	overflow:hidden;
+	transition:0.2s all ease;
+}
+ul.js-css-menu li:hover > div.inner_ul{
+	display:block;
+}

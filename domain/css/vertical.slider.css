@@ -1,0 +1,12 @@
+/*
+ #scroll-pane,.scroll-pane { background-color:white;float:left;overflow: auto; width: 213px; max-height:500px; min-height:150px;position:relative;display:inline}
+.scroll-content-item {background-color:#fcfcfc;color:#003366;width:100px;height:100px;float:left;margin:10px;font-size:3em;
+	line-height:96px;text-align:center;border:1px solid gray;display:inline;}
+/*CYCLER - COMMON*//*
+.container{height:337px;width:506px;float:left;margin-left:50px;display:inline;margin-bottom:40px}
+.scroll-content {position:absolute;top:0;left:0}
+.scrollbar-top{position:absolute;top:0;}
+.scrollbar-bottom{position:absolute;bottom:0;}
+
+
+*/

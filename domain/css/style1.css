@@ -1,0 +1,16 @@
+
+.slider-horizontal {width:1014px; margin:5px 0px 5px 0px; padding:4px; background:#FFFFFF; height:110px; border:#CCCCCC solid 1px;}
+.slider-horizontal .item {height:88px; width:118px; margin:10px 10px 0;}
+
+.slider-vertical {margin:0px 0; float:left; height:60px; }
+.slider-vertical .item {height:80px; width:324px; margin:10px 0 10px 20px;}
+
+.item-1 {background:#CCCCCC;border:#BFBFBF solid 1px;}
+
+.wrap {width:900px; margin:20px auto;}
+/*body {font:15px/25px verdana, sans-serif; color:#333;}*/
+h1 {font-weight:bold; text-transform:uppercase; color:#349cf3; padding:40px 0 0;}
+.text {width:600px; float:left;}
+.ad {padding:20px; border:1px solid #ddd; background:#f4f4f4;}
+.ad-2 {width:230px; float:right; border:1px solid #ddd; background:#f4f4f4; margin:10px 0 20px 0; padding:10px;}
+.ad-3 {float:left; width:336px; margin:25px 0 0 25px;}

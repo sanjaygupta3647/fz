@@ -1,0 +1,32 @@
+img {
+border : none;
+}
+#two {
+height : 243px;
+}
+.targetarea img {
+margin : auto;
+display : block;
+position : relative;
+border-width : 0;
+}
+.thumbs {
+padding-top : 25px;
+width : 325px;
+text-align : center;
+}
+.thumbs a {
+text-decoration : none;
+}
+.thumbs img {
+border-width : 0;
+}
+#description, #description2 {
+position : absolute;
+width : 325px;
+text-align : center;
+font : bold 95% sans-serif;
+margin-top : 3px;
+color : #222;
+background-color : #fff;
+}

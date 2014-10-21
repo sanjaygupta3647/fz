@@ -1,0 +1,226 @@
+/*
+ ----------------------------
+ Modal Example 1
+ ----------------------------
+ */
+
+.modal-example-content {
+    width: 500px ;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    background-color: #FFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    outline: 0 none;
+}
+.modal-example-header {
+    border-bottom: 1px solid #E5E5E5;
+    padding: 15px;
+}
+.modal-example-body ,
+.modal-example-header h4 {
+    margin: 0;
+	padding:0;
+	font-size:16px;
+	color:#000;
+	background-color:#fff;
+}
+.modal-example-body p{
+	font-size:12px;
+	color:#000;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;
+}
+.modal-example-body {
+    padding: 20px;
+}
+a.login_guest{ text-align:center; float:left; line-height:40px; font-size:20px; width:100%; height:auto;text-decoration:none;  font-style:normal; font-weight:normal;}
+a:hover.login_guest{ background-color:#}
+a.login_user{ text-align:center; float:left; line-height:40px; font-size:20px; width:100%; height:auto; text-decoration:none;  font-style:normal; font-weight:normal;}
+/*
+ ----------------------------
+ Modal Example 2
+ ----------------------------
+ */
+#modal2 {
+    width: 600px;
+    height: 300px;
+    background: #FFF;
+    border-radius: 300px / 150px;
+    text-align: center;
+    position: relative;
+}
+#modal2 p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/*
+ ----------------------------
+ Modal Example 3
+ ----------------------------
+ */
+.justme .modal-example-content {
+    box-shadow: none;
+    border: none;
+}
+.justme .modal-example-header {
+    border: none;
+}
+
+/*
+ ----------------------------
+ Modal Example 4
+ ----------------------------
+ */
+#modal3 {
+    margin-top: 70px;
+}
+
+/*
+ ----------------------------
+ Custom animation
+ ----------------------------
+ */
+.custombox-close.customslide .custombox-modal-content {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+    opacity: 1;
+    -webkit-transition-property: all;
+    -ms-transition-property: all;
+    transition-property: all !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custombox-overlay {
+	position:fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+	background-color:#000;
+
+}
+
+/*
+ -------------------------------------------------
+ Modal
+ -------------------------------------------------
+ */
+.custombox-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+	width:auto;
+	height:auto;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.custombox-modal {
+    height: auto;
+
+}
+
+/*
+ -------------------------------------------------
+ Actions
+ -------------------------------------------------
+ */
+.custombox-show {
+    visibility: visible;
+}
+.custombox-show ~ .custombox-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+.custombox-perspective,
+.custombox-perspective body {
+    height: 100%;
+    overflow: hidden;
+}
+.custombox-perspective body  {
+    -webkit-perspective: 600px;
+    perspective: 600px;
+}
+.custombox-container {
+    min-height: 100%;
+}
+.custombox-hide-scrollbar {
+    overflow-y: hidden;
+}
+.custombox-hide-scrollbar body {
+    position: relative;
+    overflow: hidden;
+}
+
+/*
+ -------------------------------------------------
+3D Sign
+ -------------------------------------------------
+ */
+.custombox-sign.custombox-modal {
+    -webkit-perspective: 1300px;
+    -ms-perspective: 1300px;
+    perspective: 1900px;
+}
+.custombox-sign .custombox-modal-content {
+    -webkit-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(-60deg);
+    -ms-transform: rotateX(-60deg);
+    transform: rotateX(-60deg);
+    -webkit-transform-origin: 50% 0;
+    -ms-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    opacity: 0;
+    -webkit-transition-property: all;
+    -ms-transition-property: all;
+    transition-property: all;
+}
+.custombox-show.custombox-sign .custombox-modal-content {
+    -webkit-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 1;
+}
+
