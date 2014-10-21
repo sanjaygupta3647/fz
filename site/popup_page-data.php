@@ -1,0 +1,1 @@
+<div class="main_popup_div"><p><span></span> Thank you for successfull registration with us! </p></div>
