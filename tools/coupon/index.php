@@ -11,7 +11,7 @@
 		}
 
 		?>
-   <?php if($_SESSION[otp]){ ?>
+ 
       <div class="hrd-right-wrap">
 		 <?php
 		if(!$id && !$mode){
@@ -52,8 +52,7 @@
        <?php if($_GET[mode]){?>
         <a href="javascript:void(0)" onclick="javascript:formback();" class="ub">
         <img src="<?=SITE_PATH_ADM?>images/back.png" alt=""></a><?php }?>
-<?php }
-?>
+ 
         </div> 
       </div>
       <div class="cl"></div>
@@ -69,15 +68,9 @@
 		   <h2><?=$cms->breadcrumbs()?></h2> 
 			</div> 
 		  <div class="tbl-contant"><?php 
-		  if($log=='coupon'){
-				 include("step1.php"); 
-			}else{ 
-			if($_SESSION[otp]){
+		  
 			  if($mode){include("add.php");}else{include("manage.php");}
-			}else{
-				 echo "You Are Doing Unauthorised Access!!";
-			}
-		  }?></div>
+			 ?></div>
  
        <div class="cl"></div>
 	    <?php include("../inc/paging.inc.php")?>

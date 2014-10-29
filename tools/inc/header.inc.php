@@ -85,6 +85,9 @@ if(!$_SESSION["ses_adm_id"]){$cms->redir(SITE_PATH_ADM."login");}
 					<li <?=(!in_array('Store Detail',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>adm/">User Management</a></li>
 					<li <?=(!in_array('Store Key Manager',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>store-key/">Store Key Manager</a></li>
 					<li <?=(!in_array('Faq Manager',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>faq/">Faq Manager</a></li>
+
+					<li <?=(!in_array('Coupon Log',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>catalog/coupon-log.php">Coupon Log</a></li>
+					<li <?=(!in_array('SMS Template',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>sms-tamplate/">SMS Template</a></li>
 					
                 </ul>
 			</li> 

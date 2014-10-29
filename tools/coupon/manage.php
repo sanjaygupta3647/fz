@@ -61,8 +61,9 @@
     <tr class="t-hdr">
       <td width="6%" align="center"><?=$adm->orders('#',false)?></td>
       <td width="6%" align="center" valign="middle"><?=$adm->check_all()?></td>
-      <td width="10%" align="center"><?=$adm->orders('Code',true)?></td>    
+      <td width="20%" align="center"><?=$adm->orders('Code',true)?></td>    
  	  <td width="10%" align="center"><?=$adm->orders('Amount',true)?></td>
+	  <td width="25%" align="center"><?=$adm->orders('Valid Till (y-m-d)',true)?></td>
 	  <td width="5%" align="center"><?=$adm->orders('Status',true)?></td>
       
     </tr>
@@ -70,8 +71,9 @@
     <tr <?=$adm->even_odd($nums)?>>
     <td align="center"><?=$nums?></td>
     <td align="center"><?=$adm->check_input($pid)?></td>
-    <td align="center"><?=$cms->decryptcode($voucherCode)?></td> 
-	<td align="center"><?=$amount?></td>
+    <td align="center"><?=$cms->decryptcode($voucherCode)?></td>  
+	<td align="center"><?=($amount)?$amount:'Free Shoping'?></td>
+	<td align="center"><?=($validtill!='0000-00-00')?$validtill:'One Time Use'?></td>
     <td align="center" class="<?=strtolower($status)?>"><?=$status?></td>
 	 
     </tr>

@@ -1,7 +1,7 @@
 <?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","gallery/")?>
 <?php include("../inc/header.inc.php");?>
-<?php $adm->pageAuth("SMS Management",$perm);?>
+<?php $adm->pageAuth("SMS Template",$perm);?>
 <div class="main">
  
  

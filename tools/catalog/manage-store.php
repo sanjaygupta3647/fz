@@ -150,7 +150,7 @@
             <td width="11%" align="center"><?=$adm->orders('Image',true)?></td>
             <td width="10%" align="center"><?=$adm->orders('Owner',true)?></td>
             <td width="7%" align="center"><?=$adm->orders('Popular',true)?></td>
-            <td width="7%" align="center"><?=$adm->orders('Most Visited',true)?></td>
+            <td width="7%" align="center"><?=$adm->orders('Expired On',true)?></td>
             <td width="8%" align="center"><?=$adm->orders('Status',true)?></td>
             <td width="10%" align="center"><?=$adm->norders('Action')?></td>
           </tr>
@@ -165,7 +165,20 @@
             <img src="<?=SITE_PATH?>uploaded_files/orginal/<?=$image?>" width="100"><? }else echo "NA";?></td>
              <td align="center"><?=$cms->getSingleresult("select name  from #_store_user  where  pid = '$store_user_id' ")?></td>
              <td align="center"><?=($our_popular_store)?'Yes':'No'?></td>
-             <td align="center"><?=($most_visited)?'Yes':'No'?></td> 
+			 <?php
+				 $Date = date("Y-m-d",strtotime($create_date));
+				 $noOfDayss = $cms->daysLeft($store_user_id);
+				 if($status=='Active'){
+					if($noOfDayss>0) {
+						$exp = date('d M, Y', strtotime($Date. ' + '.$noOfDayss.' days'));
+					}else{
+						$exp =  " expired before ".(-($noOfDayss))." days";
+					}
+				 }else{
+					$exp = 'NA';
+				 }
+			 ?>
+             <td align="center"><?=$exp?></td> 
             <td align="center" class="<?=strtolower($status)?>"><?=$status?></td>
             <td align="center"><?=$adm->cataction(SITE_PATH_ADM.CPAGE."/add-store.php",$pid, CPAGE.'/manage-store.php',$start)?></td>
           </tr>
