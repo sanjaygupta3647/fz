@@ -202,7 +202,7 @@ div.renew_submit-main div.renew_submit-div1 p{margin:0;padding:5px 0;font-size:1
 div.renew_submit-main div.renew_submit-div2{width:970px;height:auto;float:left;}
 div.renew_submit-main div.renew_submit-div2 span{color:#ff8000;font-size:14px;font-style:normal;font-weight:normal;text-decoration:none;}
 div.renew_submit-main div.renew_submit-div3{width:970px;height:auto;float:left;}
-div.renew_submit-main div.renew_submit-div3 input[type=text]{width:323px;height:33px;border:1px solid #c6c6c6;background-color:#fff;font-size:19px;padding:10px;color:#dfdfdf;}
+div.renew_submit-main div.renew_submit-div3 input[type=text]{width:200px;height:15px;border:1px solid #c6c6c6;background-color:#fff;font-size:14px;padding:10px;color:#dfdfdf;}
 div.renew_submit-main div.renew_submit-div3 input:focus[type=text]{color:#000;}
 div.renew_submit-main div.renew_submit-div3::input-placeholder{color:#dfdfdf;}
 div.renew_submit-main div.renew_submit-div3:placeholder{color:#dfdfdf;}
@@ -220,7 +220,7 @@ div.renew_submit-main div.renew_submit-div3 div.discount_allow-div{width:621px;h
 div.renew_submit-main div.renew_submit-div3 div.discount_allow-div p{margin:10px 0 0 5px;padding:0;font-size:14px;font-style:normal;font-weight:normal;text-decoration:none;}
 div.renew_submit-main div.renew_submit-div4{width:970px;height:auto;float:left;}
 div.renew_submit-main div.renew_submit-div4 p{font-size:14px;font-style:normal;font-weight:normal;text-decoration:none;margin:20px 0 10px 5px;padding:0;}
-div.renew_submit-main div.renew_submit-div4 input[type=submit]{width:230px;height:60px;color:#fff;font-size:25px;border:none;background:linear-gradient(to bottom, #666666 0%,#2e2e2e 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#2e2e2e',GradientType=0);}
+div.renew_submit-main div.renew_submit-div4 input[type=submit]{width:220px;height:40px;color:#fff;font-size:20px;border:none;background:linear-gradient(to bottom, #666666 0%,#2e2e2e 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#2e2e2e',GradientType=0);}
 div.renew_submit-main div.renew_submit-div4 input:hover[type=submit]{background:linear-gradient(to bottom, #2e2e2e 0%,#666666 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e2e2e', endColorstr='#666666',GradientType=0);cursor:pointer;}
 #back-top{position:fixed;bottom:15px;right:15px;z-index:1000;}
 #back-top a{width:64px;display:block;text-align:center;font:11px/100% Arial, Helvetica, sans-serif;text-transform:uppercase;text-decoration:none;color:#bbb;transition:.5s;opacity:0.3;}
