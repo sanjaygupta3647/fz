@@ -61,19 +61,21 @@
     <tr class="t-hdr">
       <td width="6%" align="center"><?=$adm->orders('#',false)?></td>
       <td width="6%" align="center" valign="middle"><?=$adm->check_all()?></td>
-      <td width="10%" align="center"><?=$adm->orders('Code',true)?></td>    
+      <td width="20%" align="center"><?=$adm->orders('Code',true)?></td>    
  	  <td width="10%" align="center"><?=$adm->orders('Amount',true)?></td>
+	  <td width="25%" align="center"><?=$adm->orders('Valid Till (y-m-d)',true)?></td>
 	  <td width="5%" align="center"><?=$adm->orders('Status',true)?></td>
-      <td width="12%" align="center"><?=$adm->norders('Action')?></td>
+     
     </tr>
     <?php if($reccnt){ $nums=1; while ($line = $cms->db_fetch_array($result)){@extract($line);?>
     <tr <?=$adm->even_odd($nums)?>>
     <td align="center"><?=$nums?></td>
     <td align="center"><?=$adm->check_input($pid)?></td>
-    <td align="center"><?=$cms->decryptcode($voucherCode)?></td> 
+    <td align="center"><?=$cms->decryptcode($voucherCode)?></td>  
 	<td align="center"><?=$amount?></td>
+	<td align="center"><?=($validtill!='0000-00-00')?$validtill:'One Time Use'?></td>
     <td align="center" class="<?=strtolower($status)?>"><?=$status?></td>
-	<td align="center"><?=$adm->action(SITE_PATH_MEM.CPAGE."?mode=add",$pid)?></td>
+	 
     </tr>
     <?php $nums++;}}else{ echo $adm->rowerror(7);}?>   
   </table>

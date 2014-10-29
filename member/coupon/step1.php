@@ -8,7 +8,7 @@ $otp2=$cms->getSingleresult("select otp from #_admin_lostlogin where ssid='$ssid
 if(($otp1==$otp2) && ($ssid==$ssid1)){   
 	$cms->redir(SITE_PATH_MEM."coupon",1);
 }   
-$phone=$cms->getSingleresult("select phone from #_setting where id='1'"); 
+echo $phone=$cms->getSingleresult("select phone from #_setting where id='1'"); die;
 $ssid1=$cms->getSingleresult("select count(*) from #_admin_lostlogin where ssid='$ssid' order by aid DESC LIMIT 1"); 
 if(!$_SESSION[ot]){  
 	$otp = $cms->generate_random_password(); 

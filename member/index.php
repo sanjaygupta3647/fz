@@ -24,6 +24,11 @@
 	$create_date = $cms->getSingleresult("select create_date from #_store_detail where  pid = '".$_SESSION[store_id]."'");
 	$numOfProducts = $cms->getSingleresult("select t1.noOfProducts from #_plans as t1, #_store_detail as t2 where t2.pid ='".$_SESSION[store_id]."' and t1.pid= t2.plan_id");
     $total = $cms->getSingleresult("select count(*) from #_products_user where store_user_id ='".$_SESSION[uid]."' ");
+	if($_SESSION[usertype]!='brand' ){
+		$totalBrandProduct = $cms->getSingleresult("select count(*) from #_barnds_product where store_user_id ='".$_SESSION[uid]."' ");
+		if($totalBrandProduct) $total = $total+$totalBrandProduct;
+	}
+	
 	 
 	$noOfMessage = $cms->getSingleresult("select noOfMessage from #_store_detail  where pid ='".$_SESSION[store_id]."' ");
 	$currentUse = $cms->getSingleresult("select count(*) from #_message_stats  where store_id ='".$_SESSION[store_id]."' ");
@@ -91,7 +96,10 @@
     $reCreate_date = $cms->getSingleresult("select create_date from #_reg_renewal where user_id = '".$_SESSION[uid]."' order by pid desc limit 1");
 	$numOfProducts = $cms->getSingleresult("select t1.noOfProducts from #_plans as t1, #_store_detail as t2 where t2.pid ='".$_SESSION[store_id]."' and t1.pid= t2.plan_id");
     $total = $cms->getSingleresult("select count(*) from #_products_user where store_user_id ='".$_SESSION[uid]."' ");
-	 
+	if($_SESSION[usertype]!='brand' ){
+		$totalBrandProduct = $cms->getSingleresult("select count(*) from #_barnds_product where store_user_id ='".$_SESSION[uid]."' ");
+		if($totalBrandProduct) $total = $total+$totalBrandProduct;
+	} 
 	$noOfMessage = $cms->getSingleresult("select noOfMessage from #_store_detail  where pid ='".$_SESSION[store_id]."' ");
 	$currentUse = $cms->getSingleresult("select count(*) from #_message_stats  where store_id ='".$_SESSION[uid]."' ");
 	$remmsg = $noOfMessage-$currentUse; 

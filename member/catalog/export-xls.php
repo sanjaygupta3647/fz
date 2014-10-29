@@ -3,15 +3,25 @@
 $mode=true; ?>
 <?php include("../inc/header.inc.php")?>
 <div class="main">
+<?php
+$numOfProducts = $cms->getSingleresult("select t1.noOfProducts from #_plans as t1, #_store_detail as t2 where t2.pid ='".$_SESSION[store_id]."' and t1.pid= t2.plan_id");
+$total = $cms->getSingleresult("select count(*) from #_products_user where store_user_id ='".$_SESSION[uid]."' ");
+if($_SESSION[usertype]!='brand' ){
+	$totalBrandProduct = $cms->getSingleresult("select count(*) from #_barnds_product where store_user_id ='".$_SESSION[uid]."' ");
+	if($totalBrandProduct) $total = $total+$totalBrandProduct;
+}
+$remain = $numOfProducts-$total;
+?>
 <header> 
       <div class="hrd-right-wrap">  
-        <div class="brdcm" id="hed-tit">Export XLS File</div>
+        <div class="brdcm" id="hed-tit">Export XLS File( <?=$remain?> Product Remain)</div>
         <div class="unvrl-btn">  
         </div> 
       </div>
       <div class="cl"></div>
     </header> 
 <?php
+
 if($cms->is_post_back()){  
 		$spec = array(); 
 		$rqrey = $cms->db_query("SELECT specifications FROM `#_category` where specifications!='' ");
@@ -24,7 +34,11 @@ if($cms->is_post_back()){
 		$spec = @explode(',',$sc);  
 		if(count($_POST[cat_id])){ 
  		$xlsx = new SimpleXLSX($_FILES['file']['tmp_name']); 
-	    // echo"<pre>";print_r($xlsx->rows());die('sanjay');
+	     $c = count($xlsx->rows());
+		 if($c >$remain){
+		  $adm->sessset("its $c products, Only $remain products are allowed to upload!", 'e');  
+		  $cms->redir(SITE_PATH_MEM."catalog/export-xls.php", true); die;
+		 }
 			$i = 0;
   			foreach($xlsx->rows() as $value){ 
 					if($value[6]){
@@ -136,7 +150,7 @@ if($cms->is_post_back()){
 <div class="div-tbl">
 <div class="cl"></div>
     <? //$adm->h1_tag('Dashboard &rsaquo; Order Details',$others2)?>
-  <?php $hedtitle = "Add Product Via XLS"; ?>    
+  <?php $hedtitle = "Add Product Via XLS ( ".$remain." Product Remain)"; ?>    
       <?=$adm->alert()?>
       <div class="title">
         <? //=$adm->heading('Export XLS')?>

@@ -10,8 +10,7 @@
 			$parent = $cms->getSingleresult("select parentId from #_category where pid = '".$_GET[cat_id]."'");
 		}
 		?>
- <?php 
- if($_SESSION[otp]){ ?>
+  
       <div class="hrd-right-wrap">
 		 <?php
 		if(!$id && !$mode){
@@ -19,8 +18,8 @@
          <nav style="margin-top:10px;">
           <ul>
              
-			<li style="margin:10px;"><input type="text" id="voucherCode" placeholder="Search By Voucher Code" name="voucherCode" value="<?=$_GET[voucherCode]?>"></li> 
-			<li style="margin:10px;"><input type="text" id="amount" placeholder="Search By Amount" name="amount" value="<?=$_GET[amount]?>"></li>
+			<li style="margin:10px;">Voucher Code: <input type="text" id="voucherCode" placeholder="Search By Voucher Code" name="voucherCode" value="<?=$_GET[voucherCode]?>"></li> 
+			<li style="margin:10px;">Amount: <input type="text" id="amount" placeholder="Search By Amount" name="amount" value="<?=$_GET[amount]?>"></li>
 			<li style="margin:10px;">
 				<select name="status" id="status" class="txt medium" >
 				   <option value="">--Search By Status--</option>
@@ -56,8 +55,7 @@
       </div>
       <div class="cl"></div>
     </header> 
-<?php }
-?>
+ 
    
 <div class="content">
 <div class="div-tbl">
@@ -70,15 +68,8 @@
 	    <h2><?=$cms->breadcrumbs()?></h2>
         </div>
       <div class="tbl-contant"><?php 
-		  if($log=='coupon'){
-				{ include("step1.php");}
-			}else{ 
-		if($_SESSION[otp]){
-		  if($mode){include("add.php");}else{include("manage.php");}
-		}else{
-			 echo "You Are Unauthorised Access!!";
-	    }
-		  }?></div>
+	  if($mode){include("add.php");}else{include("manage.php");}
+		 ?></div>
        <div class="cl"></div>
 	    <?php include("../inc/paging.inc.php")?>
     </div>

@@ -1,3 +1,9 @@
+ <!-- caleder start  -->
+<link rel="stylesheet" type="text/css" media="all" href="./calender/calendar-blue2.css" title="summer" />
+<script type="text/javascript" src="./calender/calendar.js"></script>
+<script type="text/javascript" src="./calender/calendar-en.js"></script>
+<script type="text/javascript" src="./calender/calendar-setup.js"></script>
+<!-- caleder end  -->
 <?php defined('_JEXEC') or die('Restricted access'); ?>
 <?php 
   
@@ -9,6 +15,7 @@
 		$voucherCode = $cms->encryptcode($code);
 		$arr[voucherCode] = $voucherCode;
 		$arr[generatedByadmin] = $_SESSION[uid];
+		$arr[validtill] = $_POST[validtill];
 		$arr[amount] = $amount;
 		$cms->sqlquery("rs","gift_voucher",$arr);
 		 
@@ -16,14 +23,30 @@
 	$adm->sessset($qty.' Voucher(s) Created', 's');
 	$cms->redir(SITE_PATH_MEM.CPAGE, true);
 }	
- 
+  
 ?>
  
-  <table width="100%" border="0" align="left" cellpadding="4" cellspacing="1" class="frm-tbl2">     
+  <table width="100%" border="0" align="left" cellpadding="4" cellspacing="1" class="frm-tbl2">   
+  <tr  class="grey_">
+		   <td width="12%" class="label">Valid Till:  &nbsp;&nbsp;
+		   <td width="39%">
+            <input name="validtill" type="text"  id="validtill" size="8" lang="R" readonly="readonly"  style="width:100px;color:black;" class="border04 txt medium" value="<?=$validtill?>" />
+            <img src="../calender/calendar.gif" name="dateon_button" width="16" height="16" id="dateon_button" title="Date selector" onmouseover="this.style.background='red';" 	onmouseout="this.style.background=''" />
+            <script type="text/javascript">
+					Calendar.setup(
+					{ inputField:"validtill",ifFormat:"%y-%m-%d",button:"dateon_button",step:1});
+					</script>
+              </td>  
+	</tr>
     <tr>
-      <td width="25%"  class="label">Enter Amount & Quantity :</td>
-      <td width="75%"><input type="text" name="amount"  lang="R" title="Amount" class="txt medium" value="" style="width:100px;" placeholder="Enter Amount" />
-					  <input type="text" name="qty"  lang="R" title="Quantity" class="txt medium" value="" style="width:100px; margin-left:20px;" placeholder="Enter Quantity" /></td>
+      <td width="25%"  class="label">Enter Amount :</td>
+      <td width="75%"><input type="text" name="amount"  value="<?=$amount?>" lang="R" title="Amount" class="txt medium" value="" style="width:100px;color:black;" placeholder="Enter Amount" />
+					  </td>
+    </tr>
+
+	 <tr>
+      <td width="25%"  class="label">Quantity :</td>
+      <td width="75%"><input type="text" name="qty" value="<?=$amount?>" lang="R" title="Quantity" class="txt medium" value="" style="width:100px;" placeholder="Enter Quantity" /></td>
     </tr>
 	 
 	<tr>
