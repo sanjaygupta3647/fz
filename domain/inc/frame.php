@@ -19,15 +19,9 @@ $base = $hostArr[0];
 $store_url = $cms->getSingleresult("SELECT store_url FROM fz_store_detail WHERE store_domain ='".str_replace("www.","",$host)."' and status='Active'"); 
 if($store_url == "")
 {
-	$store_url = $cms->getSingleresult("SELECT store_url FROM fz_store_detail WHERE store_url ='".$base."' and status='Active'");
-	$create_date = $cms->getSingleresult("select create_date from #_store_detail where store_url ='".$base."' and status='Active'");
-	$noOfDays = $cms->getSingleresult("select noOfDays from #_store_detail where  store_url ='".$base."' and status='Active'");
-	$store_id = $cms->getSingleresult("select store_user_id from #_store_detail where store_url ='".$base."' and status='Active'");
-    $reCreate_date = $cms->getSingleresult("select create_date from #_reg_renewal where  user_id = '$store_id' order by pid desc limit 1");
-	if($reCreate_date){
-		$create_date=$reCreate_date;
-	}
-	$re_noOfDays=$noOfDays-$cms->getRemainDays($create_date); 
+	$store_url = $cms->getSingleresult("SELECT store_url FROM fz_store_detail WHERE store_url ='".$base."' and status='Active'");  
+	$current_store_user_id = $cms->getSingleresult("select store_user_id from #_store_detail where store_url ='".$base."' and status='Active'"); 
+	$re_noOfDays=$cms->daysLeft($current_store_user_id); 
 	if($base!=$store_url || $re_noOfDays<0){
 		$die = 1; 
 		if($loadpage!="site/index.php") header("Location:".SITE_PATH);

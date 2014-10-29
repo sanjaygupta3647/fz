@@ -2896,6 +2896,16 @@ function getPriceSize($pid,$current_store_user_id,$dsize){
 	return (int)$ship*$qty;
  
  }
+ function daysLeft($current_store_user_id){
+    $noOfDays = $this->getSingleresult("select noOfDays from #_store_detail where  store_user_id ='".$current_store_user_id."' and status='Active'");
+	$create_date = $this->getSingleresult("select create_date from #_store_detail where store_user_id ='".$current_store_user_id."' and status='Active'");
+    $reCreate_date = $this->getSingleresult("select create_date from #_reg_renewal where  user_id = '$current_store_user_id' order by pid desc limit 1");
+	if($reCreate_date){
+		$create_date=$reCreate_date;
+	}
+	$re_noOfDays=$noOfDays-$this->getRemainDays($create_date); 
+	return $re_noOfDays;
+ }
    
 }
 ?>
