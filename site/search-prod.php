@@ -96,11 +96,16 @@ include "site/search.inc.php";
 						$link  = "http://".$url.".fizzkart.com/detail/".$adm->baseurl($title)."/".$pid;
 						?>
                     	<div class="heading"><a target="_blank" style="text-decoration:none" href="<?=$link?>"><?=$title?></a></div>
-						<?php
-						if($offerprice<$price){ $pri =$offerprice; }else  $pri =$price;
+						<?php 
+						$Cprice = $cms->getBothPrice($pid,$store_user_id);
+						$mainprice = $Cprice[0];
+						$disprice = $Cprice[1];   
+						 
+						 
+						//if($offerprice<$price){ $pri =$offerprice; }else  $pri =$price;
 						 
 						?>
-                        <div class="subtext">Price : <?=$cms->price_format($pri)?></div>
+                        <div class="subtext">Price :  <?=($disprice >0 && $disprice < $mainprice)?$cms->price_format($disprice):$cms->price_format($mainprice)?></div>
 						 <div class="subtext" style="font-size:12px;"><?php
 							$getprods22 = $cms->db_query("select * from #_product_feature  where  prod_id =  '$pid' and ftitle!='' and fdescription!=''    "  );
 							
