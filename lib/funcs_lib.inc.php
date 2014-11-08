@@ -2953,7 +2953,41 @@ public function getDomainSiteEmails(){
 		$emails = substr($emails,0,-2);
 		return $emails;
 }
+function renewal_qty($storeid){  
+	$numOfProducts = $cms->getSingleresult("select t1.noOfProducts from #_plans as t1, #_store_detail as t2 where t2.pid ='".$storeid."' and t1.pid= t2.plan_id");
 
+	//$newProd = $this->getSingleresult("select qty from #_renewal_product where  store_user_id = '$storeid' order by pid desc limit 1");
+
+    $Qryrs = $this->db_query("select * from #_template where title ='Renewal Product' and store_id = '0'"); 
+	$adminEmail = SITE_MAIL; 
+	$user1 = $this->db_query("select * from #_store_user where pid='$storeid'");
+	$user_data = $this->db_fetch_array($user1);
+	$headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers .= 'From: Fizzkart@fizzkart.com' . "\r\n" .'CC: '.$adminEmail; 
+	$user = $this->db_query("SELECT * FROM #_renewal_product where user_id='$storeid' order by pid DESC LIMIT 1");
+	$rs = $this->db_fetch_array($user);
+	$totprd = $numOfProducts+$rs[qty];
+	 
+	$storeName = $this->getSingleresult("select title from #_store_detail where store_user_id='$storeid'");
+	$store_url = $this->getSingleresult("select store_url from #_store_detail where store_user_id='$storeid'"); 
+	$store_url="http://".$store_url.".fizzkart.com";
+	$tempRes = $this->db_fetch_array($Qryrs); 
+	$subject = $tempRes[subject]; 
+	$mess = $tempRes[body];
+	$store_LoginUrl="http://fizzkart.com/user-login";
+	$subject =str_replace("%%name%%",$user_data[name],$subject); 
+	$mess = str_replace("%%totalproducttoadd%%",$totprd,$mess); 
+
+	$mess = str_replace("%%QtypackName%%",$rs[pack_name],$mess);
+	$mess = str_replace("%%amount%%",$rs[amount],$mess);
+	$mess = str_replace("%%qty%%",$rs[qty],$mess);
+	  
+	$mess = str_replace("%%storeurl%%",$store_url,$mess); 
+	//$mess = str_replace("%%storeurlregards%%",$store_urlr,$mess); 
+	$mess = str_replace("%%storeloginurl%%",$store_LoginUrl,$mess); 
+	@mail($user_data[email_id],$subject,$mess,$headers);  
+	return true;
+}
 function renewal_sms($storeid){  
 	$noOfMessage = $this->getSingleresult("select noOfMessage from #_store_detail where  store_user_id = '$storeid'");
     $Qryrs = $this->db_query("select * from #_template where title ='Renewal SMS' and store_id = '0'"); 
@@ -3045,6 +3079,52 @@ function breadcrumbs($text = '<font line-height: 24px;font-size: 18px;font-weigh
 	}
 	$re_noOfDays=$noOfDays-$this->getRemainDays($create_date); 
 	return $re_noOfDays;
+ }
+  function getBothPrice($pid,$current_store_user_id){ 
+	if($_REQUEST[price]){ return $this->getBothPrice2($pid,$current_store_user_id);}
+	$price = array();
+	$priceQuery = $this->db_query("select dprice,dofferprice from #_product_price where proid='$pid' and store_id ='$current_store_user_id'");
+	if(mysql_num_rows($priceQuery)){
+		$bp=$this->db_fetch_array($priceQuery);
+		$price[] = $bp[dprice];
+		$price[] = $bp[dofferprice]; 
+	}else{ 
+		$price[] = $this->getSingleresult("select dprice from #_product_price where proid='$pid'");
+		$price[] = $this->getSingleresult("select  offerprice from #_barnds_product where prod_id = '$pid' and store_user_id = '$current_store_user_id' ");   
+	}
+	return $price;
+ }
+  function getBothPrice2($pid,$current_store_user_id){ 
+	if($_REQUEST[price]) {$arr = explode('-',$_REQUEST[price]); }
+	$price = array();
+	$priceQuery = $this->db_query("select dprice,dofferprice from #_product_price where proid='$pid' and store_id ='$current_store_user_id'");
+	if(mysql_num_rows($priceQuery)){
+		while($bp=$this->db_fetch_array($priceQuery)){
+		    $pricess = $bp[dprice]; 
+			if($bp[dofferprice]>0 && $bp[dofferprice] < $bp[dprice]) $pricess = $bp[dofferprice]; 
+			if($pricess>=(int)$arr[0] && $pricess<=(int)$arr[1]){
+				$price[] = $bp[dprice];
+				$price[] = $bp[dofferprice]; 
+				return $price;
+			} 
+		}
+	}else{ 
+		$priceQuery = $this->db_query("select dprice,dsize from #_product_price where proid='$pid' ");
+		if(mysql_num_rows($priceQuery)){
+			while($bp=$this->db_fetch_array($priceQuery)){
+				$offerprice = $this->getSingleresult("select  offerprice from #_barnds_product where prod_id = '$pid' and dimension = '".$bp[dsize]."' and store_user_id = '$current_store_user_id' ");
+				$pricess = $bp[dprice];
+				if($offerprice>0 && $offerprice<$bp[dprice]) $pricess = $offerprice; 
+				if($pricess>=$arr[0] && $pricess<=$arr[1]){
+					$price[] = $bp[dprice];
+					$price[] = $offerprice; 
+					return $price;
+				} 
+			}
+		}
+		 
+	}
+	return $price;
  }
 
 }
