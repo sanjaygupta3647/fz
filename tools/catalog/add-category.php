@@ -1,4 +1,4 @@
-<?php include("../../lib/opin.inc.php")?>
+﻿<?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","catalog/")?>
 <?php include("../inc/header.inc.php")?>
 <div class="main">

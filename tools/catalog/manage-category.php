@@ -1,4 +1,4 @@
-<?php include("../../lib/opin.inc.php")?>
+﻿<?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","catalog/")?>
 <?php include("../inc/header.inc.php")?>
 <?php $adm->pageAuth("Category",$perm);?>
@@ -98,7 +98,25 @@
      
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
-        <h2><?=$cms->breadcrumbs()?></h2>
+        <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/catalog" rel="v:url" property="v:title">Manage Category </a> » 
+			<a href="/tools/catalog/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/catalog" rel="v:url" property="v:title">Manage Category </a> » 
+			<a href="/tools/catalog/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/catalog" rel="v:url" property="v:title">Manage Category </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         
       </div>
       <div class="tbl-contant">
