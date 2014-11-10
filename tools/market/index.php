@@ -1,4 +1,4 @@
-<?php include("../../lib/opin.inc.php")?>
+﻿<?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","gallery/")?>
 <?php include("../inc/header.inc.php");?>
 <?php $adm->pageAuth("Manage Market",$perm);?>
@@ -11,7 +11,25 @@
 <?php $hedtitle = "Local Market Manager"; ?>  
     <?=$adm->alert()?>
       <div class="title"  id="innertit">
-        <h2><?=$cms->breadcrumbs()?></h2>
+        <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/market" rel="v:url" property="v:title">Market </a> » 
+			<a href="/tools/market/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/market" rel="v:url" property="v:title">Market </a> » 
+			<a href="/tools/market/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/market" rel="v:url" property="v:title">Market </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
       <div class="tbl-contant"><?php if($mode){include("add.php");}else{include("manage.php");}?></div>  
        <div class="cl"></div>
