@@ -1,4 +1,4 @@
-<?php include("../../lib/opin.inc.php")?>
+﻿<?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","gallery/")?>
 <?php include("../inc/header.inc.php");?>
 <?php $adm->pageAuth("Coupon Management",$perm);?>
@@ -65,7 +65,25 @@
  
 		<?=$adm->alert()?>
 		  <div class="title"  id="innertit">
-		   <h2><?=$cms->breadcrumbs()?></h2> 
+		   <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/coupon" rel="v:url" property="v:title">Coupon</a> » 
+			<a href="/Coupon/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/coupon" rel="v:url" property="v:title">Coupon </a> » 
+			<a href="/tools/coupon/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/coupon" rel="v:url" property="v:title">Coupon </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
 			</div> 
 		  <div class="tbl-contant"><?php 
 		  
