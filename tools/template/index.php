@@ -43,7 +43,26 @@
 <?php $hedtitle = "Mail Template Manager"; ?>  
     <?=$adm->alert()?>
       <div class="title"  id="innertit">
-    <h2><?=$cms->breadcrumbs()?></h2>
+
+         <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/template" rel="v:url" property="v:title">Template </a> » 
+			<a href="/tools/template/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/template" rel="v:url" property="v:title">Template </a> » 
+			<a href="/tools/template/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/template" rel="v:url" property="v:title">Template </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
       <div class="tbl-contant"><?php if($mode){include("add.php");}else{include("manage.php");}?></div>
        <div class="cl"></div>
