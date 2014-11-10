@@ -82,7 +82,7 @@ if(!$_SESSION["ses_adm_id"]){$cms->redir(SITE_PATH_ADM."login");}
 					<li <?=(!in_array('Manage Mail Template',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>template/">Manage Mail Template</a></li>
 					<li <?=(!in_array('SMS Management',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>sms">SMS Management</a> </li>
 
-					<li <?=(!in_array('Product Pack',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>sms">Product Pack</a> </li>
+					<li <?=(!in_array('Product Pack',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>product-pack">Product Pack</a> </li>
 
 					<li <?=(!in_array('Coupon Management',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>coupon/?log=coupon">Coupon Management</a> </li> 
 					<li <?=(!in_array('Store Detail',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>adm/">User Management</a></li>
