@@ -72,7 +72,9 @@ if(isset($id)){
       <?php $hedtitle = "Store Management"; ?>
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
-        <?=$adm->heading('Add/Update Store Detail')?>
+            <h2 class="bradcrumb">  <a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/catalog/manage-store.php" rel="v:url" property="v:title">Stores Detail </a> » 
+			<a href="/tools/catalog/add-store.php?id=<?=$id?>&start=<?=$start?>" rel="v:url" property="v:title">Edit</a> </h2>
       </div>
       <div class="tbl-contant">
         <table width="100%" border="0" align="left" cellpadding="2" cellspacing="1"  class="frm-tbl2">
