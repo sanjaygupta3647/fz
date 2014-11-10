@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" media="all" href="./../calender/calendar-blue2.css" title="summer" />
+<script type="text/javascript" src="./../calender/cal/calendar.js"></script>
+<script type="text/javascript" src="./../calender/cal/calendar-en.js"></script>
+
+<script type="text/javascript" src="./../calender/cal/calendar-setup.js"></script>
+
+
+
+
+<input type="text" name="start_date" value="01/07/2008" id="start_date" readonly>
+					    <img src="images/calendar.gif" id="dateon_button" title="Date selector"     onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+<script type="text/javascript">
+Calendar.setup(
+{        inputField     :    "start_date",        ifFormat       :    "%m/%d/%Y",   	   button         :    "dateon_button",       step           :    1       	    }); 	</script>							
+
+				(MM/DD/YYYY) 
