@@ -1,4 +1,4 @@
-<?php include("../../lib/opin.inc.php")?> 
+﻿<?php include("../../lib/opin.inc.php")?> 
 <?php define("CPAGE","gallery/")?>
 <?php include("../inc/header.inc.php");?>
 <?php defined('_JEXEC') or die('Restricted access'); ?>
@@ -13,7 +13,25 @@
       <div class="internal-box"><?=$adm->alert()?>
       <div class="title"  id="innertit">
       <!--  <?=$adm->heading(((!$mode)?''.(($catid)?'':'Banner').' Manager':'Add/Update Banner '.(($catid)?'':'Album')))?> -->
-	   <h2><?=$cms->breadcrumbs()?></h2>
+	   <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/slider" rel="v:url" property="v:title">Slider </a> » 
+			<a href="/tools/slider/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/slider" rel="v:url" property="v:title">Slider </a> » 
+			<a href="/tools/slider/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/slider" rel="v:url" property="v:title">Slider </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
        <div class="tbl-contant"><?php if($mode){include("add.php");}else{include("manage.php");}?> </div>
     </div>

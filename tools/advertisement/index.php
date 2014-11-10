@@ -1,4 +1,4 @@
-<?php include("../../lib/opin.inc.php")?>
+﻿<?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","gallery/")?>
 <?php include("../inc/header.inc.php");?>
 <?php $adm->pageAuth("Advertisement Management",$perm);?>
@@ -38,7 +38,25 @@
 <?php $hedtitle = "Advertisement Manager"; ?>  
     <?=$adm->alert()?>
       <div class="title"  id="innertit">
-       <h2><?=$cms->breadcrumbs()?></h2>
+       <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/advertisement" rel="v:url" property="v:title">Advertisement </a> » 
+			<a href="/tools/advertisement/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/advertisement" rel="v:url" property="v:title">Advertisement </a> » 
+			<a href="/tools/advertisement/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/advertisement" rel="v:url" property="v:title">Advertisement </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
       <div class="tbl-contant"><?php if($mode){include("add.php");}else{include("manage.php");}?></div>
        <div class="cl"></div>
