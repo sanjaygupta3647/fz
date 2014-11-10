@@ -110,18 +110,18 @@
         <h2 class="bradcrumb"><?php
 		if($mode=='add' && $id!=''){?>
 			<a href="/tools" rel="v:url" property="v:title">Home</a> »
-			<a href="/tools/catalog" rel="v:url" property="v:title">Catalog </a> » 
+			<a href="/tools/catalog" rel="v:url" property="v:title">Subscriber </a> » 
 			<a href="/tools/catalog/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
 		<?php		
 		}else if($mode=='add' && $id=='') { 
 		    ?>
 			<a href="/tools" rel="v:url" property="v:title">Home</a> »
-			<a href="/tools/catalog" rel="v:url" property="v:title">Catalog </a> » 
+			<a href="/tools/catalog" rel="v:url" property="v:title">Subscriber </a> » 
 			<a href="/tools/catalog/?mode=add" rel="v:url" property="v:title">Add</a>  
 		<?php
 		}else{?>
 		    <a href="/tools" rel="v:url" property="v:title">Home</a> »
-			<a href="/tools/catalog" rel="v:url" property="v:title">Catalog </a> »  
+			<a href="/tools/catalog" rel="v:url" property="v:title">Subscriber </a> »  
 		<?php 
 		}
 		?>
