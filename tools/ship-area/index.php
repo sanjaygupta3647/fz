@@ -1,4 +1,4 @@
-<?php include("../../lib/opin.inc.php")?>
+﻿<?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","gallery/")?>
 <?php include("../inc/header.inc.php");?>
 <?php $adm->pageAuth("Shipping Area",$perm);?>
