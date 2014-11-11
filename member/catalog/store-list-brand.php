@@ -45,13 +45,16 @@ if(!count($prod_arr))$prod_arr[] =0;
 <div class="div-tbl">
 <div class="cl"></div>
 
-<?php $hedtitle = "Store(s) Request"; ?> 
+<?php $hedtitle = "All Store(s)"; ?> 
     <? //$adm->h1_tag('Dashboard &rsaquo; Category Manager',$others)?>
     <h1><? if($parentId) {echo $cms->getSingleresult("select name from #_category where pid='$parentId'");}?></h1>
      
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
-        <?=$adm->heading('Category Manager')?>
+        <h2 class="bradcrumb"> 
+					<a href="/member" rel="v:url" property="v:title">Home</a> »
+					<a href="/member/catalog/store-list-brand.php" rel="v:url" property="v:title">Stores </a>  
+		   </h2>
         
       </div>
       <div class="tbl-contant">

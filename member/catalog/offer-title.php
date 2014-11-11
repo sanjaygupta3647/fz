@@ -47,7 +47,13 @@ if($cms->is_post_back()){
       <?php $hedtitle = "Offer Title Management"; ?>
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
-         <h2><?=$cms->breadcrumbs()?></h2>
+         <h2 class="bradcrumb">
+		   
+					<a href="/member" rel="v:url" property="v:title">Home</a> »
+					<a href="/member/catalog/offer-title.php" rel="v:url" property="v:title">Offer Title </a> 
+				 
+		   
+		   </h2>
       </div>
       <div class="tbl-contant">
         <table width="100%" border="0" align="left" cellpadding="2" cellspacing="1"  class="frm-tbl2">

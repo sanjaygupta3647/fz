@@ -54,7 +54,11 @@ $remainStores = (int)($noOfStores - $requestedStores);
       <?php $hedtitle = "Store Request Management"; ?>
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
-        <?=$adm->heading('Add/Update Store Detail')?>
+       <h2 class="bradcrumb"> 
+					<a href="/member" rel="v:url" property="v:title">Home</a> »
+					<a href="/member/catalog/store-list-brand.php" rel="v:url" property="v:title">Stores </a>  » 
+					<a href="/member/catalog/brand-request.php?id=<?=$id?>" rel="v:url" property="v:title">Edit </a>  
+		   </h2>
       </div>
       <div class="tbl-contant">
         <table width="100%" border="0" align="left" cellpadding="2" cellspacing="1"  class="frm-tbl2">
