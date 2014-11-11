@@ -61,7 +61,27 @@ if(isset($id)){
 <?php $hedtitle = ucfirst(strtolower($cms->getSingleresult("select name from #_category where pid='$parentId'")))." Product Sub Category"; ?> 
        <?=$adm->alert()?>
       <div class="title"  id="innertit">
-        <?=$adm->heading('Add/Update Category')?>
+        <h2 class="bradcrumb"> 
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »<?php
+			    $getuppar = $cms->getSingleresult("select parentId from #_category where pid='$parentId'");
+				?><a href="/tools/catalog/manage-sub-category.php?parentId=<?=$getuppar?>" rel="v:url" property="v:title"> <?=ucfirst(strtolower($cms->getSingleresult("select name from #_category where pid='$getuppar'")))?></a>  »  
+
+			<?php if($id){  
+			    $getuppar2 = $cms->getSingleresult("select parentId from #_category where pid='$id'");
+				?>
+				<a href="/tools/catalog/manage-pro-sub-category.php?parentId=<?=$parentId?>" rel="v:url" property="v:title"> <?=ucfirst(strtolower($cms->getSingleresult("select name from #_category where pid='$getuppar2'")))?></a>  » 
+
+			<a href="/tools/catalog/add-pro-sub-category.php?id=<?=$id?>&parentId=<?=$parentId?>" rel="v:url" property="v:title"> <?=ucfirst(strtolower($cms->getSingleresult("select name from #_category where pid='$id'")))?></a> 
+
+			<?php }else{?> 
+			<a href="/tools/catalog/manage-pro-sub-category.php?parentId=<?=$parentId?>" rel="v:url" property="v:title"> <?=ucfirst(strtolower($cms->getSingleresult("select name from #_category where pid='$parentId'")))?></a>  » 
+
+			<a href="/tools/catalog/add-pro-sub-category.php?parentId=<?=$parentId?>" rel="v:url" property="v:title"> Add </a> 
+
+
+			<?php
+			} ?>
+	     </h2> 
       </div>
         <div class="tbl-contant">
         <table width="100%" border="0" align="left" cellpadding="4" cellspacing="1" class="frm-tbl2" >

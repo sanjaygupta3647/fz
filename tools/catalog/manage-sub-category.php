@@ -96,8 +96,10 @@
       
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
-        <h2><?=$cms->breadcrumbs()?></h2>
-        
+         <h2 class="bradcrumb"> 
+			<a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/catalog/manage-sub-category.php?parentId=<?=$parentId?>" rel="v:url" property="v:title"><?=$hedtitle?></a> 
+	     </h2> 
       </div>
       <div class="tbl-contant">
         <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"  class="data-tbl">
