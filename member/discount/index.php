@@ -23,7 +23,25 @@
         <?=$adm->alert()?>
         <div class="title">
           <? //$adm->heading('Add/Update Discount')?>
-		   <h2><?=$cms->breadcrumbs()?></h2>
+		   <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/discount" rel="v:url" property="v:title">Discount</a> » 
+			<a href="/discount/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">View</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/discount" rel="v:url" property="v:title">Discount</a> » 
+			<a href="/member/discount/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/discount" rel="v:url" property="v:title">Discount </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
         <div class="tbl-contant">
           <?php include("add.php"); ?>

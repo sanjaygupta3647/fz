@@ -8,8 +8,8 @@
         <?php /*?><nav>
           <ul>
             <li> <a href="<?=SITE_PATH_MEM?>"></a> </li>
-            <li> <a href="<?=SITE_PATH_MEM?>catalog/collections.php">Products</a> </li>
-            <li> <a href="<?=SITE_PATH_MEM?>catalog/manage-category.php">Category</a> </li>
+            <li> <a href="<?=SITE_PATH_MEM?>shiparea/collections.php">Products</a> </li>
+            <li> <a href="<?=SITE_PATH_MEM?>shiparea/manage-category.php">Category</a> </li>
             <li> <a href="<?=SITE_PATH_MEM?>setting.php?mode=true">Setting</a> </li>
            <!-- <li> <a href="">System</a> </li>-->
           </ul>
@@ -40,7 +40,25 @@
     <?=$adm->alert()?>
       <div class="title"  id="innertit">
        <? //=$adm->heading(((!$mode)?'Shipping Area Manager':'Add/Update Shipping Area'))?>
-	    <h2><?=$cms->breadcrumbs()?></h2>
+	    <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/shiparea" rel="v:url" property="v:title">Ship Area</a> » 
+			<a href="/shiparea/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/shiparea" rel="v:url" property="v:title">Ship Area</a> » 
+			<a href="/member/shiparea/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/shiparea" rel="v:url" property="v:title">Ship Area</a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
       <div class="tbl-contant"><?php if($mode){include("add.php");}else{include("manage.php");}?></div>  
        <div class="cl"></div>

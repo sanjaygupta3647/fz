@@ -102,7 +102,25 @@ if(!$id && !$mode){
     <h1></h1> 
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
-         <h2><?=$cms->breadcrumbs()?></h2>
+         <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Product view main</a> » 
+			<a href="/catalog/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Product view main</a> » 
+			<a href="/member/catalog/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Product view main</a> »  
+		<?php 
+		}
+		?>
+	  </h2>
       </div>
       <div class="tbl-contant">
         <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"  class="data-tbl">

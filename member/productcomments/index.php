@@ -34,7 +34,25 @@
     <?=$adm->alert()?>
       <div class="title"  id="innertit">
        <? //=$adm->heading(((!$mode)?'Product Comment Manager':'Add/Update Product Comment'))?>
-	    <h2><?=$cms->breadcrumbs()?></h2>
+	    <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/productcomments" rel="v:url" property="v:title">Productcomments</a> » 
+			<a href="/productcomments/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">Edit</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/productcomments" rel="v:url" property="v:title">Productcomments</a> » 
+			<a href="/member/productcomments/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/productcomments" rel="v:url" property="v:title">Productcomments</a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
       <div class="tbl-contant"><?php if($mode){include("add.php");}else{include("manage.php");}?></div>
        <div class="cl"></div>

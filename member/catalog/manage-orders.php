@@ -103,7 +103,25 @@ $reccnt = $cms->db_scalar($sql_count);
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
         <? //$adm->heading('Orders Manager :- '.ucfirst($status))?> 
-        <h2><?=$cms->breadcrumbs()?></h2>
+        <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Manage Orders</a> » 
+			<a href="/catalog/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">View</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Manage Orders</a> » 
+			<a href="/member/catalog/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Manage Orders</a> »  
+		<?php 
+		}
+		?>
+	  </h2>
       </div>
         <div class="tbl-contant"  id="divToPrint">
         <table id="myTable" width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="data-tbl">

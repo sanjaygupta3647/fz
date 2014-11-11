@@ -23,7 +23,25 @@
         <?=$adm->alert()?>
         <div class="title">
           <? //$adm->heading('Add/Update Shipping')?>
-		   <h2><?=$cms->breadcrumbs()?></h2>
+		   <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/shipping" rel="v:url" property="v:title">Shipping</a> » 
+			<a href="/shipping/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">View</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/shipping" rel="v:url" property="v:title">Shipping</a> » 
+			<a href="/member/shipping/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/shipping" rel="v:url" property="v:title">Shipping </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
         <div class="tbl-contant">
           <?php include("manage.php"); ?>

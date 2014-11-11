@@ -41,7 +41,25 @@
     <?=$adm->alert()?>
       <div class="title"  id="innertit">
            <? //$adm->heading(((!$mode)?'Store Members':'Add/Update User'))?>
-		   <h2><?=$cms->breadcrumbs()?></h2>
+		   <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/users" rel="v:url" property="v:title">Users</a> » 
+			<a href="/users/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">View</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/users" rel="v:url" property="v:title">Users</a> » 
+			<a href="/member/users/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/users" rel="v:url" property="v:title">Users </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
         </div>
       <div class="tbl-contant" id="divToPrint"><?php if($mode){include("add.php");}else{include("manage.php");}?></div>
        <div class="cl"></div>

@@ -76,7 +76,25 @@ span{
       <?=$adm->alert()?>
       <div class="title"  id="innertit">
         <? //$adm->heading('Category Manager')?>
-         <h2><?=$cms->breadcrumbs()?></h2>
+         <h2 class="bradcrumb"><?php
+		if($mode=='add' && $id!=''){?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Theme Color</a> » 
+			<a href="/catalog/?mode=add&amp;start=&amp;id=<?=$id?>" rel="v:url" property="v:title">View</a>  
+		<?php		
+		}else if($mode=='add' && $id=='') { 
+		    ?>
+			<a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Theme Color </a> » 
+			<a href="/member/catalog/?mode=add" rel="v:url" property="v:title">Add</a>  
+		<?php
+		}else{?>
+		    <a href="/member" rel="v:url" property="v:title">Home</a> »
+			<a href="/member/catalog" rel="v:url" property="v:title">Theme Color </a> »  
+		<?php 
+		}
+		?>
+	  </h2>
       </div>
       <div class="tbl-contant">
         <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"  class="data-tbl">
