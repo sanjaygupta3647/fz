@@ -685,3 +685,6 @@ margin:0; padding:0;
 }
 .multidiv{width:885px;border:1px solid black; clear:both;margin-bottom: 10px; padding:10px;}
 .delmulty{cursor:pointer;}
+.bradcrumb a{ color:#FFFFFF;
+ }
+.bradcrumb a:hover{ color:#0000FF; font-stretch:expanded; font-weight:bold;}

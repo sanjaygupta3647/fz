@@ -4,13 +4,8 @@ $mode=true; ?>
 <?php include("../inc/header.inc.php")?>
 <div class="main">
 <?php
-$numOfProducts = $cms->getSingleresult("select t1.noOfProducts from #_plans as t1, #_store_detail as t2 where t2.pid ='".$_SESSION[store_id]."' and t1.pid= t2.plan_id");
-$total = $cms->getSingleresult("select count(*) from #_products_user where store_user_id ='".$_SESSION[uid]."' ");
-if($_SESSION[usertype]!='brand' ){
-	$totalBrandProduct = $cms->getSingleresult("select count(*) from #_barnds_product where store_user_id ='".$_SESSION[uid]."' ");
-	if($totalBrandProduct) $total = $total+$totalBrandProduct;
-}
-$remain = $numOfProducts-$total;
+$product =  $cms->getStoreProduct($_SESSION[uid]);
+$remain = $product[remain];
 ?>
 <header> 
       <div class="hrd-right-wrap">  
