@@ -16,7 +16,7 @@ if($_POST[proceed_pay]){
 		$err = 1;
 		$errms .= "Previous session expired,please go for first step again! <br/>";
 	}
-	if($_SESSION[sms_pack]==''){
+	if($_SESSION[product_pack]==''){
 		$err = 1;
 		$errms .= "Previous session expired,please go for first step again! <br/>";
 	}
@@ -73,17 +73,15 @@ if($_POST[proceed_pay]){
 			}
 		}
 	} 
-	if($err!=1){  
-		$user = $cms->db_query("SELECT plan_id,noOfDays,noOfMessage,store_user_id FROM #_store_detail where store_user_id='".$_SESSION[ren_store_id]."' ");
-		$data = $cms->db_fetch_array($user);
-
+	if($err!=1){   
 		/** Main Renual Code **/ 
 		$ren[pack_id] =$_SESSION[product_pack]; 
 		$ren[total_amount] = $res[amount];
 		$ren[qty] = $res[qty];
 		$ren[coupon] = $cop;
+		$ren[pack_name] = $res[pack_name];
 		$ren[user_id]=$_SESSION[ren_store_id];
-		$cms->sqlquery("rs","reg_renewal_sms",$ren);
+		$cms->sqlquery("rs","renewal_product",$ren);
 		/** Main Renual Code **/  
 
 		  
@@ -119,7 +117,7 @@ if($_POST[proceed_pay]){
       <span>Do You Have Voucher Code ?</span> </div>
     <div class="renew_submit-div3" id="renew_submit-div3" <?=($regMode=='coupon')?'':'style="display:none"'?>>
     <div class="field_div">
-     <div class="autoUpdate"> <input type="text" name="voucherCode" value=""  lang="R" id="vaucher_copon" placeholder="Enter Your Voucher Code here" /><span id="txtHint2"><?=$er?>  </span></div>  
+     <div class="autoUpdate"> <input type="text" name="voucherCode" value=""  lang="R" id="vaucher_copon_prod" placeholder="Enter Your Voucher Code here" /><span id="txtHint2"><?=$er?>  </span></div>  
         <!--<input type="text" name="voucher_field" id="voucher_field" placeholder="Enter Your Voucher Code here" /> -->
       </div>
        

@@ -102,6 +102,23 @@ if(isset($me)){
  
  ?> 
 <div class="contentarea">
+<div class="registerheadbox">
+    <div class="heading2">
+    <a href="#">
+    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Login Account" />Login</a></div>
+    
+	<div class="heading2">
+    <a href="<?=SITE_PATH?>renewal_account">
+    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew Account" />Renew Account</a></div>
+	<div class="heading2">
+    <a href="<?=SITE_PATH?>renewal_sms">
+    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew SMS</a></div>
+
+	<div class="heading2">
+    <a href="<?=SITE_PATH?>renewal_product">
+    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew Product</a></div>
+    <div class="subtext"><?=$cms->removeSlash($body)?> </div>
+  </div>
   <div class="registerarea">
 <?php
 	$qry = $cms->db_query("SELECT noOfDays,amount FROM `#_plans_hosting` where pid ='".$_SESSION[planID]."'  ");
@@ -112,6 +129,7 @@ if(isset($me)){
 	$heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='user-login' and status = 'Active' and store_user_id = '0'");  
 ?>
     <div class="heading"><?=$cms->removeSlash($heading)?></div>
+
       <div class="subarea">
       <?=$cms->removeSlash($body)?>
 	  <?=$er?>

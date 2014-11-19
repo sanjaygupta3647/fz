@@ -103,8 +103,9 @@ include "site/search.inc.php";
 						 
 						 
 						//if($offerprice<$price){ $pri =$offerprice; }else  $pri =$price;
-						 
+						$storeTitle = $cms->getSingleresult("select title from #_store_detail where store_user_id = '$store_user_id'"); 
 						?>
+						<div class="subtext">Store :  <a  href="http://<?=$url?>.fizzkart.com" target="_blank" ><?=$storeTitle?></a> </div>
                         <div class="subtext">Price :  <?=($disprice >0 && $disprice < $mainprice)?$cms->price_format($disprice):$cms->price_format($mainprice)?></div>
 						 <div class="subtext" style="font-size:12px;"><?php
 							$getprods22 = $cms->db_query("select * from #_product_feature  where  prod_id =  '$pid' and ftitle!='' and fdescription!=''    "  );

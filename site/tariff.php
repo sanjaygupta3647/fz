@@ -10,6 +10,16 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
 <div class="contentarea">
   <div class="registerheadbox">
     <div class="heading"><img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Register with us" /> <?=$cms->removeSlash($heading)?> </div>
+	<div class="heading2">
+    <a href="<?=SITE_PATH?>renewal_account">
+    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew Account" />Renew Account</a></div>
+	<div class="heading2">
+    <a href="<?=SITE_PATH?>renewal_sms">
+    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew SMS</a></div>
+
+	<div class="heading2">
+    <a href="<?=SITE_PATH?>renewal_product">
+    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew Product</a></div>
     <div class="subtext"><?=$cms->removeSlash($body)?> </div>
   </div>
   <div class="registerarea">

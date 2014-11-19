@@ -1,6 +1,6 @@
 <? if($items[3])
 	{  
-	   
+	 
 	  $qry = $cms->db_query("SELECT noOfDays,amount,noOfMessage FROM #_plans_hosting where pid ='".$_SESSION[planID]."'  ");
 	  $res = $cms->db_fetch_array($qry);
 	  $qry_sms = $cms->db_query("SELECT amount FROM #_sms_pack where pid ='".$_SESSION[sms_pack]."'  ");
