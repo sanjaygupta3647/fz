@@ -1,4 +1,5 @@
 <?php
+
 	if(!defined('LOCAL_MODE')) {
 		die('<span style="font-family: tahoma, arial; font-size: 11px">config file cannot be included directly');
 	}

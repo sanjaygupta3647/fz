@@ -1,4 +1,4 @@
-<? 
+<?php 
 	require_once "lib/opin.inc2.php"; 
 	if(strpos($_GET[q],'ms_box')!==false ){
 		$isbox=1;
