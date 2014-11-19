@@ -2,7 +2,16 @@
 $metaTitle = $cms->getSingleresult("select meta_title from #_meta_info where url='home' and store_user_id = '$current_store_user_id'");
 $metaIntro = $cms->getSingleresult("select meta_description from #_meta_info where url='home' and store_user_id = '$current_store_user_id'");
 $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where url='home' and store_user_id = '$current_store_user_id'");
- ?>
+$right = 1;
+if($current_store_type=='brand'){
+	$stores=$cms->db_query("select store_user_id  from #_request_brand where brand_id ='".$current_store_user_id."' and status = 'Active' order by   rand() LIMIT 6 ");
+	$tcnt = mysql_num_rows($stores); 
+}else{
+	$stores=$cms->db_query("select brand_id  from #_request_brand where store_user_id ='".$current_store_user_id."' and status = 'Active' order by   rand() LIMIT 6 ");
+	$tcnt = mysql_num_rows($stores); 
+} 
+if(!$tcnt){$right = 'No';} 
+?>
    
 <div class="subdomain_bodymain">
   <div class="subdomain_bodymain_wrap">
@@ -113,14 +122,16 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
 					$prods[] = $bp[prod_id];
 				} 	
 			} 
-		}  
-		$new =$cms->db_query("select status,pcode,pid,title,clicks,image1,color from #_products_user where status='Active' and pid in (".implode(',',$prods).") order by pid desc limit 0, 6 "); 
+		} 
+		$l = 6; 
+		if($right == 'No'){ $l = 8; }
+		$new =$cms->db_query("select status,pcode,pid,title,clicks,image1,color from #_products_user where status='Active' and pid in (".implode(',',$prods).") order by pid desc limit 0, $l "); 
 		//$countpro  = mysql_num_rows($new);
 		 
 		?>
       <div class="body3_section_left">
-        <h2>New Arrivals</h2>
-        <div class="body2_section-categories">
+        <h2 <?=($right == 'No')?'style="width:1000px;"':''?>>New Arrivals</h2>
+        <div class="body2_section-categories" <?=($right == 'No')?'style="width:auto;"':''?>>
           <?php 
 		if(mysql_num_rows($new)){ 
 		$i = 1; 
@@ -150,55 +161,16 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
 			   <samp class="sizesuccess<?=$i?>">  </samp> 
 			    </div>  
 				 
-				<form action="#" name="theForm" method="post">
-<?php  
-     
-       $prod_price =$cms->db_query("SELECT dsize FROM #_product_price WHERE store_id = '$current_store_user_id' AND proid ='".$newRes['pid']."'");
-	  
-		if(mysql_num_rows($prod_price)>1){ ?>
-     <!--<div class="dropdown_on-mini-detail">  
-	           <select class="list_of_detail crt<?=$newRes['pid']?> size<?=$newRes['pid']?>"   alt="<?=$newRes['pid']?>" title="<?=$i?>" name="size" id="list_of_detail"> 
-                <?php 
-				while($pro_p=$cms->db_fetch_array($prod_price)){ 
-				 	?>   
-                  <option value="<?=$pro_p[dsize]?>"><?=$pro_p[dsize]?></option> 
-          <?php } ?></select>
-          </div>-->                      
-  <?php }else{ ?>  <?php } ?>
-                <!--<div class="color_boxes_maindiv">
-                <span class="size_selection-color" style="float:left;" > <?php if($newRes[color]){ ?>Colour : <?php }else{ ?> &nbsp; <?php } ?></span>  
-			<?php
-			        $clr = @explode(',', $newRes[color]);
-			        $k=$newRes['pid'].$i; 
-				    if(count($clr)>1){  
-					foreach($clr as $val){ 
-					$clrcode = $cms->getSingleresult("select colorcode from #_color where name = '$val' and store_user_id = '$current_store_user_id'");  
-					 ?>
-					 <div class="color_boxes">
-					 <input type="radio" id="checkbox-1-<?=$k?>"  name="color"  value="<?=$clrcode?>" class="regular-checkbox<?=$k?> color"  <?=($clrcode=='$clrcode')?'checked':''?>>
-				     <label for="checkbox-1-<?=$k?>" class="checkbox-1-<?=$k?>"></label>  
-				<?php include("color_css.php"); ?>
-			</div>
-	<?php $k++;    } 
-		     }    ?> 
-            </div>--> 
-          <!--<div class="body2_section-category_1_buy_btn">  
-              <?php
-			if($current_store_type=='brand'){?>
-              <a href="<?=SITE_PATH?>locate-store/<?=$adm->baseurl($newRes[title])?>/<?=$newRes[pid]?>" class="float_left">Locate Store</a>
-              <?php
-			 }else{?>
-            
-              <a href="Javascript:void(0)"  class="float_left addtocart_index" alt="<?=$newRes[pid]?>" title="<?=$color1?>" lang="<?=$newRes['pid']?>" >Add to Cart</a>
-			  
-              <?php
-			 }?>
-              <a href="<?=SITE_PATH?>detail/<?=$adm->baseurl($newRes[title])?>/<?=$newRes[pid]?>" class="float_right"`>More Info</a> </div>-->
-			  
+				<form action="#" name="theForm" method="post"> <?php
+       $prod_price =$cms->db_query("SELECT dsize FROM #_product_price WHERE store_id = '$current_store_user_id' AND proid ='".$newRes['pid']."'"); ?>
           </div>
 		  </form>
+		  <?php
+			if($right == 'No'){?> <?=($i==4)?'<div class="clr"></div>':''?> <?php  }else{
+		  ?>
           <?=($i==3)?'<div class="clr"></div>':''?>
-          <?php $i++;
+          <?php 
+				}$i++;
 		  }
 		}else{?>
 		
@@ -211,11 +183,9 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
       </div>
       <?php 
 	  ?>
-      <div class="body3_section_right">
-        <?php
-		if($current_store_type=='brand'){
-			$stores=$cms->db_query("select store_user_id  from #_request_brand where brand_id ='".$current_store_user_id."' and status = 'Active' order by   rand() LIMIT 6 ");
-			$tcnt = mysql_num_rows($stores); 
+      <div class="body3_section_right" >
+        <?php 
+		if($current_store_type=='brand'){ 
 			if($tcnt){?>
         <h2><a style="text-decoration:none;color:#000" href="<?=SITE_PATH?>dealers">Our Dealer(s)</a></h2>
         <div class="populr_store_div" align="center">
@@ -231,14 +201,12 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
         </div>
         <?php
 			}
-		}else{
-			$brands=$cms->db_query("select brand_id  from #_request_brand where store_user_id ='".$current_store_user_id."' and status = 'Active' order by   rand() LIMIT 6 ");
-				$tcnt = mysql_num_rows($brands); 
+		}else{ 
 				if($tcnt){?>
 						<h2>Our Brands</h2>
 						<div class="populr_store_div" align="center">
 						  <?php 
-								while($stRes=$cms->db_fetch_array($brands)){
+								while($stRes=$cms->db_fetch_array($stores)){
 										$image = $cms->getSingleresult("select image from #_store_detail where store_user_id = '".$stRes[brand_id]."' and status = 'Active'");
 										$getTitle = $cms->getSingleresult("select title from #_store_detail where store_user_id = '".$stRes[brand_id]."' and status = 'Active'");
 										$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id = '".$stRes[brand_id]."' and status = 'Active'"); 

@@ -241,7 +241,13 @@ input:hover.search_filtr_btn[type="button"],[type=submit] {
 }
 ::selection {color:#fff;background:#<?=$colres[sstrip]?> !important;}
 ::-moz-selection {color:#fff;background:#<?=$colres[sstrip]?> !important;}
- 
+<?php
+if($right=='No'){ 
+?> 
+.body3_section_right{display:none;} 
+<?php
+}
+?>
  
 </style>
  
