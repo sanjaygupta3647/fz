@@ -126,21 +126,42 @@ include "site/search.inc.php";
           <?=($catslist)?$catslist:'Not Set'?>
         </div>
         <?php
-						$titlePr = "";
-						$prodQry = $cms->db_query("select title,pid from fz_products_user where store_user_id = '$store_user_id' and ( title like '%".$_GET[key]."%' or body1 like '%".$_GET[key]."%' or kf1 like '%".$_GET[key]."%' or kf2 like '%".$_GET[key]."%' or kf3 like '%".$_GET[key]."%' ) limit 0, 6");
-							if(mysql_num_rows($prodQry)){
+		$titlePr = "";
+		$prodQry = $cms->db_query("select title,pid from fz_products_user where store_user_id = '$store_user_id' and ( title like '%".$_GET[key]."%' or body1 like '%".$_GET[key]."%' or kf1 like '%".$_GET[key]."%' or kf2 like '%".$_GET[key]."%' or kf3 like '%".$_GET[key]."%' ) limit 0, 6");
+		$pcount = mysql_num_rows($prodQry);
+			if($pcount){
 								?>
         <div class="subtext">Products :
-          <?php
-					   while($prodrs=$cms->db_fetch_array($prodQry)){?>
-							<a href="<?=$link?>/detail/<?=$adm->baseurl($prodrs[title])?>/<?=$prodrs[pid]?>"><?=ucwords(strtolower(trim($prodrs[title])))?>,</a><?php
+          <?php			$i = 1;
+					   while($prodrs=$cms->db_fetch_array($prodQry)){
+						   $suf  =($i<$pcount)?',':'';?>   
+							<a href="<?=$link?>/detail/<?=$adm->baseurl($prodrs[title])?>/<?=$prodrs[pid]?>"><?=ucwords(strtolower(trim($prodrs[title])))?><?=$suf?></a><?php
+							 $i++;
            
-					   }?>
-        </div>
+			}?>
+        </div> 
         <?php
-								 
-							}  
-						?>
+		 } 
+		 $checkstores =$cms->db_query("select store_user_id  from #_request_brand where brand_id ='$store_user_id' and status ='Active' limit 0,6"); 
+		 $countstore = mysql_num_rows($checkstores);  
+		 if($countstore){
+			 echo '<div class="subtext">Stores :';
+			 $i = 1;
+			 while($st=$cms->db_fetch_array($checkstores)){ 
+					$storename = trim($cms->getSingleresult("select title from #_store_detail where store_user_id = '".$st[store_user_id]."' "));
+					$store_url = trim($cms->getSingleresult("select store_url from #_store_detail where store_user_id = '".$st[store_user_id]."' "));
+					$link  = "http://".$store_url.".fizzkart.com";
+					if(!$storename) $storename = 'N/A';
+					$suf  =($i<$countstore)?'|':'';?>
+					<a href="<?=$link?>"><?=ucwords(strtolower(trim($storename)))?></a> <?=$suf?>
+					<?php
+					 
+					$i++;
+			 }	
+			 echo '</div>';
+		 }
+		 ?>
+		 
         <div class="subrandbox">
           <?php $qry ="select brand_id from #_request_brand where store_user_id ='$store_user_id' and status ='Active'
 				 limit 0,6"; 
@@ -166,13 +187,13 @@ include "site/search.inc.php";
 															
 							}
 							if($list!=""){?>
-          <div class="heading">Brands</div>
-          <div class="divider"></div>
-          <?=$imgs?>
-          <?php 
+							  <div class="heading">Brands</div>
+							  <div class="divider"></div>
+							  <?=$imgs?>
+							  <?php 
 							}
 							
-						}?>
+					}?>
         </div>
       </div>
     </div>
