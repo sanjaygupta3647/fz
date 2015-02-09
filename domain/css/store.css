@@ -3375,8 +3375,8 @@ h2.cart_page_heading {
 .success_order {
 	width: 994px;
 	height: auto;
-	float: left;
-	margin: 15px 10px 0 176px;
+	/*float: left;
+	margin: 15px 10px 0 176px;*/
 	border: 5px solid #a40400;
 	color: #000;
 	border-radius: 3px;
@@ -3619,8 +3619,8 @@ span.black_arrow {
 .checkout_order {
 	width: 1004px;
 	height: auto;
-	float: left;
-	margin: 15px 10px 0 176px;
+	/*float: left;
+	margin: 15px 10px 0 176px;*/
 	border: 5px solid #a40400;
 	color: #000;
 	border-radius: 3px;
@@ -4787,3 +4787,68 @@ div.onhovr_link{
 	text-decoration:underline;
 	transition:.5s all linear;
 }
+
+
+/* 
+
+#result {
+	height:20px;
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	padding:5px;
+	margin-bottom:10px;
+	background-color:#FFFF99;
+}
+#country{
+	padding:3px;
+	border:1px #CCC solid;
+	font-size:17px;
+}
+.suggestionsBox {
+	position: relative;
+	left: 0px;
+ 
+	width: 160px;
+	padding:0px;
+	background-color: #000;
+	border-top: 3px solid #000;
+	color: #fff;
+	left: -26px;
+	float:right;
+	z-index:9999;
+}
+.suggestionList {
+	margin: 0px;
+	padding: 0px;
+}
+.suggestionList ul li {
+	list-style:none;
+	margin: 0px;
+	padding: 6px;
+	border-bottom:1px dotted #666;
+	cursor: pointer;
+}
+.suggestionList ul li:hover {
+	background-color: #FC3;
+	color:#000;
+}
+ 
+.suggestionList ul {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#FFF;
+	padding:0;
+	margin:0;
+}
+ 
+.load{
+background-image:url(loader2.gif);
+background-position:right;
+background-repeat:no-repeat;
+}
+
+#suggest {
+	position:relative;
+}
+ Autosuggession**/ 

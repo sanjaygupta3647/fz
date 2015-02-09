@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $getcatn = $cms->removeSlash($cms->getSingleresult("select name from #_store_menu where cat_id = '".$items[2]."' 
 		  and store_user_id = '$current_store_user_id'"));
 $ms = ucwords(strtolower( $getcatn." Product(s)"));

@@ -29,7 +29,7 @@ if($cms->is_post_back()){
 		if($arr[paynet]){
 		$cms->sqlquery("rs","order_summary",$arr);  
 		}
-		$rsAdmin_pros = $cms->db_query("select * from #_cart where `ssid`='".session_id()."' and store_user_id = '".$current_store_id."'");	
+		$rsAdmin_pros = $cms->db_query("select * from #_cart where `ssid`='".session_id()."' and store_user_id = '".$current_store_user_id."'");	
 		while($arrAdmin_pros = $cms->db_fetch_array($rsAdmin_pros)){@extract($arrAdmin_pros);  			
 			$arr2 = array();
 			$arr2[proid] = $proid; 				 
@@ -43,14 +43,14 @@ if($cms->is_post_back()){
 			$arr2[status] = "pending";
 			$arr2[orderid] = $arr[orderid];
 			$arr2[uid] = $_SESSION['userid']; 
-			$rsAdmin_orde = $cms->db_query("select * from #_orders_detail where `proid`='".$arr2[proid]."' and `orderid`='".$arr[orderid]."' ");
+			$rsAdmin_orde = $cms->db_query("select * from #_orders_detail where `proid`='".$arr2[proid]."' and `orderid`='".$arr2[orderid]."' ");
 			if(!mysql_num_rows($rsAdmin_orde)){
 				if($arr2[amount]){
 				$cms->sqlquery("rs","orders_detail",$arr2);
 	        	}
 			} 
 		} 
-		$cms->db_query("delete from #_cart where `ssid`='".session_id()."' and store_user_id = '".$current_store_id."' "); 
+		$cms->db_query("delete from #_cart where `ssid`='".session_id()."' and store_user_id = '".$current_store_user_id."' "); 
 		$_POST[orderid] = $arr[orderid];
 		$insert = $cms->sqlquery("rs","shipping_address",$_POST);			 
 		if($insert){ 
@@ -69,13 +69,13 @@ $rsAdmin_pros1 = $cms->db_query("select qty from #_cart where `ssid`='".session_
 while($res = $cms->db_fetch_array( $rsAdmin_pros1)){ 
 	$qty=$qty+$res[qty];
 }  
-if($_SESSION[userid]){
-	
+print_r($_SESSION);
+if($_SESSION[userid]){ 
 	 $shipping = $cms->getSingleresult("select zipcode from #_members where pid='".$_SESSION[userid]."'"); 
 	 if($shipping==$_SESSION[pincode]){
 		 $rsAdmin2=$cms->db_query("select * from #_members where pid='".$_SESSION[userid]."'");
-		 $result=$cms->db_fetch_array($rsAdmin2);
-		 extract($result); 
+		 $result=$cms->db_fetch_array($rsAdmin2); print_r($result);
+		 extract($result);  
 	 }
 }
 ?>

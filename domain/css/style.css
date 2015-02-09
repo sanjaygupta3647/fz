@@ -98,7 +98,8 @@ body {
 	padding : 0;
 }
 .logo {
-	width : 300px;
+	/*width : 300px;*/
+	width: auto;
 	height : 80px;
 	float : left;
 	margin : 0;
@@ -1116,8 +1117,8 @@ div.subdomain_bodymain div.subdomain_bodymain_wrap div.body3_section div.body3_s
 	width: 197px;
 	height: 527px;
 	float: left;
-	margin: 20px 0 0 0;
-	padding: 10px 20px;
+	margin: 0 0 0 0;
+	padding: 0 20px;
 	border: 1px solid #ededed;
 }
 div.subdomain_bodymain div.subdomain_bodymain_wrap div.body3_section div.body3_section_right div.populr_store_div img{
@@ -1126,7 +1127,7 @@ div.subdomain_bodymain div.subdomain_bodymain_wrap div.body3_section div.body3_s
 }
 div.subdomain_bodymain div.subdomain_bodymain_wrap div.body3_section div.body3_section_right div.populr_store_div img {
 	max-width: 197px;
-	margin: 20px 0;
+	margin: 15px 0;
 }
 .clr {
 	width: 1000px;

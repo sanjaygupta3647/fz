@@ -30,13 +30,13 @@
    $ssid=session_id(); 
     $cartArr=$cms->getOfferProduct($ssid,$current_store_user_id);  
    //echo "Preview: <br/><pre>"; print_r($cartArr);echo "</pre><br/>";
-   $check=$cms->db_query("select * from #_cart where  ssid = '".session_id()."' ");
+   $check=$cms->db_query("select * from #_cart where  ssid = '".session_id()."' and store_user_id = '".$current_store_user_id."'  ");
 	   if(mysql_num_rows($check)){ 
 	    if($_SESSION['crtmsg']!=""){
 		 $_SESSION['crtmsg'];    unset($_SESSION['crtmsg']); 
 		}?>
   
-  <h2>Items In Your Cart For Shipping Area <?=$_SESSION[pincode]?></h2>
+  <h2>  Shipping Time: <?=$cms->calShippTime($current_store_user_id,$_SESSION[pincode])?> For Area Pincode <?=$_SESSION[pincode]?> </h2>
  
   <div class="cart_main_div">
   
@@ -123,6 +123,8 @@
      if($shipFreeAmount){
 	  ?>
      <p><span>Free Shipping on shop Rs. <?=$shipFreeAmount?> </span></p> <?php }?>
+
+	
     </div>
 	    <a   href="<?=SITE_PATH?>checkout" name="checkout" id="sign" class="checkout_cls ">Proceed to Checkout</a>  
 	  <!-- <input type="button" name="submit" id="checkout" value="Proceed to Checkout" class="checkout_cls" /> -->	 

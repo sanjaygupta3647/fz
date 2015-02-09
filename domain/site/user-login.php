@@ -4,8 +4,11 @@ $metaIntro = $cms->getSingleresult("select meta_description from #_meta_info whe
 $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where url='login' and store_user_id = '$current_store_user_id'"); 
 $host = $_SERVER['HTTP_HOST']; 
 $expire=time()+120;
-$path="http://fizzkart.com/user-login"; 
-setcookie("user",$host,$expire, $path, "fizzkart.com");
+$path=SITE_PATH."user-login"; 
+$domain = str_replace("http://","",SITE_PATH);
+$domain = str_replace("/","",$domain);
+
+setcookie("user",$host,$expire, $path, $domain);
 //echo $_COOKIE["user"];   
 //setcookie("user", "", time()-60,$path,"");
    if($cms->is_post_back()){

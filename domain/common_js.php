@@ -1,7 +1,7 @@
 <script src="<?=SITE_PATH?>js/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="<?=SITE_PATH?>js/jquery.glasscase.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-        $(function () {
+        $(function (){
             //Demo 1
             $("#girlstop").glassCase({'thumbsPosition': 'bottom', 'widthDisplay': '300', 'heightDisplay': '450'});
         });
@@ -308,7 +308,8 @@ if($items[0]=='combo-offer'||$items[0]=='hot-deal'||$items[0]=='period-offer' ||
 $(".location").click(function(){
 	var uri = $(this).attr('lang');
 	if(uri){
-		window.location = uri;
+		//window.location = uri;
+		window.open(uri, '_blank');
 	}
 });
 setSlider($('#scroll-pane'));
@@ -516,7 +517,7 @@ $(window).scroll(function(){
         }
 }); 
 
-$(".addtocart").click(function(){
+$(".addtocart").click(function(){ 
 	var getpid    = $(this).attr('alt');  
 	var qty = $('#cartQty').val();
 	if(!qty)  qty  = 0;
@@ -524,6 +525,7 @@ $(".addtocart").click(function(){
 	if(!namecolor)  namecolor  = 0;
     var size      = $('input:radio[name=size]:checked').val(); 
 	if(!size)  size  = 0;
+	
 	$.ajax({
 	    url : "<?=SITE_PATH?>ms_file/addtocart/?prod_id="+getpid+"&dsize="+size+"&color="+namecolor+'&qty='+qty, 
 	    success: function(data, textStatus, jqXHR){  
@@ -839,4 +841,34 @@ $(document).ready(function() {
 });
 
 </script> 
+
+<script>
+function suggest(inputString){
+	/*	if(inputString.length == 0) {
+			$('#suggestions').fadeOut();
+		} else {
+		$('#country').addClass('load');
+			$.ajax({
+			    url : "<?=SITE_PATH?>ms_file/autosuggest/?key="+inputString, 
+			    success: function(data, textStatus, jqXHR){  
+			       	$('#suggestions').fadeIn();
+					$('#suggestionsList').html(data);
+					$('#country').removeClass('load');
+			    },
+			    error: function (jqXHR, textStatus, errorThrown){
+			 		alert(errorThrown);
+			    }
+			});
+
+
+			 
+		}
+	}
+
+	function fill(thisValue) {
+		$('#country').val(thisValue);
+		setTimeout("$('#suggestions').fadeOut();", 600);
+	}*/
+
+</script>
 

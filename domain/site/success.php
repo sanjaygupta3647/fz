@@ -27,7 +27,7 @@ $res =$cms->db_fetch_array($query);
 <div class="order_confirmed">
 <div class="order_confirmed_left">
 <h2>Successfully Confirmed</h2>
-<p>Dear User Your Order has been Confirmed. It will be Delivered in <?=$ShippingDay1?>-<?=$ShippingDay2?> Business Days.</p>
+<p>Dear User Your Order has been Confirmed. It will be Delivered in <?=$cms->calShippTime($current_store_user_id,$_SESSION[pincode])?>.</p>
 </div>
 <div class="order_confirmed_right">
 <div class="order_confirmed_right_title"><h2>User Information</h2><span class="black_arrow"></span></div>

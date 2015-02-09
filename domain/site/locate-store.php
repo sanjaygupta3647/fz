@@ -96,7 +96,8 @@ $res1=$cms->db_fetch_array($prod1);
 	$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id = '".$res1[store_user_id]."'");
 	$image = $cms->getSingleresult("select image from #_store_detail where store_user_id = '".$res1[store_user_id]."'");
 	$pincode = $cms->getSingleresult("select pincode from #_store_detail where store_user_id = '".$res1[store_user_id]."'");
-	 
+	$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id = '".$res1[store_user_id]."' and status = 'Active'");
+	 $red  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com";
 		$storeprice = $cms->getPriceSize($items[2],$res1[store_user_id],$res1[dsize]);      
 		?> 
 		  <div class="seller_list_details">
@@ -115,7 +116,7 @@ $res1=$cms->db_fetch_array($prod1);
 			  <!--<h3>Available</h3>
 			  <p>Delivered in 2 to 3  Business Days</p> -->
 			</div>
-			<div class="seller_list_details4"> <a class="deal" target="_balnk" href="<?="http://".$store_url.".fizzkart.com/detail/".$adm->baseurl($res[title])."/".$items[2]?>">Buy Now</a> </div>
+			<div class="seller_list_details4"> <a class="deal" target="_balnk" href="<?=$red."/detail/".$adm->baseurl($res[title])."/".$items[2]?>">Buy Now</a> </div>
 		  </div>
       <?php
 		}

@@ -6,9 +6,11 @@ $right = 1;
 if($current_store_type=='brand'){
 	$stores=$cms->db_query("select store_user_id  from #_request_brand where brand_id ='".$current_store_user_id."' and status = 'Active' order by   rand() LIMIT 6 ");
 	$tcnt = mysql_num_rows($stores); 
+	if($tcnt<4) $tcnt = 0;
 }else{
 	$stores=$cms->db_query("select brand_id  from #_request_brand where store_user_id ='".$current_store_user_id."' and status = 'Active' order by   rand() LIMIT 6 ");
 	$tcnt = mysql_num_rows($stores); 
+	if($tcnt<4) $tcnt = 0;
 } 
 if(!$tcnt){$right = 'No';} 
 ?>
@@ -57,20 +59,19 @@ if(!$tcnt){$right = 'No';}
               <div class="feature_product_div-image" align="center"> <img src="<?=$cms->getImageSrc($res1['image1'])?>" 
 				  width="173" height="155" title="<?=strip_tags($res1['title'])?>" alt="<?=strip_tags($res1['title'])?>"/></div>
               <div class="feature_product_div-text">
-                <h3>
-                  <?=strip_tags($res1['title'])?>
-                </h3>
-                <p></p>
-              </div>
-              <?php 
+			  <?php 
 					$price = $cms->getBothPrice($res1['pid'],$current_store_user_id);
 					 
 					$cost = $cms->price_format($price[0]);
 					if($price[1] and $price[1]<$price[0]){$cost = $cms->price_format($price[1]); }
 				  ?>
-              <div class="feature_product_div-buy_price" style="margin-top: 55px;"> <span>
-                <?=$cost?>
-                </span> <a href="<?=SITE_PATH?>detail/<?=$adm->baseurl(strip_tags($res1[title]))?>/<?=$res1[pid]?>" class="buynow" >Buy Now</a> </div>
+                <h3>
+                  <?=strip_tags($res1['title'])?> <br/> <?=$cost?>
+                </h3>
+                <p></p>
+              </div>
+              
+              <div class="feature_product_div-buy_price" style="margin-top: 55px;margin-right: 60px;"> <a  style="margin-right: 60px;"href="<?=SITE_PATH?>detail/<?=$adm->baseurl(strip_tags($res1[title]))?>/<?=$res1[pid]?>" class="buynow" >Buy Now</a> </div>
             </div>
             <?php 
 				}
@@ -193,8 +194,10 @@ if(!$tcnt){$right = 'No';}
 				while($stRes=$cms->db_fetch_array($stores)){
 					$image = $cms->getSingleresult("select image from #_store_detail where store_user_id = '".$stRes[store_user_id]."' and status = 'Active'");
 					$getTitle = $cms->getSingleresult("select title from #_store_detail where store_user_id = '".$stRes[store_user_id]."' and status = 'Active'");
-					$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id = '".$stRes[store_user_id]."' and status = 'Active'");				 
-					$red = "http://$store_url.fizzkart.com";   ?>
+					$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id = '".$stRes[store_user_id]."' and status = 'Active'");		
+					$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id = '".$stRes[store_user_id]."' and status = 'Active'");
+					$red  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com";
+					//$red = "http://$store_url.fizzkart.com";   ?>
           <img lang="<?=$red?>" class="location"  style="cursor:pointer"  src="http://fizzkart.com/uploaded_files/orginal/<?=$image?>" border="0" alt="<?=strip_tags($getTitle)?>" title="<?=strip_tags($getTitle)?>" />
           <?php 
 					}?>

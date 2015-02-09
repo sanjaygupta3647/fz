@@ -2906,6 +2906,20 @@ function getPriceSize($pid,$current_store_user_id,$dsize){
 	$re_noOfDays=$noOfDays-$this->getRemainDays($create_date); 
 	return $re_noOfDays;
  }
-   
+ function calShippTime($store_user_id,$pincode){
+	 $ms = "";
+	 $rs = $this->db_query("select day1,day2,hrs,minutes from  #_shipping_area_store where store_user_id='$store_user_id' and pincode = '$pincode' "); 
+	 $r=$this->db_fetch_array($rs); @extract($r);
+	 if($hrs || $minutes){ 
+		if($hrs)  $ms .= $hrs." Hours";
+		if($hrs && $minutes) $ms .=  " and ";
+		if($minutes)  $ms .= $minutes." Minutes";
+	 }else{
+		$ms .= "$day1 to $day2 days";
+	 } 
+
+	 return $ms;
+
+  }  
 }
 ?>

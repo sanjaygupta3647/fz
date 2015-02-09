@@ -10,7 +10,9 @@ $message = '
 </head>';
 $hedlogo = $cms->getSingleresult("select image from #_store_detail where store_user_id = '$current_store_user_id'"); 
 $img = "http://fizzkart.com/uploaded_files/orginal/".$hedlogo; 
-$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id = '$current_store_user_id' ").'.fizzkart.com'; 
+$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id = '".$current_store_user_id."' and status = 'Active'");
+$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id = '$current_store_user_id' ").'.fizzkart.com';
+$store_url = ($store_domain)?$store_domain:$store_url;
 $email_id = $cms->getSingleresult("select email_id from #_store_user where pid = '$current_store_user_id' ");
 $orderid = $cms->getSingleresult("select orderid from #_order_summary where orderid='".$_SESSION['orderid']."'");
 $message .=  '
@@ -45,7 +47,8 @@ $message .=  '
           </tr>';
 		    $rsAdmin_pros = $cms->db_query("select * from #_orders_detail where orderid='".$orderid."' ");	 
 			
-					$f=1;while($results = $cms->db_fetch_array($rsAdmin_pros))
+					$f=1;
+					while($results = $cms->db_fetch_array($rsAdmin_pros))
 					{ 	 
 					$gtottal = $gtottal + $results[amount];
  				    $prodname = $cms->getSingleresult("select title from #_products_user where pid='".$results[proid]."'");
@@ -119,10 +122,11 @@ $message .=  '
     $message2 .= $message;  
 	$subject = "Order confirmed: #".$orderid; 
 	$headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";  
-	/*$emailuser = $cms->getSingleresult("select email from #_shipping_address where orderid='".$_SESSION['orderid']."'");
+	$headers .= 'From: <'.SITE_MAIL. ">\r\n";
+	$emailuser = $cms->getSingleresult("select email from #_shipping_address where orderid='".$_SESSION['orderid']."'");
 	$emailadmin = $cms->getSingleresult("select email_id from #_store_user where pid='$current_store_id'");
 	@mail($emailuser, $subject, $message1, $headers);  
 	@mail(emailadmin, $subject, $message2, $headers);
-	@mail(SITE_MAIL, $subject, $message2, $headers);  */
+	@mail(SITE_MAIL, $subject, $message2, $headers); 
   
 ?>

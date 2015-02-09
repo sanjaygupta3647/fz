@@ -1,4 +1,11 @@
-<?php 
+<?php  
+	$ch = $cms->db_query("select * from #_template where title ='Registartion' and store_id = '$current_store_id' ");
+	if(!mysql_num_rows($ch)){
+		$ch = $cms->db_query("select * from #_template where title ='Registartion' and store_id = '0' ");
+	} 
+	$tempRes = $cms->db_fetch_array($ch);
+	echo $tempRes[body]; 
+
 	$metaTitle = $cms->getSingleresult("select meta_title from #_meta_info where url='registration' and store_user_id = '$current_store_user_id'");
 	$metaIntro = $cms->getSingleresult("select meta_description from #_meta_info where url='registration' and store_user_id = '$current_store_user_id'");
 	$metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where url='registration' and store_user_id = '$current_store_user_id'");
@@ -14,19 +21,21 @@
 				$arr[user_id] = $lastId;
 				$arr[store_id] = $current_store_id;
 				$cms->sqlquery("rs","member_access",$arr);
-				$mess = "Thanks for registering with us on fizzkart.com store.Now you have access of $base.fizzkart.com Admin fizzkart.com";
+				$urlsite =  str_replace("http://","",SITE_PATH);
+				$urlsite =  str_replace("/","",$urlsite);
+				$mess = "Thanks for registering with us on fizzkart.com store.Now you have access of $urlsite Admin fizzkart.com";
 				$adminEmail = $cms->getSingleresult("select email_id from #_store_user where pid = '$current_store_user_id' ");
 				$headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-				$headers .= 'From: Fizzkart@fizzkart.com' . "\r\n" .'CC: '.$adminEmail;
+				$headers .= 'From: '.$adminEmail . "\r\n" .'CC: '.$adminEmail;
 				$ch = $cms->db_query("select * from #_template where title ='Registartion' and store_id = '$current_store_id' ");
 				if(!mysql_num_rows($ch)){
 					$ch = $cms->db_query("select * from #_template where title ='Registartion' and store_id = '0' ");
 				} 
 				$tempRes = $cms->db_fetch_array($ch);
 				$subject2 = $tempRes[subject]; 
-				$subject2 = str_replace("%%storename%%", $base.".fizzkart.com",$subject2);
+				$subject2 = str_replace("%%storename%%",$urlsite,$subject2);
 				$mess2 = $tempRes[body]; 
-				$mess2 = str_replace("%%subdomain%%", SITE_PATH,$mess2);
+				$mess2 = str_replace("%%subdomain%%",SITE_PATH,$mess2);
 				$mess2 = str_replace("%%name%%", $_POST[fname].' ' .$_POST[lname],$mess2);
 				$mess2 = str_replace("%%sex%%", $_POST[gender],$mess2);
 				$mess2 = str_replace("%%email%%", $_POST[email],$mess2);

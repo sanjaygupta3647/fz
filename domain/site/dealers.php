@@ -68,7 +68,11 @@ if($current_store_type!='store'){?>
           </div>
         </div>
         <div class="dealer_main_frame_right2"> 
-          <input lang="http://<?=$store_url?>.fizzkart.com" class="location deal"  type="button" value="More Details..." name="detail_btn" id="detail_btn">
+		<?php
+		$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id = '".$res1[store_user_id]."' and status = 'Active'");
+		$red  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com";
+	    ?>
+          <input lang="<?=$red?>" class="location deal"  type="button" value="More Details..." name="detail_btn" id="detail_btn">
         </div>
       </div>
     </div>
