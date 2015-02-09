@@ -41,15 +41,20 @@ if(trim($_POST[keywords])){
 		<a href="<?=SITE_PATH?>offer" class="top_link2" ><?=($offer_title2)?$offer_title2:'Period Offers'?> </a>
 		 <a class="top_link2" href="<?=SITE_PATH?>combo-offer" ><?=($offer_title1)?$offer_title1:'Combo Offers'?> </a> 
 		</div>
-            <div class="srch">
-              <form action="" method="post">
-                <input type="text" class="srch_field" placeholder="Search for Brands, Products" value="<?=$_GET[keywords]?>" name="keywords">
-				<input type="image"  name="search" src="<?=SITE_PATH?>images/search-icon.jpg" style="margin-top: -21px;float: right;margin-right: 0px;">
+            <div class="srch"> 
+              <form action="" method="post"> 
+                <input type="text" autocomplete="off" class="srch_field" id="country" onkeyup="suggest(this.value);" onblur="fill();" 
+				placeholder="Search for Brands, Products" value="<?=$_GET[keywords]?>" name="keywords"> 
+				
+				<input type="image"  name="search" src="<?=SITE_PATH?>images/search-icon.jpg" style="margin-top: -21px;float: right;margin-right: 0px;">				
               </form>
             </div>
             <div class="cart"></div>
           </div>
-		
+		<div class="suggestionsBox" id="suggestions" style="display: none;">  
+				<img src="<?=SITE_PATH?>images/arrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" /> 
+				<div class="suggestionList" id="suggestionsList"> &nbsp; </div> 
+			  </div>
 		</div>
         
       </div>

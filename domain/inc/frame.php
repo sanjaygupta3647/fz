@@ -80,7 +80,7 @@ $cms->pageView($current_store_user_id);
 <body>
 <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">You may put any HTML here. This is dummy copy. It is not meant to be read. It has been placed here solely to demonstrate the look and feel of finished, typeset text. Only for show. He who searches for meaning here will be sorely disappointed.</div>
 <div id="hader2" style="background-color:#<?=$colres[header_strip]?>">
-  <div class="logo_top" align="left"> <a href="<?=MAIN_SITE?>" ><img src="<?=SITE_PATH_M?>images/logo_top.png" style="padding-left:5px;" width="120" height="34" border="0" /></a> </div>
+  <div style="display:none;" class="logo_top" align="left"> <a href="<?=MAIN_SITE?>" ><img src="<?=SITE_PATH_M?>images/logo_top.png" style="padding-left:5px;" width="120" height="34" border="0" /></a> </div>
   <div class="topbookmark" id="trigger">
     <div style="float:left; margin:0 20px 0 0; line-height:35px;">
       <?php if($_SESSION[fname]){ ?>
