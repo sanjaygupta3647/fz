@@ -95,8 +95,7 @@ if(isset($id)){
 	$arrAdmin=$cms->db_fetch_array($rsAdmin);
 	@extract($arrAdmin);
 	}
-   $storename = $cms->getSingleresult("select title from fz_store_detail where store_user_id ='$store_user_id'");
-  if($store_user_id != $_SESSION[uid]){die("Unauthorize Access of $storename product");}
+ 
 ?>
  
   <table width="100%" border="0" align="left" cellpadding="4" cellspacing="1" class="frm-tbl2">

@@ -18,6 +18,8 @@ if($_GET[key]){
 } 
 $searchP = array_unique($searchP); 
 
+
+
 $user[] = 0;
 $catQ = $cms->db_query("select store_user_id from #_products_user  where pid in (".implode(",",$searchP).") and status = 'Active' group by store_user_id "  );
 	if(mysql_num_rows($catQ)){
@@ -62,7 +64,7 @@ include "site/search.inc.php";
                 	<div class="heading">Category</div>
 					<?php  
 					$curl1 = $cms->geturl();
-					$catQr=$cms->db_query("select pid,name,image,body from #_category where pid in (".implode(",",$getcats).") and status = 'Active'");
+					$catQr=$cms->db_query("select pid,name,image,body from #_category where pid in (".implode(",",$getcats).") and status = 'Active'  order by name");
 					while($cateres=$cms->db_fetch_array($catQr)){ ;
 					$noProds  = $cms->getSingleresult("select count(*) from #_products_user where pid in (".implode(",",$searchP).") and cat_id = '".$cateres[pid]."' and status = 'Active'");
 					$cat_id  = $_GET[cat_id];
@@ -70,7 +72,7 @@ include "site/search.inc.php";
 					$curl1 = str_replace($strtoreplace1,"",$curl1);
 					?>  
 					<div class="catlink"><a <?php if($_GET[cat_id]==$cateres[pid]){?> style="color:#000;font-weight:bold;"<?php }?> 
-					href="<?=$curl1?>&cat_id=<?=$cateres[pid]?> "><?=$cateres[name]?> (<?=$noProds?>)</a></div>
+					href="<?=$curl1?>&cat_id=<?=$cateres[pid]?> "><?=$cms->removeSlash($cateres[name])?> (<?=$noProds?>)</a></div>
 					<?php }  ?> 
                 </div>
             </div>
@@ -92,10 +94,14 @@ include "site/search.inc.php";
                 	<div class="logobox"><img style="max-height:134px" src="<?=$img?>" width="184"  alt="<?=$title?>" title="<?=$title?>"  /></div>
                     <div class="detailbox">
 						<?php
+
 						$url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id ='".$store_user_id."' ");
-						$link  = "http://".$url.".fizzkart.com/detail/".$adm->baseurl($title)."/".$pid;
+						$type = $cms->getSingleresult("select type from #_store_user where pid ='".$store_user_id."' ");
+						$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id ='".$store_user_id."' "); 
+						$base  =  ($store_domain)?"http://".$store_domain:"http://".$url.".fizzkart.com" ; 
+						$link  =  $base."/detail/".$adm->baseurl($title)."/".$pid;
 						?>
-                    	<div class="heading"><a target="_blank" style="text-decoration:none" href="<?=$link?>"><?=$title?></a></div>
+                    	<div class="heading"><a class="newtab" target="_blank" style="text-decoration:none" href="<?=$link?>"><?=$title?></a></div>
 						<?php 
 						$Cprice = $cms->getBothPrice($pid,$store_user_id);
 						$mainprice = $Cprice[0];
@@ -105,7 +111,7 @@ include "site/search.inc.php";
 						//if($offerprice<$price){ $pri =$offerprice; }else  $pri =$price;
 						$storeTitle = $cms->getSingleresult("select title from #_store_detail where store_user_id = '$store_user_id'"); 
 						?>
-						<div class="subtext">Store :  <a  href="http://<?=$url?>.fizzkart.com" target="_blank" ><?=$storeTitle?></a> </div>
+						<div class="subtext">Store :  <a class="newtab"  href="<?=$link?>" target="_blank" ><?=$storeTitle?></a> </div>
                         <div class="subtext">Price :  <?=($disprice >0 && $disprice < $mainprice)?$cms->price_format($disprice):$cms->price_format($mainprice)?></div>
 						 <div class="subtext" style="font-size:12px;"><?php
 							$getprods22 = $cms->db_query("select * from #_product_feature  where  prod_id =  '$pid' and ftitle!='' and fdescription!=''    "  );
@@ -122,37 +128,38 @@ include "site/search.inc.php";
 						?>							 
 						</div>  
 						<div class="subrandbox"> 
-						<?php $qry ="select brand_id from #_request_brand where store_user_id ='$store_user_id' and status ='Active'
-				 limit 0,6"; 
+						<?php  
+					  if($type=='brand'){
+					  $qry ="select store_user_id from #_barnds_product where brand_id ='$store_user_id' and prod_id = '$pid' and status ='Active' limit 0,6"; 
 					  $brnadsqry =$cms->db_query($qry);
 					  $j = 1;
 					  $totbarnd = mysql_num_rows($brnadsqry);
 					  $list = "";
 					  $imgs = "";
 					  if($totbarnd){ 
-					  while($serchres=$cms->db_fetch_array($brnadsqry)){		
-								$type = $cms->getSingleresult("select type from #_store_user where pid = '".$serchres[brand_id]."'");
-								if($type=='brand'){
-									$list .= $cms->getSingleresult("select title from #_store_detail where store_user_id ='".$serchres[brand_id]."'").", ";
-									$image =  $cms->getSingleresult("select image from #_store_detail where store_user_id ='".$serchres[brand_id]."'");
-									$img = SITE_PATH."uploaded_files/orginal/no-img.gif";
-									if(file_exists(UP_FILES_FS_PATH.'/orginal/'.$image) && $image!=""){
-										$img = SITE_PATH."uploaded_files/orginal/".$image;
-									}
-									$imgs .= '<div class="imgbox"><img style="max-width:50px" src="'.$img.'"   height="25"   /></div>';
-									$j++; 
-								
-								}								
-															
+						while($serchres=$cms->db_fetch_array($brnadsqry)){ 
+								$list  = $cms->getSingleresult("select title from #_store_detail where store_user_id ='".$serchres[store_user_id]."'");
+								$image =  $cms->getSingleresult("select image from #_store_detail where store_user_id ='".$serchres[store_user_id]."'");
+								$img = SITE_PATH."uploaded_files/orginal/no-img.gif";
+								if(file_exists(UP_FILES_FS_PATH.'/orginal/'.$image) && $image!=""){
+									$img = SITE_PATH."uploaded_files/orginal/".$image;
+								}
+								$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id ='".$serchres[store_user_id]."' "); 
+								$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id ='".$serchres[store_user_id]."' ");
+								$base  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ; 
+						        $link  =  $base."/detail/".$adm->baseurl($title)."/".$pid;
+								$imgs .= '<div class="imgbox"><a class="newtab" href="'.$link.'"><img style="max-width:50px" src="'.$img.'"  title="'.$list.'"  height="25"   /></a></div>';
+								$j++;  			
 							}
-							if($list!=""){?>
-								<div class="heading">Brands</div>
+							if($imgs!=""){?>
+								<div class="heading">Dealers</div>
 								<div class="divider"></div>
 								<?=$imgs?>
 								<?php 
 							}
 							
-						}?> 
+						}
+				}?> 
                     </div> 
                     </div>
                     

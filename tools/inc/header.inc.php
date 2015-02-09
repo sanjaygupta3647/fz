@@ -124,6 +124,7 @@ if(!$_SESSION["ses_adm_id"]){$cms->redir(SITE_PATH_ADM."login");}
 				<li <?=(!in_array('Manage Market',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>market/">Manage Market</a></li> 
 				<li <?=(!in_array('Shipping City',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>ship-city">Shipping City</a></li> 
 				<li <?=(!in_array('Shipping Area',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>ship-area">Shipping Area</a></li> 
+				<li <?=(!in_array('Search',$perm))?'style="display:none;"':''?>><a href="<?=SITE_PATH_ADM?>search">Searched Keywords</a></li> 
 				  
 			</ul>
 		</li> 

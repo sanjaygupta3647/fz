@@ -84,7 +84,7 @@
     <td align="center"><?=$city?></td>  
 	 <td align="center"><?=$areaname?></td> 
     <td align="center"><?=$pincode?></td>
-	<td align="center"><?=$day1?> To <?=$day2?> days</td>
+	<td align="center"><?=$cms->calShippTime($store_user_id,$pincode)?> </td>
 	 <td align="center"><?=(int)$extracharge?> %</td>
 	<?php $cond = (in_array($pincode,$mypincode))?'Added':'Not Added'; ?>
     <td align="center" ><?=$cond?></td>

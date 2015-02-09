@@ -17,10 +17,15 @@
 						$storeName = substr($cms->getSingleresult("select title from #_store_detail where store_user_id ='$pid' and status = 'Active' and our_popular_store= '1'"),0,15);
 						$storeId = substr($cms->getSingleresult("select pid from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'"),0,15);
 						$storeurl = $cms->getSingleresult("select store_url from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'");
+
+						$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id = '$pid' ");
+
 						$theme = $cms->getSingleresult("select theme from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'");
 						$theme = ($theme)?$theme:'domain';
-						if($storeId) {
-				?>			<li class="als-item"><a href="http://<?=$storeurl?>.fizzkart.com"><img src="<?=$cms->getImageSrc($image)?>" width="150" height="70" alt="<?=$title?>"/></a></li>
+						if($storeId) {?>
+							
+				 <?php  $linkurl  =  ($store_domain)?"http://".$store_domain:"http://".$storeurl.".fizzkart.com" ?>
+				<li class="als-item"><a class="newtab" target="_blank" href="<?=$linkurl?>"><img src="<?=$cms->getImageSrc($image)?>" width="150" height="70" alt="<?=$title?>"/></a></li>
 				<?php	}
 					} ?> 
 			</ul>

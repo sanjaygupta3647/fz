@@ -47,7 +47,23 @@ if(isset($id)){
 	  <?php for($j=0;$j<10;$j++){ ?>
 	    <option value="<?=$j?>" <?php if($j==$day2){ echo 'selected="selected"';}?>><?=$j?> </option>
 		<?php } ?>
-	  </select></td>
+	  </select>  &nbsp  Or Enter Custom Time:  
+	  <select style="min-width:50px;"  name="hrs" class="txt"  title="hours">
+		<option value="">--Hours--</option>
+	    <?php for($i=1;$i<24;$i++){ ?>
+	    <option value="<?=$i?>"<?php if($i==$hrs){ echo 'selected="selected"';}?>><?=$i?> Hour<?=($i>1)?'s':''?> </option>
+		<?php } ?>
+	  </select> 
+
+	  <select style="min-width:50px;"  name="minutes" class="txt"  title="hours">
+		<option value="">--Minutes--</option>
+	    <?php for($i=1;$i<60;$i++){ ?>
+	    <option value="<?=$i?>"<?php if($i==$minutes){ echo 'selected="selected"';}?>><?=$i?> Minute<?=($i>1)?'s':''?> </option>
+		<?php } ?>
+	  </select> 
+	  
+	  
+	  </td>
     </tr>  
 	<tr>
       <td width="25%"  class="label">Pin Code:</td>

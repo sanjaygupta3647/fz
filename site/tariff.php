@@ -34,7 +34,7 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
               <h2 class="plan_heading-h2">Our <span>Store Owner</span> Plans</h2>
               <ul>
 			  <?php  
-				$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'store'"); 
+				$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'store' order by name"); 
 				$i = 1;
 				while($result=$cms->db_fetch_array($sql)){?>
 					 <li class="item <?=($i%2==0)?' color':''?>" ><a href="Javascript:void(0)"><?=ucwords(strtolower($result['name']))?></a>
@@ -70,7 +70,7 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
               <h2 class="plan_heading-h2">Our <span>Brand Owner</span> Plans</h2>
               <ul>
                  <?php  
-				$sql2=$cms->db_query("select * from #_plans  where status='Active' and type = 'brand'"); 
+				$sql2=$cms->db_query("select * from #_plans  where status='Active' and type = 'brand' order by name "); 
 				$j = 1;
 				while($result2=$cms->db_fetch_array($sql2)){?>
 					 <li class="item <?=($j%2==0)?' color':''?>" ><a href="Javascript:void(0)"><?=ucwords(strtolower($result2['name']))?></a>

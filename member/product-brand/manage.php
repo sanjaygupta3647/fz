@@ -12,12 +12,13 @@ while($arrAdmin=$cms->db_fetch_array($rsAdmin)){
 }
    
 $listbrandprod = array();
- $listbrandqry=$cms->db_query("select prod_id from fz_barnds_product where brand_id = '$soterId' and store_user_id = '".$_SESSION[uid]."' "); 
-	if(mysql_num_rows($listbrandqry)){
-		while($RS=$cms->db_fetch_array($listbrandqry)){
-									$listbrandprod[] = $RS[prod_id];
-								} 
-	}
+$listbrandprod[] = 0;
+$listbrandqry=$cms->db_query("select prod_id from fz_barnds_product where brand_id = '$soterId' and store_user_id = '".$_SESSION[uid]."' "); 
+if(mysql_num_rows($listbrandqry)){
+	while($RS=$cms->db_fetch_array($listbrandqry)){
+								$listbrandprod[] = $RS[prod_id];
+							} 
+}
 	if($cms->is_post_back()){
 		if($arr_ids) {
 			$str_adm_ids = implode(",",$arr_ids);
@@ -109,14 +110,13 @@ $listbrandprod = array();
 	$pagesize = DEF_PAGE_SIZE;
 	} 
 	$columns = "select * ";
-if($listbrandprod){
-		 if($_GET['type']){ 	
-			 $sql = " from #_products_user where store_user_id  = '$soterId' and cat_id in (".implode(',',$catts).") and pid in (".implode(',',$listbrandprod).") $cond ";
-		 }else{
-			 $sql = " from #_products_user where store_user_id  = '$soterId' and cat_id in (".implode(',',$catts).") and pid not in (".implode(',',$listbrandprod).") $cond ";
-		 }
-}else{ 
-	$sql = " from fz_barnds_product where brand_id = '$soterId' and store_user_id = '".$_SESSION[uid]."' "; 
+
+
+if($_GET['type']=='added'){  
+	$sql = " from #_products_user where store_user_id  = '$soterId' and cat_id in (".implode(',',$catts).") and pid  in (".implode(',',$listbrandprod).") $cond ";
+	  
+}else{  
+	$sql = " from #_products_user where store_user_id  = '$soterId' and cat_id in (".implode(',',$catts).") and pid not in (".implode(',',$listbrandprod).") $cond ";
 }
 	$order_by == '' ? $order_by = 'pid' : true;
 	$order_by2 == '' ? $order_by2 = 'desc' : true;

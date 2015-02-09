@@ -1,4 +1,4 @@
-<?php include("../../lib/opin.inc.php")?>
+10:21 PM<?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","catalog/")?>
 <?php include("../inc/header.inc.php")?>
 <?php 

@@ -48,12 +48,20 @@ $(function(){
 <?php
 	$theme = $cms->getSingleresult("select theme from #_store_detail where `store_user_id` = '".$_SESSION[uid]."'");
 	$store_url = $cms->getSingleresult("select store_url from #_store_detail where `store_user_id` = '".$_SESSION[uid]."'");
+    $store_domain = $cms->getSingleresult("select store_domain from #_store_detail where `store_user_id` = '".$_SESSION[uid]."'"); 
 	$type = $cms->getSingleresult("select type from #_store_user where `pid` = '".$_SESSION[uid]."'");
 	$name = $cms->getSingleresult("select name from #_store_user where `pid` = '".$_SESSION[uid]."'"); 
 	?>
 <div class="wrap wrap2">
   <div class="admin-bar">  
-     <div class="logo"> <a href="<?=SITE_PATH_MEM?>"><img src="<?=SITE_PATH?>image/logo/final.png" alt=""></a></div>
+    <?php
+	  $hedlogo = $cms->getSingleresult("select image from #_store_detail where `store_user_id` = '".$_SESSION[uid]."'");
+	$img =  "http://fizzkart.com/images/default-logo.jpg";
+	if($hedlogo!="")
+	{  
+		  $img = "http://fizzkart.com/uploaded_files/orginal/".$hedlogo;
+	}?>
+     <div class="logo"> <a href="<?=SITE_PATH_MEM?>"><img src="<?=$img?>" alt=""></a></div>
     <ul class="nav">
 		<!--<li id="settings">
 			<a href="#"><img src="images/settings.png" /></a>
@@ -64,7 +72,8 @@ $(function(){
 		<li id="options">
 			<a href="#">Options</a>
 			<ul class="subnav">
-				<li><a href="http://<?=$store_url?>.fizzkart.com" target="_blank">Go to Your Store</a></li>
+			   <?php  $linkurl  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ?>
+				<li><a href="<?=$linkurl?>" target="_blank">Go to Your Store</a></li>
 				<li><a href="<?=SITE_PATH_MEM?>profile">Profile</a></li>
 				<li><a href="<?=SITE_PATH_MEM?>catalog/add-store.php">Settings</a></li>
 				<li><a href="<?=SITE_PATH_MEM?>logout.php">Logout</a></li>

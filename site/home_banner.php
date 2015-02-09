@@ -20,7 +20,7 @@
 		
 		<?php $i++; } } ?>
 				 
-			</section>
+</section>
 
 <div class="right_quote">
 <h3><a href="<?=SITE_PATH?>updates" style="color:#fff">Latest updates from us</a></h3>

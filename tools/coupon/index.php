@@ -3,7 +3,14 @@
 <?php include("../inc/header.inc.php");?>
 <?php $adm->pageAuth("Coupon Management",$perm);?>
 <div class="main"> 
+<?php
+$include = "";
+if($_SESSION[coupon]){
 
+}else{
+	$include = "step1.php";
+}
+?>
 <header>
 		<?php
 		if($_GET[cat_id]){		
@@ -86,8 +93,11 @@
 	  </h2>
 			</div> 
 		  <div class="tbl-contant"><?php 
-		  
-			  if($mode){include("add.php");}else{include("manage.php");}
+			  if($include!=""){
+				include($include);
+			  }else{
+				if($mode){include("add.php");}else{include("manage.php");}
+			  }
 			 ?></div>
  
        <div class="cl"></div>

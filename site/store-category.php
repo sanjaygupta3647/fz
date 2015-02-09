@@ -71,7 +71,7 @@ include "site/search.inc.php";
 					<?php include "left.search.php"; ?>
                 	<div class="heading">Category</div>
 					<?php
-					$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active'";
+					$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active' order by name";
 					$sql_city1_query=$cms->db_query($sql_city1);
 					while($city_array=$cms->db_fetch_array($sql_city1_query)){ @extract($city_array);?>
 					<?php
@@ -89,7 +89,7 @@ include "site/search.inc.php";
 							}
 							
 						}?>
-					<div class="catlink"><a  <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"><?=ucwords(strtolower($name))?> (<?=$noStore?>)</a>
+					<div class="catlink"><a  <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"><?=ucwords(strtolower($cms->removeSlash($name)))?> (<?=$noStore?>)</a>
 					</div>
 					<?php }?> 
                 </div>
@@ -113,7 +113,10 @@ include "site/search.inc.php";
 					<div class="catdetailbox">
                 	<div class="logobox"><img style="max-height:134px" src="<?=$img?>" width="184"  alt="<?=$title?>" title="<?=$title?>"  /></div>
                     <div class="detailbox">
-                    	<div class="heading"><a style="text-decoration:none" href="http://<?=$store_url.".fizzkart.com"?>"><?=$title?></a></div>
+					    <?php
+						$link  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ;
+						?>
+                    	<div class="heading"><a style="text-decoration:none" class="newtab" href="<?=$link?>"><?=$title?></a></div>
 						<?php
 						$catslist = "";
 						$catqry = $cms->db_query("select name from #_store_menu where store_user_id = '$store_user_id' and parent = '0' limit 0, 4");

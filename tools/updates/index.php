@@ -1,7 +1,7 @@
 <?php include("../../lib/opin.inc.php")?>
 <?php define("CPAGE","gallery/")?>
 <?php include("../inc/header.inc.php");?>
-<?php $adm->pageAuth("Updates",$perm);?>
+<?php print_r($perm); $adm->pageAuth("Updates",$perm);?>
 <div class="main">
 <? include "../inc/header2.php"; ?>
 <div class="content">

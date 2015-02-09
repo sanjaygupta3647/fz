@@ -1,6 +1,7 @@
 <?php include("../../lib/opin.inc.php"); ?>
-<?php define("CPAGE","gallery/")?>
+<?php define("CPAGE","gallery/")?> 
 <?php include("../inc/header.inc.php");?>
+<?php   $adm->pageAuth("Search",$perm);?>
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.8.2.js"></script> 
   <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script> 
@@ -55,7 +56,12 @@
 <?php $hedtitle = "Order Management"; ?>  
     <?=$adm->alert()?>
       <div class="title" id="innertit">
-       <?=$adm->heading('Order Manager')?>
+       <h2 class="bradcrumb"> 
+		 
+		    <a href="/tools" rel="v:url" property="v:title">Home</a> »
+			<a href="/tools/search" rel="v:url" property="v:title">Searched Keywords </a>  
+	 
+	  </h2>
         </div>
 		<?php   $file = "search.php";?>
         

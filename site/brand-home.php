@@ -9,13 +9,14 @@
 			$brandname = substr($cms->getSingleresult("select title from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'"),0,15);
 			$brandId = substr($cms->getSingleresult("select pid from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'"),0,15);
 			$brandurl = $cms->getSingleresult("select store_url from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'");
-			$theme = $cms->getSingleresult("select theme from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'");
-			$theme = ($theme)?$theme:'domain';
+			$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'");
+			 
 			if($brandurl) {
 	?>
 			<div class="logobox">
 				<div class="imgbox" align="center">
-					<a href="http://<?=$brandurl?>.fizzkart.com"><img src="<?=$cms->getImageUrl($image, 100, 27)?>" width="100"  height="27" alt="<?=$brandname?>" title="<?=$brandname?>" /></a>
+				    <?php  $linkurl  =  ($store_domain)?"http://".$store_domain:"http://".$brandurl.".fizzkart.com" ?>
+					<a class="newtab" target="_blank" href="<?=$linkurl?>"><img src="<?=$cms->getImageUrl($image, 100, 27)?>" width="100"  height="27" alt="<?=$brandname?>" title="<?=$brandname?>" /></a>
 				</div>
 				<div class="text" style="display:none;"><?=ucwords(strtolower(substr((($brandname)?$brandname:$name),0,12)))?></div>
 			</div> 

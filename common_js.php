@@ -393,43 +393,27 @@ $("#vaucher_copon").keyup(function(){
 		url: '<?=SITE_PATH?>ms_file/check-coupon/vaucher_copon/'+vaucher_copon,
 		success: function (data) {
 			data = $.trim(data); 
-			if(data=='Yes'){			  
-				$(".green_p").show();
-				$(".red_p").hide(); 
-				 $(".red_p1").hide(); 
-				$.ajax({ 
-				url: '<?=SITE_PATH?>ms_file/check-coupon-detail/vaucher_copon/'+vaucher_copon, 
-				success: function (data) {
-					$("#dis-calc").html(data);   
-					$("#defaltshow").hide();
-					
-				},
-				error: function (request, status, error) {
-				alert(request.responseText);
-				}
-				});
-				
-				
-			}else if(data=='1'){
-			    $(".red_p1").show();
-				$(".red_p").hide();
-				$("#defaltshow").show();
-				$(".green_p").hide();
-				$("#dis-calc").html('');
-			}else{ 
-				$(".red_p").show();
-				$(".red_p1").hide();
-				$("#defaltshow").show();
-				$(".green_p").hide();
-				$("#dis-calc").html(''); 
-				
-			}
+			$(".status_div").html(data);
 		},
 		error: function (request, status, error) {
 		alert(request.responseText);
 		}
 		});  
 });	
+
+$("#vaucher_copon_prod").keyup(function(){
+		var vaucher_copon = $(this).val();
+		$.ajax({ 
+		url: '<?=SITE_PATH?>ms_file/check-coupon-product/vaucher_copon/'+vaucher_copon,
+		success: function (data) {
+			data = $.trim(data); 
+			$(".status_div").html(data);
+		},
+		error: function (request, status, error) {
+		alert(request.responseText);
+		}
+		});  
+});
  
 $(document).ready(function(){
 
@@ -495,6 +479,7 @@ $(document).ready(function()
 <script type="text/javascript">
     $(document).ready(function(){
     	// Smart Tab
+		$('.newtab').attr('target','_blank');
   		$('#tabs').smartTab({selected: '<?=$selectTab?>',saveState:false, autoProgress: false,stopOnFocus:true,transitionEffect:'vSlide'});
 	});
 </script>

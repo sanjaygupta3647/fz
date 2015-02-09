@@ -66,7 +66,7 @@ include "site/search.inc.php";
       <?php include "left.search.php"; ?>
       <div class="heading">Category</div>
       <?php
-					$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active'";
+					$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active'  order by name";
 					$sql_city1_query=$cms->db_query($sql_city1);
 					while($city_array=$cms->db_fetch_array($sql_city1_query)){ @extract($city_array);?>
       <?php
@@ -82,7 +82,7 @@ include "site/search.inc.php";
 								$noStore = $cms->getSingleresult("select count(*) from #_store_detail where plan_id in (".implode(',',$plans).")");
 							} 
 						}?>
-      <div class="catlink"><a  <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>">
+      <div class="catlink"><a   <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>">
         <?=ucwords(strtolower($name))?> (<?=$noStore?>)</a></div>
       <?php }?>
     </div>
@@ -99,6 +99,7 @@ include "site/search.inc.php";
 				 
 				
 				if($count){
+				
 				while($serchres=$cms->db_fetch_array($searchexe)){ @extract($serchres); 
 					$img = SITE_PATH."image/noimg.jpg";
 					if(file_exists(UP_FILES_FS_PATH.'/orginal/'.$image) && $image!=""){
@@ -109,9 +110,10 @@ include "site/search.inc.php";
       <div class="detailbox">
         <?php
 						 
-						$link  = "http://".$store_url.".fizzkart.com";
+						 
+						$link  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ;
 						?>
-        <div class="heading"><a style="text-decoration:none" href="<?=$link?>">
+        <div class="heading"><a class="newtab" style="text-decoration:none" href="<?=$link?>">
           <?=ucwords(strtolower($title))?>
           </a></div>
         <?php
@@ -135,7 +137,7 @@ include "site/search.inc.php";
           <?php			$i = 1;
 					   while($prodrs=$cms->db_fetch_array($prodQry)){
 						   $suf  =($i<$pcount)?',':'';?>   
-							<a href="<?=$link?>/detail/<?=$adm->baseurl($prodrs[title])?>/<?=$prodrs[pid]?>"><?=ucwords(strtolower(trim($prodrs[title])))?><?=$suf?></a><?php
+							<a class="newtab"  href="<?=$link?>/detail/<?=$adm->baseurl($prodrs[title])?>/<?=$prodrs[pid]?>"><?=ucwords(strtolower(trim($prodrs[title])))?><?=$suf?></a><?php
 							 $i++;
            
 			}?>
@@ -153,7 +155,7 @@ include "site/search.inc.php";
 					$link  = "http://".$store_url.".fizzkart.com";
 					if(!$storename) $storename = 'N/A';
 					$suf  =($i<$countstore)?'|':'';?>
-					<a href="<?=$link?>"><?=ucwords(strtolower(trim($storename)))?></a> <?=$suf?>
+					<a class="newtab" href="<?=$link?>"><?=ucwords(strtolower(trim($storename)))?></a> <?=$suf?>
 					<?php
 					 
 					$i++;
@@ -226,8 +228,7 @@ include "site/search.inc.php";
 	while($advres=$cms->db_fetch_array($adv)){?>
 		<a href="<?=($advres[linkurl])?$advres[linkurl]:'#'?>"> <img src="<?=SITE_PATH?>uploaded_files/orginal/<?=$advres[image]?>" border="0" alt="<?=$advres[title]?>" title="<?=$advres[title]?>"> </a>
 		<?php
-	}
-	?>
+	}?>	
     </div>
   </div>
 </div>

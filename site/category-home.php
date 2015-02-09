@@ -2,7 +2,7 @@
   <div class="heading"><img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Heading" />Categories</div>
   <div class="boxarea">
 	<?php 		  
-	$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active'";
+	$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active' order by name";
 	$sql_city1_query=$cms->db_query($sql_city1);
 	while($city_array=$cms->db_fetch_array($sql_city1_query)){ @extract($city_array); 
 	$sql="select plan_id from #_plans_category where cat_id ='$pid' group by plan_id";

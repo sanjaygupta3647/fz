@@ -1,33 +1,36 @@
 <?php include("../../lib/opin.inc.php")?>
 <?php  defined('_JEXEC') or die('Restricted access'); ?>
 <?php 
-$ssid = session_id();
-$otp1=$_SESSION['otp'];
-$ssid1=$cms->getSingleresult("select ssid from #_admin_lostlogin where ssid='$ssid' order by aid DESC LIMIT 1");
-$otp2=$cms->getSingleresult("select otp from #_admin_lostlogin where ssid='$ssid' order by aid DESC LIMIT 1"); 
-if(($otp1==$otp2) && ($ssid==$ssid1)){   
+if(!$_SESSION[coupon_counter]){
+	$_SESSION[coupon_counter] = 0;
+}
+
+
+if($_SESSION[coupon]){
 	$cms->redir(SITE_PATH_ADM."coupon",1);
-}   
+}
+$ssid = session_id();
+  
 $phone=$cms->getSingleresult("select phone from #_setting where id='1'"); 
-$ssid1=$cms->getSingleresult("select count(*) from #_admin_lostlogin where ssid='$ssid' order by aid DESC LIMIT 1"); 
-if(!$_SESSION[ot]){  
+ 
+if(!$_SESSION[coupon] and !$_POST['code'] and !$_SESSION[coupon_counter]){  
 	$otp = $cms->generate_random_password(); 
-	$mess = "OTP for coupon is%$otp%@fizzkart.com";   
+	$mess = "OTP for coupon is $otp @fizzkart.com";   
 	$cms->sendSms($phone,$mess,0);
-	$ip = $_SERVER['REMOTE_ADDR'];
-	$ssid = session_id();  
+	$ip = $_SERVER['REMOTE_ADDR']; 
 	$hostaddress = gethostbyaddr($ip); 
+	$_SESSION[coupon_counter] = 1;
 	$cms->db_query("insert into #_admin_lostlogin set atype='su',phone='$phone',ip='$hostaddress',ipaddr='$ip',otp='$otp',ssid ='$ssid' "); 
-	$otp=$cms->getSingleresult("select otp from #_admin_lostlogin where ssid='$ssid' order by aid DESC LIMIT 1");
-	$_SESSION[ot]=$otp;
+	/* $otp=$cms->getSingleresult("select otp from #_admin_lostlogin where ssid='$ssid' order by aid DESC LIMIT 1");
+	$_SESSION[ot]=$otp; */
 } 
 if($cms->is_post_back()){  
   $otp=$cms->getSingleresult("select otp from #_admin_lostlogin where ssid='$ssid' order by aid DESC LIMIT 1");   
   $rade=$_POST['code']; 
 	if($_POST['code']){  
-		   if($otp==$rade){ 
-				$_SESSION['otp']=$rade;
+		   if($otp==$rade){  
 				$adm->sessset('Succsessful Log On Coupon Managent', 's'); 
+				$_SESSION[coupon] = 1;
 				$cms->redir(SITE_PATH_ADM."coupon",1); 
 		   }else{  
 				$adm->sessset('Please enter valid OTP', 'e'); 

@@ -6,7 +6,7 @@
 	if($action=='del'){
 		$cms->db_query("delete from #_store_detail where pid in ($id)");
 		$adm->sessset('Record has been deleted', 'e');
-		$cms->redir(SITE_PATH_ADM.CPAGE."/collections.php", true);
+		$cms->redir(SITE_PATH_ADM.CPAGE."/manage-store.php", true);
 		exit;
 	}
 	if($cms->is_post_back()){
@@ -56,6 +56,19 @@
 		if($_GET[status]!=""){
 			$cond .= " and status =   '".$_GET[status]."'"; 
 		}
+		if($_GET[domain_url]!=""){
+			$cond .= " and store_domain like  '%".$_GET[domain_url]."%'"; 
+		}
+		if($_GET[expiration]=="expire"){
+			$allids  = $cms->getExpiredStores();
+			if(!count($allids)) $allids[] = 0;
+			$cond .= " and store_user_id in  (".implode(",",$allids).")  "; 
+		}
+		if($_GET[expiration]=="non-expire"){
+			$allids  = $cms->getNonExpiredStores();
+			if(!count($allids)) $allids[] = 0;
+			$cond .= " and store_user_id in  (".implode(",",$allids).")  "; 
+		}
 	}  
 	$columns = "select * ";
 	$sql = " from #_store_detail where 1  $cond  ";
@@ -91,14 +104,24 @@
 			<option value="Inactive" <?=$_GET[status]=='Inactive'?'selected="selected"':''?>>Inactive</option>
 			</select></div>
 			</li>
+			<li style="margin:10px;"><div id="ajaxDiv">
+			<select  name="expiration" class="txt medium" id="expiration">
+			<option value="">----Search by Expiration----</option> 
+			<option value="expire" <?=$_GET[expiration]=='expire'?'selected="selected"':''?>>Expired</option> 
+			<option value="non-expire" <?=$_GET[expiration]=='non-expire'?'selected="selected"':''?>>Non Expired</option>
+			</select></div>
+			</li>
 			<li style="margin:10px;">
-			<input list="browsers" type="text" id="title" name="title" value="<?=$_GET[title]?>">
+			<input list="browsers" type="text"  placeholder="Search By Title"  id="title" name="title" value="<?=$_GET[title]?>">
 			<?php  $namesq="select title from #_store_detail group by title order by title";
 					$namesqe=$cms->db_query($namesq);?>
 					<datalist id="browsers"><?php 
 					 while($na=$cms->db_fetch_array($namesqe)){  ?>
 					<option value="<?=$na[title]?>">
                 <?php }?></datalist>
+			</li>
+			<li style="margin:10px;">
+				<input  type="text" id="domain_url" placeholder="Search By Domain Url" name="domain_url" value="<?=$_GET[domain_url]?>"> 
 			</li>
 			<li style="margin:10px;"><input id="search"   type="button" name="search" value="search"></li>
           </ul>
@@ -149,8 +172,9 @@
           <tr class="t-hdr">
             <td width="2%" align="center"><?=$adm->orders('#',false)?></td>
             <td width="3%" align="center" valign="middle"><?=$adm->check_all()?></td>
-            <td width="15%" align="center"><?=$adm->orders('Store Name',true)?></td>
-            <td width="10%" align="center"><?=$adm->orders('Type',true)?></td>
+            <td width="10%" align="center"><?=$adm->orders('Store Name',true)?></td>
+            <td width="8%" align="center"><?=$adm->orders('Type',true)?></td>
+			<td width="8%" align="center"><?=$adm->orders('Url',true)?></td>
             <td width="20%" align="center"><?=$adm->orders('Address',true)?></td>
             <td width="11%" align="center"><?=$adm->orders('Image',true)?></td>
             <td width="10%" align="center"><?=$adm->orders('Owner',true)?></td>
@@ -165,13 +189,14 @@
             <td align="center"><?=$adm->check_input($pid)?></td>
             <td align="center"><?=$title?></td>
             <td align="center"><?=ucfirst($cms->getSingleresult("select type  from #_store_user  where  pid = '$store_user_id' "))?></td>
+			<td align="center"><?=($store_domain)?$store_domain:$store_url.".fizzkart.com"?></td>
             <td align="center"><?=$Address?></td>
             <td align="center"><? if($image  and is_file($_SERVER['DOCUMENT_ROOT'].SITE_SUB_PATH."uploaded_files/orginal/".$image)==true){?>
             <img src="<?=SITE_PATH?>uploaded_files/orginal/<?=$image?>" width="100"><? }else echo "NA";?></td>
              <td align="center"><?=$cms->getSingleresult("select name  from #_store_user  where  pid = '$store_user_id' ")?></td>
              <td align="center"><?=($our_popular_store)?'Yes':'No'?></td>
 			 <?php
-				 $Date = date("Y-m-d",strtotime($create_date));
+				 $Date = date("Y-m-d");
 				 $noOfDayss = $cms->daysLeft($store_user_id);
 				 if($status=='Active'){
 					if($noOfDayss>0) {
@@ -200,11 +225,13 @@
 
 <script type="text/javascript">
 $("#search").click(function(){  
-var title = $("#title").val();
-var type =$("#type").val();
-var status =$("#status").val();
-var ur = '?search=1';
-if(title){
+	var title = $("#title").val();
+	var type =$("#type").val();
+	var status =$("#status").val();
+	var expiration =$("#expiration").val();
+	var domain_url =$("#domain_url").val();
+	var ur = '?search=1';
+	if(title){
 	 ur +="&title="+trim(title); 
 	}
 	if(type){
@@ -213,8 +240,14 @@ if(title){
 	if(status){
 	 ur +="&status="+trim(status); 
 	}
-   var red = "<?=SITE_PATH_ADM.CPAGE?>/manage-store.php"+ur; 
-   window.location = red;
+	if(expiration){
+	 ur +="&expiration="+trim(expiration); 
+	}
+	if(domain_url){
+	 ur +="&domain_url="+trim(domain_url); 
+	}
+	var red = "<?=SITE_PATH_ADM.CPAGE?>/manage-store.php"+ur; 
+	window.location = red;
 }); 
 </script>
 </body>
