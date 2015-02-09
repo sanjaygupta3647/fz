@@ -236,23 +236,33 @@ a.jms-link{
 .some_text p{ margin:0; padding:0; border-bottom:1px dotted #333; padding:10px 0;}
 .join_button{ width:276px; height:auto; float:left;}
 .join_button a{width: auto;
-line-height: 45px;
-height: auto;
-background-color: #FF4A4A;
+line-height: 35px;
+height: 35px;
+background-color: #000;
+color: white;
 text-align: center;
-color: #000;
 display: block;
 font-style: normal;
 text-decoration: none;
-font-size: 22px;
-transition: 0.3s all linear; 
--webkit-font-smoothing: antialiased; 
--moz-font-smoothing: antialiased; 
+font-size: 21px;
+transition: 0.3s all linear;
+-webkit-font-smoothing: antialiased;
+-moz-font-smoothing: antialiased;
 font-smoothing: antialiased;
-letter-spacing:2px;
+letter-spacing: 2px;
+margin-top: 10px;
 }
-.join_button a:hover{ transition:0.3s all linear; background-color:#e53c3c;}
-.join_button a:active{ transition:0.2s all linear; color:#fff;}
+a {
+color: #555;
+text-decoration: none;
+}
+user agent stylesheeta:-webkit-any-link {
+color: -webkit-link;
+text-decoration: underline;
+cursor: auto;
+}
+.join_button a:hover{ transition:0.3s all linear; background-color:#000; color:white;}
+.join_button a:active{ transition:0.2s all linear; background-color:#000; color:white;}
 
 
 
