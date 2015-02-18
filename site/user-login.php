@@ -1,10 +1,12 @@
 <?php    
+    
 	$metaTitle = $cms->getSingleresult("select meta_title from #_meta_info where url='member-login' and store_user_id = '0'");
 	$metaIntro = $cms->getSingleresult("select meta_description from #_meta_info where url='member-login' and store_user_id = '0'");
 	$metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where url='member-login' and store_user_id = '0'");
 	$user_log=$_SESSION['domain-user'];
-    $er=$cms->login();   
-  
+    $er=$cms->login();  
+	 
+     
 require_once 'src/Google_Client.php'; // include the required calss files for google login
 require_once 'src/contrib/Google_PlusService.php';
 require_once 'src/contrib/Google_Oauth2Service.php'; 
