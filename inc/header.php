@@ -4,8 +4,7 @@
     <?php if($_SESSION[fname]){ ?>
     Welcome, &nbsp;
     <?php } ?>
-    <a href="<?=SITE_PATH?>profile" style="color:#fff; text-decoration: none;
-">
+    <a href="<?=SITE_PATH?>profile" style="color:#fff; text-decoration: none;">
     <?=ucwords($_SESSION[fname])?>
     </a>
     <?php if($_SESSION[fname]){ ?>
@@ -23,7 +22,7 @@
         <a href="<?=SITE_PATH?>user-login">Member Login</a>
         <? }else{ ?>
         <a href="<?=SITE_PATH?>logout">Logout</a>
-        <? }?>
+        <?php }?>
       </div>
     </div>
     <div class="commonbox">

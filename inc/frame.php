@@ -18,6 +18,7 @@ ob_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://dublincore.org/documents/dcq-html/">
 <title>%%title%%</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
 <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
 <!-- Start: Meta Info -->
@@ -53,8 +54,8 @@ ob_start();
 <p id="back-top">
 		<a href="#top"><span></span></a>
 	</p>
-    <div id="wrapper">
-	<div class="mainarea">
+    <div class="container-fluid">
+	<div class="container">
     	 <?php include "header.php"; ?>
         
          <?php include_once $loadpage; ?> 

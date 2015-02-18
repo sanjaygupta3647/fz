@@ -13,7 +13,7 @@
 	@extract($_SERVER);
 	@extract($_SESSION); 
 	@error_reporting(E_ALL ^ E_NOTICE);
-	//ini_set('display_errors', '1'); 
+	ini_set('display_errors', '0'); 
 	ini_set('register_globals', 'on');	
 	ini_set('memory_limit', '800M');
 	ini_set(max_upload_filesize,"300M");	
