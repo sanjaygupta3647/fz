@@ -12,11 +12,23 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
 
   
 ?> 
-<div class="header">
-  <div class="logo"><img src="<?=SITE_PATH?>image/logo/final.png"  height="84" alt="Fizzkart" /></div>
-  <div class="searchbox">
+<div class="row" style="margin-top:20px;">
+  <div class="logo col-md-6 col-sm-5"><img src="<?=SITE_PATH?>image/logo/final.png"  style="width: 210px;" alt="Fizzkart" /></div>
+  <div class="searchbox col-md-6 col-sm-7" style="padding-top:10px;">
       <form method="post" action="" onsubmit="return formvalid(this);">
-      <div class="content-wrapper1" style="display:block;">
+      <div class="pull-right">
+		<div class="input-group">
+		  <input type="text" class="form-control" name="search" value="" placeholder="Type your keyword...">
+		  <span class="input-group-btn">
+			<button class="btn btn-default" name="searchbtn" value="Search" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		  </span>
+		</div>
+	  </div>
+		<label class="radio-inline" style="margin-left: 6px;"><input type="radio" name="searchfor" checked>Store</label>
+		<label class="radio-inline"><input type="radio" name="searchfor">Brand</label>
+		<label class="radio-inline"><input type="radio" name="searchfor">Product</label>
+		
+	  <!--<div class="content-wrapper1" style="display:block;">
 			<div class="search-box1">
 				<div><input type="text" placeholder="Type your keyword..." class="searchformain" name="search"  value=""/>
 				<span class="searchformain"> </span>
@@ -28,7 +40,7 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
                 <div class="radio_btns" title="product"><input type="radio" name="searchfor" value="product"   ><span>Product</span></div>
  			  </div>
 			</div>
-		</div>
+		</div>-->
     </form>
   
   </div>

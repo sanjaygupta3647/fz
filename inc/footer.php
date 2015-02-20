@@ -1,8 +1,8 @@
-<div class="prcnt_footer">
-  <div class="footer">
-    <div class="footer_center">
-      <div class="footer_main">
-        <div class="footer_main2_left">
+
+  <div class="footer container-fluid">
+    <div class="footer_center container">
+      <div class="footer_main row">
+        <div class="footer_main2_left col-md-6 col-sm-5">
           <div class="ul_text">
             <ul>
               <?php
@@ -27,9 +27,9 @@
               <li><a href="<?=SITE_PATH?>faq">F.A.Qs</a></li>
             </ul>
           </div>
-          <!--          <div class="ftr_logo"><img src="../image/ftr_logo.png" width="94" height="26"  alt=""/></div>
---> </div>
-        <div class="footer_main2_right">
+          <!--          <div class="ftr_logo"><img src="../image/ftr_logo.png" width="94" height="26"  alt=""/></div>--> 
+		</div>
+        <div class="footer_main2_right col-md-6 col-sm-7 hidden-xs">
           <div class="footer_main2_right1">
             <div class="footertext">
             <input type="text" name="email" id="subemail" placeholder="Enter Email to Subscribe" class="news_box" />
@@ -44,15 +44,14 @@
       </div>
     </div>
   </div>
-  <div class="footer2">
-    <div class="footer_center2">
-      <div class="footer_main2">
-        <div class="footer_main2_left">© Copyright <?=date('Y')?>. Fizzkart.com All Rights Reserved.</div>
-        <div class="footer_main2_right"> <img src="http://hitwebcounter.com/counter/counter.php?page=5074531&amp;style=0005&amp;nbdigits=9&amp;type=page&amp;initCount=0" height="32" title="" alt="" border="0" align="right" /> </div>
-      </div>
+  <div class="container">
+    <div class="row">
+      
+        <div class="col-md-6 col-sm-6"><p>© Copyright <?=date('Y')?>. Fizzkart.com All Rights Reserved.</p></div>
+        <div class="col-md-6 col-sm-6" id="counter"> <img src="http://hitwebcounter.com/counter/counter.php?page=5074531&amp;style=0005&amp;nbdigits=9&amp;type=page&amp;initCount=0" height="32" title="" alt="" border="0" align="right" /> </div>
+      
     </div>
   </div>
-</div>
 <!-- Start of StatCounter Code for Default Guide -->
 <script type="text/javascript">
 var sc_project=9655994; 

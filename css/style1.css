@@ -1,0 +1,111 @@
+body{overflow-x:hidden;}
+.commonbox{margin:0 5px;}
+.commonbox a{color:#FFF;text-decoration:none;}
+.heading {
+background: #000;
+border-radius: 5px;
+font-family: Arial;
+font-size: 18px;
+color: #ff6600;
+text-align: center;
+padding: 7px 15px 7px 15px;
+}
+.cat-head {
+width: 100%;
+float: left;
+padding: 8px 0;
+font-family: Arial;
+font-size: 12px;
+color: #333;
+text-transform: uppercase;
+font-weight: bold;
+
+}
+.subtext {
+font-family: Arial;
+font-size: 10px;
+color: #999;
+text-transform: uppercase;
+
+}
+.cat-head strong {
+color: #ff6600;
+}
+.imgbox {
+text-align:center;
+margin: 0 2px;
+}
+@media (max-width: 768px)
+{
+	.als-viewport {
+		width: 590px !important;
+	}
+	div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul {
+width: 26%;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul.none {
+width: 25%;
+}
+}
+
+@media (max-width: 1200px)
+{
+	.als-viewport {
+		width: 900px !important;
+	}
+	div.footer div.footer_center div.footer_main div.footer_main2_right2 {
+width: 40%;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul {
+width: 35%;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul.none {
+width: 56%;
+}
+#counter
+	{
+	float:right;
+	}
+}
+@media (max-width: 990px)
+{
+	.als-viewport {
+		width: 590px !important;
+	}
+	div.footer div.footer_center div.footer_main div.footer_main2_right1 {
+width: 74%;}
+div.footer div.footer_center div.footer_main div.footer_main2_right2 {
+width: 50%;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul {
+width: 55%;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul.none {
+width: 44%;
+}
+#counter
+	{
+	float:right;
+	}
+}
+@media (max-width: 768px)
+{
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul {
+width: 165px;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul.none {
+width: auto;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_right1 {
+width: 41%;
+margin: 0px 0 0 0;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_right2 {
+width: 25%;
+margin: 20px 0 0 0;
+}
+#counter
+	{
+	float:left;
+	}
+}

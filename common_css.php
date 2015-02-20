@@ -5,3 +5,4 @@
 <link href="<?=SITE_PATH?>css/demo_popup.css" rel="stylesheet" type="text/css" media="screen">
 <link href="<?=SITE_PATH?>colorbox/colorbox.css" rel="stylesheet" type="text/css" />   
 <link href="<?=SITE_PATH?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="<?=SITE_PATH?>css/style1.css" rel="stylesheet" type="text/css" />

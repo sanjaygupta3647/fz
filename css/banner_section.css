@@ -17,7 +17,7 @@ a{
 .left_slide{ width:1000px; height:auto; float:left;}
 .jms-slideshow {
 	position: relative;
-	width: 704px;
+	width: 843px;
 	/*max-width: 1400px;
 	min-width: 640px;*/
 	height: 330px;
@@ -302,7 +302,7 @@ cursor: auto;
 	display: block;
 	position: absolute;
 	width: 500px;
-	height: 60px;
+	height: 80px;
 	padding: 10px 6px;
    background-color:#DFDFDF;
 	border-radius: 5px;

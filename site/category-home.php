@@ -1,6 +1,7 @@
-<div class="categorybox">
-  <div class="heading"><img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Heading" />Categories</div>
-  <div class="boxarea">
+<div class="row" style="margin-top:20px;">
+  <div class="heading col-md-12"">
+  <!--<img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Heading" />-->Categories</div>
+  <div style="margin-top:50px; text-align:center;">
 	<?php 		  
 	$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active' order by name";
 	$sql_city1_query=$cms->db_query($sql_city1);
@@ -18,7 +19,7 @@
 			and t1.status = 'Active' and  t1.store_user_id = t2.pid and (t2.type = 'store' or t2.type = 'brand')" );
 		} 
 	}?>
-    <div class="commonbox">
+    <div class="col-md-3 col-sm-4 col-xs-12" style="margin-bottom:10px;">
       <div class="imgbox"><a href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>">
 	  <img src="<?=$cms->getImageUrl($image, 182, 124)?>" width="182" height="124" alt="<?=$adm->baseurl($name)?>" title="<?=$adm->baseurl($name)?>" /></a></div>
       <div class="cat-head"> <a style="text-decoration:none; color:black" href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"> <?=$name?></a>(<strong><?=$noStore?></strong>)</div>

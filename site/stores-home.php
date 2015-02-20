@@ -1,11 +1,11 @@
-<div class="storebox">
-	<div class="heading">
-		<img src="<?=SITE_PATH?>images/heading-arrow-icon.jpg" width="11" height="7" alt="Heading" />
+<div class="row" style="margin-top:20px;">
+	<div class="heading col-md-12">
+		<!--<img src="<?=SITE_PATH?>images/heading-arrow-icon.jpg" width="11" height="7" alt="Heading" />-->
 		<a style="text-decoration:none;color:#ff6600;" href="<?=SITE_PATH?>search/?key=&searchfor=store">Our Stores</a>
 	</div>
-	<div id="lista1" class="als-container">
+	<div id="lista1" class="als-container col-md-12">
 		<span class="als-prev"><img src="image/thin_left_arrow_333.png" alt="prev" title="previous" /></span>
-		<div class="als-viewport" style="width:1000px;">
+		<div class="als-viewport">
 			<ul class="als-wrapper">
 				<?php	
 					$sql_city1="SELECT pid,name FROM `fz_store_user` where type='store' and status = 'Active' ORDER BY RAND()";

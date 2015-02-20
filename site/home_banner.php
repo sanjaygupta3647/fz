@@ -1,5 +1,6 @@
-<div class="left_slide">
-<section id="jms-slideshow" class="jms-slideshow">
+<div class="row" style="margin-top:10px;">
+<div class="col-md-9">
+<!--<section id="jms-slideshow" class="jms-slideshow">
  <?php
 		$beannerQry=$cms->db_query("SELECT * FROM #_slider where store_id='0' and slider_type='1' and status = 'Active' order by porder asc"); 
 		if(mysql_num_rows($beannerQry)){ 
@@ -20,9 +21,10 @@
 		
 		<?php $i++; } } ?>
 				 
-</section>
-
-<div class="right_quote">
+</section>-->
+</div>
+<div class="col-md-3 hidden-xs">
+<div class="right_quote pull-right">
 <h3><a href="<?=SITE_PATH?>updates" style="color:#fff">Latest updates from us</a></h3>
 <div class="some_text">
 	<?php
@@ -38,6 +40,6 @@
 <div class="join_button">
 <a href="<?=SITE_PATH?>step-1" target="_blank">Join Now</a>
 </div>
-</div>            
-            
+</div>   
+</div>
 </div>

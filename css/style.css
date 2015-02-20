@@ -43,8 +43,8 @@ body{background:url(../images/bg.jpg) top repeat-x;margin:0;font-family: 'Open S
 #wrapper .mainarea .brandbox .logobox{width:136px;float:left;margin:10px 15px;height:auto;}
 #wrapper .mainarea .brandbox .logobox .imgbox{width:auto;float:left;margin:0 2px;}
 #wrapper .mainarea .brandbox .logobox .text{width:auto;float:left;font-family:Arial;font-size:13px;color:#666;padding:2px;}
-.prcnt_footer{width:100%;float:left;height:auto;}
-.footer{width:100%;float:left;background-color:#000;}
+/*.prcnt_footer{width:100%;float:left;height:auto;}*/
+.footer{background-color:#000;}
 .footer2{width:100%;float:left;background-color:#fff;}
 .subfooter{width:100%;float:left;}
 .subfooter .mainfoot{width:1000px;margin:0 auto;}
@@ -159,22 +159,22 @@ body{background:url(../images/bg.jpg) top repeat-x;margin:0;font-family: 'Open S
 .footertext2_main{width:50%;height:auto;float:left;}
 .scnd_main{width:50%;height:auto;float:right;text-align:right;}
 .follow_main{width:100%;height:auto;float:right;text-align:right;}
-div.footer div.footer_center{width:1000px;height:auto;margin:0 auto 0 auto;}
-div.footer div.footer_center div.footer_main{width:100%;height:auto;float:left;color:#fff;background-color:#000;}
-div.footer div.footer_center div.footer_main div.footer_main2_left{width:46%;height:auto;float:left;padding:2% 2%;}
-div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text{width:100%;height:auto;float:left;}
-div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul{margin:0;padding:0;list-style:none;float:left;width:45%;background:url(../image/ftr_ul_line.png) 140px no-repeat;}
-div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul.none{margin:0;padding:0;list-style:none;float:left;width:50%;background:none;}
+/*div.footer div.footer_center{width:1000px;height:auto;margin:0 auto 0 auto;}*/
+/*div.footer div.footer_center div.footer_main{width:100%;height:auto;float:left;color:#fff;background-color:#000;}*/
+div.footer div.footer_center div.footer_main div.footer_main2_left{padding:2% 2%;}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text{}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul{margin:0;padding:0;list-style:none;float:left;width:30%;}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul.none{margin:0;padding:0;list-style:none;padding-left:30px;width:65%;background:url(../image/ftr_ul_line.png) 0px no-repeat;}
 div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul li{margin:0;padding:0;line-height:30px;}
 div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul li a{color:#FFF;font-family:"Arial";font-size:14px;font-style:normal;font-weight:normal;text-decoration:none;transition:all 0.3s ease-in-out;padding:5px 10px;}
 div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul li a:hover{transition:all 0.3s ease-in-out;color:#000;background-color:#ff6602;}
 div.footer div.footer_center div.footer_main div.footer_main2_left div.ftr_logo{width:100%;height:auto;float:left;padding:5% 0 0 0;}
-div.footer div.footer_center div.footer_main div.footer_main2_right{width:50%;height:auto;float:left;}
+/*div.footer div.footer_center div.footer_main div.footer_main2_right{width:50%;height:auto;float:left;}*/
 div.footer div.footer_center div.footer_main div.footer_main2_right1{width:63%;height:auto;float:right;margin:20px 0 0 0;}
 div.footer div.footer_center div.footer_main div.footer_main2_right1 input.news_box{width:200px;height:34px;float:left;line-height:25px;box-shadow:0 0 10px #000000 inset;border:none;border-radius:5px;background-color:#fff;padding:0 22px 0 10px; margin:0;}
 div.footer div.footer_center div.footer_main div.footer_main2_right1 input.subscribe_btn[type="button"]{width:80px;height:34px;background-color:#ff6602;color:#fff;box-shadow:0 0 10px #000000 inset;border:none;border-radius: 0 5px 5px 0;float:left;margin:0 0 0 -10px;font-family:"Arial";transition:all 0.3s linear;}
 div.footer div.footer_center div.footer_main div.footer_main2_right1 input:hover.subscribe_btn[type="button"]{background-color:#666;color:#fff;cursor:pointer;transition:all 0.3s linear;}
-div.footer div.footer_center div.footer_main div.footer_main2_right2{width:45%;height:auto;float:right;margin:50px 0 0 0;}
+div.footer div.footer_center div.footer_main div.footer_main2_right2{width:55%;height:auto;float:right;margin:15px 0 0 0;}
 div.footer2 div.footer_center2{width:1000px;height:auto;margin:0 auto 0 auto;}
 div.footer2 div.footer_center2 div.footer_main2 div.footer_main2_left{width:50%;height:auto;float:left;line-height:50px;font-family:Arial;font-size:13px;font-style:normal;font-weight:normal;text-decoration:none;}
 div.footer2 div.footer_center2 div.footer_main2 div.footer_main2_right{width:50%;height:auto;float:left;padding:12px 0 0 0;}

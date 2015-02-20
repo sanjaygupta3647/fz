@@ -1,4 +1,4 @@
-<div class="brandbox">
+<div class="brandbox row">
 	<div class="heading"><a  href="<?=SITE_PATH?>search/?search=1&searchfor=brand" title="View all brands" style="color:#ff6600; text-decoration:none">Our Brands</a></div>
 	<?php			
 		$sql_city1="SELECT pid,name FROM `fz_store_user` where type ='brand' and status = 'Active' ORDER BY RAND()";
@@ -13,7 +13,7 @@
 			 
 			if($brandurl) {
 	?>
-			<div class="logobox">
+			<div class="logobox col-md-2 col-sm-3 col-xs-4" style="margin-top:15px;margin-bottom: 20px;">
 				<div class="imgbox" align="center">
 				    <?php  $linkurl  =  ($store_domain)?"http://".$store_domain:"http://".$brandurl.".fizzkart.com" ?>
 					<a class="newtab" target="_blank" href="<?=$linkurl?>"><img src="<?=$cms->getImageUrl($image, 100, 27)?>" width="100"  height="27" alt="<?=$brandname?>" title="<?=$brandname?>" /></a>
