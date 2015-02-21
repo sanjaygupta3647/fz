@@ -232,8 +232,9 @@ a.jms-link{
 }
 .right_quote{ width:276px; height:auto; float:left; margin:0 10px;}
 .right_quote h3{ content:'Why Join Us'; color:#fff;margin:0px; padding:10px; text-transform:uppercase; background-color:#000; font-size:15px;}
-.some_text{ width:256px; height:246px; float:left; margin:0 10px;}
-.some_text p{ margin:0; padding:0; border-bottom:1px dotted #333; padding:10px 0;}
+.some_text{ width:256px; height:auto; float:left; margin:0 10px;}
+.some_text p{ margin:0; padding:0; border-bottom:1px dotted #333; padding:9px 0;}
+
 .join_button{ width:276px; height:auto; float:left;}
 .join_button a{width: auto;
 line-height: 35px;

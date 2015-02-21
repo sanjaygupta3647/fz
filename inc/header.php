@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="logo-icon col-md-6 col-sm-4 col-xs-3"><a href="<?=SITE_PATH?>"><img src="<?=SITE_PATH?>images/logo-icon.png" border="0" width="120" height="34" alt="Fizzkart - Home" /></a></div>
-  <div class="toprightbox col-md-6 col-sm-8 col-xs-9" style="padding-top: 8px;"> <span style="color:#fff; float:left; font-family:Arial; font-size:12px; margin:0 10px 0 0;">
+  <div class="logo-icon col-md-6 col-sm-4"><a href="<?=SITE_PATH?>"><img src="<?=SITE_PATH?>images/logo-icon.png" border="0" width="120" height="34" alt="Fizzkart - Home" /></a></div>
+  <div id="righthead" class="toprightbox col-md-6 col-sm-8" style="padding-top: 8px;"> <span style="color:#fff; float:left; font-family:Arial; font-size:12px; margin:0 10px 0 0;">
     <?php if($_SESSION[fname]){ ?>
     Welcome, &nbsp;
     <?php } ?>

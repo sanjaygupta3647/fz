@@ -1,4 +1,4 @@
-body{overflow-x:hidden;}
+body{overflow-x:hidden;font-family:segoe ui;}
 .commonbox{margin:0 5px;}
 .commonbox a{color:#FFF;text-decoration:none;}
 .heading {
@@ -50,6 +50,7 @@ width: 25%;
 
 @media (max-width: 1200px)
 {
+	.some_text p{padding:7px 0;}
 	.als-viewport {
 		width: 900px !important;
 	}
@@ -87,9 +88,15 @@ width: 44%;
 	{
 	float:right;
 	}
+	.some_text p{padding:2px 0;}
+	.some_text p a{ font-size:10px; text-decoration:none;color: black;}
+	
 }
 @media (max-width: 768px)
 {
+.als-viewport {
+width: 390px !important;
+}
 div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul {
 width: 165px;
 }
@@ -108,4 +115,28 @@ margin: 20px 0 0 0;
 	{
 	float:left;
 	}
+    .commonbox { float:left !important;}
+	.commonbox a { font-size:10px;}
+	#righthead{
+height: 40px;
+margin: 0px -15px;
+background-color:#000;
+}
+}
+@media (max-width: 490px)
+{
+.als-viewport {
+width: 200px !important;
+}
+.commonbox img{display:none;}
+.commonbox { float:left !important;}
+#righthead{
+height: 40px;
+margin: 0px -15px;
+background-color:#000;
+}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul li a {font-size:10px;}
+div.footer div.footer_center div.footer_main div.footer_main2_left div.ul_text ul {
+width: 100px;
+}
 }

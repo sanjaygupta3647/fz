@@ -1,5 +1,43 @@
 <div class="row" style="margin-top:10px;">
-<div class="col-md-9">
+<div class="col-lg-9 col-md-8 col-sm-7">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+
+
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="../image/banner1.jpg" alt="">
+    </div>
+
+    <div class="item">
+      <img src="../image/banner1.jpg" alt="">
+    </div>
+
+    <div class="item">
+      <img src="../image/banner1.jpg" alt="">
+    </div>
+
+    <div class="item">
+      <img src="../image/banner1.jpg" alt="">
+    </div>
+  </div>
+
+  
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 <!--<section id="jms-slideshow" class="jms-slideshow">
  <?php
 		$beannerQry=$cms->db_query("SELECT * FROM #_slider where store_id='0' and slider_type='1' and status = 'Active' order by porder asc"); 
@@ -23,7 +61,7 @@
 				 
 </section>-->
 </div>
-<div class="col-md-3 hidden-xs">
+<div class="col-lg-3 col-md-4 col-sm-5 hidden-xs">
 <div class="right_quote pull-right">
 <h3><a href="<?=SITE_PATH?>updates" style="color:#fff">Latest updates from us</a></h3>
 <div class="some_text">

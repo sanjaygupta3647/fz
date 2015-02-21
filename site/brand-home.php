@@ -13,7 +13,7 @@
 			 
 			if($brandurl) {
 	?>
-			<div class="logobox col-md-2 col-sm-3 col-xs-4" style="margin-top:15px;margin-bottom: 20px;">
+			<div class="logobox col-md-2 col-sm-3 col-xs-5" style="margin-top:15px;margin-bottom: 20px;">
 				<div class="imgbox" align="center">
 				    <?php  $linkurl  =  ($store_domain)?"http://".$store_domain:"http://".$brandurl.".fizzkart.com" ?>
 					<a class="newtab" target="_blank" href="<?=$linkurl?>"><img src="<?=$cms->getImageUrl($image, 100, 27)?>" width="100"  height="27" alt="<?=$brandname?>" title="<?=$brandname?>" /></a>
