@@ -7,31 +7,30 @@ include "site/search.inc.php";
 $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tariff' and status = 'Active' and store_user_id = '0'");  
 ?>
 
-<div class="contentarea">
-  <div class="registerheadbox">
-    <div class="heading"><img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Register with us" /> <?=$cms->removeSlash($heading)?> </div>
-	<div class="heading2">
+<div class="row" style="margin-top:20px;">
+  <div class="col-md-12 col-sm-12">
+    <div class="heading2 col-md-3 col-sm-3"><?=$cms->removeSlash($heading)?> </div>
+	<div class="heading2 col-md-2 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_account">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew Account" />Renew Account</a></div>
-	<div class="heading2">
+    Renew Account</a></div>
+	<div class="heading2 col-md-3 col-sm-2">
     <a href="<?=SITE_PATH?>renewal_sms">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew SMS</a></div>
-
-	<div class="heading2">
+    Renew SMS</a></div>
+	<div class="heading2 col-md-3 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_product">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew Product</a></div>
-    <div class="subtext"><?=$cms->removeSlash($body)?> </div>
+    Renew Product</a></div>
+    <!--<div class="subtext"><?=$cms->removeSlash($body)?> </div>-->
   </div>
-  <div class="registerarea">
-    <div class="heading">Fizzkart Tariff list</div>
-    <div class="subarea">  
-        <div class="registr_maindiv">
-          <div class="registr_maindiv-1">
-            <h2 class="benefit_plan-h2">We Provide Best Benefit Plans to You</h2>
+  <div class="col-md-12 col-sm-12" style="margin-top:20px;color:#fff;">
+    <div class="heading col-md-12 col-sm-12" style="color:#fff;text-align:left;">Fizzkart Tariff list > > ></div>
+          <div class="registr_maindiv-1 col-md-12 col-sm-12" style="margin:10px 0px 20px 0px">
+            <div class="col-md-1 col-sm-1"></div>
+			<div class="col-md-11 col-sm-11"><h2 class="benefit_plan-h2">We Provide Best Benefit Plans to You</h2></div>
           </div>
-          <div class="registr_maindiv-2">
-            <div class="registr_maindiv-2-left">
-              <h2 class="plan_heading-h2">Our <span>Store Owner</span> Plans</h2>
+          <div class="">
+            <div class="registr_maindiv-2-left col-md-5 col-sm-5" style="margin-bottom:20px;">
+              
+			  <h2 class="plan_heading-h2">Our <span>Store Owner</span> Plans</h2>
               <ul>
 			  <?php  
 				$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'store' order by name"); 
@@ -65,9 +64,11 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
 					 </li><?php $i++;
 				}?>  
               </ul>
+				
             </div>
-            <div class="registr_maindiv-2-left">
-              <h2 class="plan_heading-h2">Our <span>Brand Owner</span> Plans</h2>
+            <div class="registr_maindiv-2-left col-md-5 col-sm-5 col-md-offset-2 col-sm-offset-2">
+              
+			  <h2 class="plan_heading-h2">Our <span>Brand Owner</span> Plans</h2>
               <ul>
                  <?php  
 				$sql2=$cms->db_query("select * from #_plans  where status='Active' and type = 'brand' order by name "); 
@@ -105,12 +106,11 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
 				}?>
                  
               </ul>
+			  
             </div>
             
             <div class="registr_maindiv-2-mid">&nbsp;</div>
             <div class="registr_maindiv-2-right">&nbsp;</div>
           </div>
-        </div>
-     </div>
   </div>
 </div>

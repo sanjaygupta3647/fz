@@ -26,23 +26,23 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='stor
 if(!$heading)  $heading = "Registration Step 1";
 ?>
 
-<div class="contentarea">
-  <div class="registerheadbox">
-    <div class="heading"><img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Register with us" /><?=$cms->removeSlash($heading)?></div>
-    <div class="heading2">
+<div class="row" style="margin-top:20px;">
+  <div class="col-md-12 col-sm-12">
+    <div class="heading2 col-md-3 col-sm-2"><?=$cms->removeSlash($heading)?></div>
+    <div class="heading2 col-md-2 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_account">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew Account" />Renew Account</a></div>
-	<div class="heading2">
+    Renew Account</a></div>
+	<div class="heading2 col-md-3 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_sms">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew SMS</a></div>
+    Renew SMS</a></div>
 
-	<div class="heading2">
+	<div class="heading2 col-md-3 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_product">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew Product</a></div>
+    Renew Product</a></div>
     <div class="subtext"><?=$cms->removeSlash($body)?></div>
   </div>
-  <div class="registerarea">
-    <div class="heading">Enter your Details</div>
+  <div class="registerarea col-md-12 col-sm-12">
+    <div class="heading col-md-12 col-sm-12" style="color:#fff;font-size: 17px; padding-top:7px; padding-bottom:7px;">Enter your Details</div>
     <div class="subarea">
       <div class="stepbox">Step 1</div>
       <?php
@@ -53,9 +53,9 @@ if(!$heading)  $heading = "Registration Step 1";
       <?php unset($_SESSION[succ]);
 					}	?>
       <form method="post" action="">
-        <div class="registerbox">
-          <div class="leftbox">Registration for</div>
-          <div class="rightbox">
+        <div class="registerbox col-md-12 col-sm-12">
+          <div class="leftbox col-md-3 col-sm-3">Registration for</div>
+          <div class="rightbox col-md-9 col-sm-9">
             <div class="chhosebox">
               <input type="radio" id="radio1" name="type" value="store" checked="checked" />
               <label for="radio1"><span></span>Store Owner</label>
@@ -66,13 +66,13 @@ if(!$heading)  $heading = "Registration Step 1";
             </div>
           </div>
           <div class="divider"></div>
-          <div class="leftbox">Please Choose a Category</div>
-          <div class="rightbox">
+          <div class="leftbox col-md-3 col-sm-2">Please Choose a Category</div>
+          <div class="rightbox col-md-9 col-sm-10">
             <?php  
 							$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'store'"); 
 							$i = 1;
 							while($result=$cms->db_fetch_array($sql)){?>
-            <div class="chhosebox3 store">
+            <div class="chhosebox3 store col-md-4 col-sm-4">
               <input type="radio" class="plan_id" id="store<?=$i?>" name="tarifid" value="<?=$result['pid']?>"  />
               <label for="store<?=$i?>"><span></span>
                 <?=$result['name']?>
@@ -86,7 +86,7 @@ if(!$heading)  $heading = "Registration Step 1";
 							$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'brand'"); 
 							$i = 1;
 							while($result=$cms->db_fetch_array($sql)){?>
-            <div class="chhosebox3 brand">
+            <div class="chhosebox3 brand col-md-4 col-sm-4">
               <input type="radio" class="plan_id" id="brand<?=$i?>" name="tarifid" value="<?=$result['pid']?>"  />
               <label for="brand<?=$i?>"><span></span>
                 <?=$result['name']?>
@@ -110,9 +110,11 @@ if(!$heading)  $heading = "Registration Step 1";
 								$i++;
 							}
 							?>
-            <div class="trafibox" id="tarifplan"> </div>
+            <div class="trafibox col-md-12 col-sm-12" id="tarifplan"> </div>
+			<div class="col-md-12 col-sm-12">
             <input type="submit" id="store-brand-reg" name="submit" value="Proceed to Next Step" class="proceedbtn"  />
-          </div>
+            </div> 
+		  </div>
         </div>
       </form>
     </div>

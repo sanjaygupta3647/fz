@@ -103,25 +103,25 @@ if(isset($me)){
 
  
  ?> 
-<div class="contentarea">
-<div class="registerheadbox">
-    <div class="heading2">
+<div class="row" style="margin-top:20px;">
+<div class="col-md-12 col-sm-12">
+    <div class="heading2 col-md-3 col-sm-2">
     <a href="#">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Login Account" />Login</a></div>
+    Login</a></div>
     
-	<div class="heading2">
+	<div class="heading2 col-md-2 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_account">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew Account" />Renew Account</a></div>
-	<div class="heading2">
+    Renew Account</a></div>
+	<div class="heading2 col-md-3 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_sms">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew SMS</a></div>
+    Renew SMS</a></div>
 
-	<div class="heading2">
+	<div class="heading2 col-md-3 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_product">
-    <img src="images/heading-arrow-icon.jpg" width="11" height="7" alt="Renew SMS Pack" />Renew Product</a></div>
+    Renew Product</a></div>
     <div class="subtext"><?=$cms->removeSlash($body)?> </div>
   </div>
-  <div class="registerarea">
+  <div class="registerarea col-md-12 col-sm-12">
 <?php
 	$qry = $cms->db_query("SELECT noOfDays,amount FROM `#_plans_hosting` where pid ='".$_SESSION[planID]."'  ");
 	$res = $cms->db_fetch_array($qry);	 
@@ -130,17 +130,20 @@ if(isset($me)){
 	$body = $cms->getSingleresult("SELECT body FROM `#_pages` where url ='user-login' and status = 'Active'  and store_user_id = '0'	 ");
 	$heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='user-login' and status = 'Active' and store_user_id = '0'");  
 ?>
-    <div class="heading"><?=$cms->removeSlash($heading)?></div>
+    <div class="heading col-md-12 col-sm-12"><?=$cms->removeSlash($heading)?></div>
 
-      <div class="subarea">
+      <div class="subarea col-md-12 col-sm-12">
       <?=$cms->removeSlash($body)?>
 	  <?=$er?>
       <h2>Choose Your Login Section</h2>
-        <div class="divfor_left-area">
-          <div class="heading_comn">
-          <h2>Store user login</h2>
-		 
-          <form action="" method="post" autocomplete="off" onSubmit="return formvalid(this);">
+        <div class="divfor_left-area col-md-6 col-sm-6" >
+          <div class="heading_comn" style="background:none;">
+          <h2 style="margin-bottom: 20px;
+margin-top: 50px;
+text-align: center;
+background-color: black;
+color: white;">Store user login</h2>
+		  <form action="" method="post" autocomplete="off" onSubmit="return formvalid(this);">
           <input type="hidden" name="type" value="user" />
 		  <div>
             <div id="label">
@@ -186,9 +189,17 @@ if(isset($authUrl)) {
 <div id="fb-root" style="float:left; width:1px;"></div>
 <br /></center>
           </form>
+          
+		  
+		  </div>
         </div>
-        <div class="divfor_right-area">
-         <h2>Store Owner login</h2>
+		<div class="divfor_left-area col-md-6 col-sm-6" style="background:none;">
+         <div class="heading_comn" >
+		 <h2 style="margin-bottom: 20px;
+margin-top: 50px;
+text-align: center;
+background-color: black;
+color: white;">Store Owner login</h2>
          <form action="" method="post" autocomplete="off" onSubmit="return formvalid(this);" >
 		 <input type="hidden" name="type" value="member" />
           <div>
@@ -226,9 +237,9 @@ if(isset($authUrl)) {
             </div>
           </div>
           </form>
-
+		</div>
         </div>
-      </div>
+      
     
   </div>
 </div>
