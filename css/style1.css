@@ -72,7 +72,6 @@ border-bottom: 1px dotted #CCC;
 }
 .chhosebox3 input[type="radio"] + label {
 color: #333;
-font-family: Arial, sans-serif;
 font-size: 14px;
 }
 .chhosebox3 input[type="radio"] + label span {
@@ -84,15 +83,19 @@ vertical-align: middle;
 background: url(../images/check_radio_sheet.png) -38px top no-repeat;
 cursor: pointer;
 }
+.chhosebox3 input[type="radio"]:checked + label span {
+background: url(../images/check_radio_sheet.png) -57px top no-repeat;
+}
 .chhosebox3 input[type="radio"] {
 display: none;
 }
 .trafibox {
-width: 700px;
+width: 100%;
 float: left;
 margin: 10px 0 10px 10px;
 background-color: #fff1e7;
 }
+#tarifplan  .heading{color:white;}
 @media (max-width: 768px)
 {
 .registr_maindiv-1 h2.benefit_plan-h2 { font-size:15px;}
@@ -158,6 +161,7 @@ width: 44%;
 }
 @media (max-width: 768px)
 {
+.leftbox{margin-bottom:10px; font-weight:bold; color:#FA7B00;} 
 div.subarea div.divfor_left-area, div.heading_comn {background: url(../image/or_png-image.png) 200px 10px no-repeat scroll;}
 div.subarea div.divfor_left-area, div.heading_comn h2 {font-weight:bold;}
 .als-viewport {

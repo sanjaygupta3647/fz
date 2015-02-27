@@ -21,8 +21,8 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='rene
  
 
 
-<div class="contentarea">
-  <div class="registerarea">
+<div class="row" style="margin-top:20px;">
+  <div class="col-md-12 col-sm-12">
     <?php
 			$qry = $cms->db_query("SELECT noOfDays,amount FROM `#_plans_hosting` where pid ='".$_SESSION[planID]."'  ");
 			$res = $cms->db_fetch_array($qry);	
@@ -31,8 +31,8 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='rene
 			$res2 = $cms->db_fetch_array($sql);	
 					 
 			?>
-    <div class="heading"><?=$cms->removeSlash($heading)?></div>
-      <div class="subarea">
+    <div class="heading col-md-12 col-sm-12"><?=$cms->removeSlash($heading)?></div>
+      <div class="subarea col-md-12 col-sm-12">
       <?=$cms->removeSlash($body)?> 
 	  <?=$er?>
       

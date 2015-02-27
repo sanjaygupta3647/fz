@@ -422,7 +422,6 @@ div.subarea div.divfor_left-area {
 	
 }
 div.subarea div.divfor_left-area, div.heading_comn {
-	font-family: "Microsoft New Tai Lue";
 	font-size: 14px;
 	font-weight: normal;
 	padding: 0px;
@@ -430,10 +429,9 @@ div.subarea div.divfor_left-area, div.heading_comn {
 	background: url(../image/or_png-image.png) 480px 150px no-repeat scroll;
 }
 div.subarea div.divfor_left-area.ornone, div.heading_comn {
-	width: 970px;
+	width: 100%;
 	height: auto;
 	float: left;
-	font-family: "Microsoft New Tai Lue";
 	font-size: 14px;
 	font-weight: normal;
 	padding: 0px;
@@ -444,7 +442,6 @@ div.subarea div.divfor_left-area, div.heading_comn h2 {
 	
 	padding: 0;
 	color: #000;
-	font-family: "Microsoft New Tai Lue";
 	font-weight: normal;
 	font-size: 16px;
 	line-height: 50px;

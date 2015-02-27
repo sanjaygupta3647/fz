@@ -28,11 +28,11 @@ if(!$heading)  $heading = "Registration Step 1";
 
 <div class="row" style="margin-top:20px;">
   <div class="col-md-12 col-sm-12">
-    <div class="heading2 col-md-3 col-sm-2"><?=$cms->removeSlash($heading)?></div>
+    <div class="heading2 col-md-3 col-sm-3"><?=$cms->removeSlash($heading)?></div>
     <div class="heading2 col-md-2 col-sm-3">
     <a href="<?=SITE_PATH?>renewal_account">
     Renew Account</a></div>
-	<div class="heading2 col-md-3 col-sm-3">
+	<div class="heading2 col-md-3 col-sm-2">
     <a href="<?=SITE_PATH?>renewal_sms">
     Renew SMS</a></div>
 
@@ -54,8 +54,8 @@ if(!$heading)  $heading = "Registration Step 1";
 					}	?>
       <form method="post" action="">
         <div class="registerbox col-md-12 col-sm-12">
-          <div class="leftbox col-md-3 col-sm-3">Registration for</div>
-          <div class="rightbox col-md-9 col-sm-9">
+          <div class="leftbox col-md-3 col-sm-4">Registration for</div>
+          <div class="rightbox col-md-9 col-sm-8">
             <div class="chhosebox">
               <input type="radio" id="radio1" name="type" value="store" checked="checked" />
               <label for="radio1"><span></span>Store Owner</label>
@@ -66,13 +66,13 @@ if(!$heading)  $heading = "Registration Step 1";
             </div>
           </div>
           <div class="divider"></div>
-          <div class="leftbox col-md-3 col-sm-2">Please Choose a Category</div>
-          <div class="rightbox col-md-9 col-sm-10">
+          <div class="leftbox col-md-3 col-sm-4">Please Choose a Category</div>
+          <div class="rightbox col-md-9 col-sm-8">
             <?php  
 							$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'store'"); 
 							$i = 1;
 							while($result=$cms->db_fetch_array($sql)){?>
-            <div class="chhosebox3 store col-md-4 col-sm-4">
+            <div class="chhosebox3 store col-md-4 col-sm-6">
               <input type="radio" class="plan_id" id="store<?=$i?>" name="tarifid" value="<?=$result['pid']?>"  />
               <label for="store<?=$i?>"><span></span>
                 <?=$result['name']?>
@@ -86,7 +86,7 @@ if(!$heading)  $heading = "Registration Step 1";
 							$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'brand'"); 
 							$i = 1;
 							while($result=$cms->db_fetch_array($sql)){?>
-            <div class="chhosebox3 brand col-md-4 col-sm-4">
+            <div class="chhosebox3 brand col-md-4 col-sm-6">
               <input type="radio" class="plan_id" id="brand<?=$i?>" name="tarifid" value="<?=$result['pid']?>"  />
               <label for="brand<?=$i?>"><span></span>
                 <?=$result['name']?>
@@ -100,7 +100,7 @@ if(!$heading)  $heading = "Registration Step 1";
 							$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'brand-store'"); 
 							$i = 1;
 							while($result=$cms->db_fetch_array($sql)){?>
-            <div class="chhosebox3 brand-store">
+            <div class="chhosebox3 brand-store col-md-4 col-sm-6">
               <input class="plan_id" type="radio" id="brand-store<?=$i?>" name="tarifid" value="<?=$result['pid']?>"  />
               <label for="brand-store<?=$i?>"><span></span>
                 <?=$result['name']?>
