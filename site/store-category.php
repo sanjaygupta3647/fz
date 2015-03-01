@@ -65,11 +65,11 @@ $searchexe = $cms->db_query($sql);
 $count = mysql_num_rows($searchexe);
 include "site/search.inc.php";
 
- ?> <div class="contentarea">
-        	<div class="leftpanel">
-            	<div class="categorybox">
+ ?> <div class="row" style="margin-top:10px;">
+        	<div class="col-md-3 col-sm-3">
+            	<div class="col-md-12 col-sm-12">
 					<?php include "left.search.php"; ?>
-                	<div class="heading">Category</div>
+                	<div class="col-md-12 col-sm-12"><div class="heading">Category</div></div>
 					<?php
 					$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active' order by name";
 					$sql_city1_query=$cms->db_query($sql_city1);
@@ -89,17 +89,17 @@ include "site/search.inc.php";
 							}
 							
 						}?>
-					<div class="catlink"><a  <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"><?=ucwords(strtolower($cms->removeSlash($name)))?> (<?=$noStore?>)</a>
+					<div class="col-md-12 col-sm-12"><a class="btn btn-link" <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"><?=ucwords(strtolower($cms->removeSlash($name)))?> (<?=$noStore?>)</a>
 					</div>
 					<?php }?> 
                 </div>
             </div>
             
-            <div class="midpanel">
-			<div class="bardcom"> 
-			<a href="<?=SITE_PATH?>">Home</a> 
-			| <a <?=(!$_GET[cat_type])?'class="brndactive"':''?> href="<?=SITE_PATH?>store-category/shoes/<?=$items[2]?>" ><?=ucwords(strtolower($catname))?>(<?=($get[store_count]+$get[brand_count])?>)</a> | <a <?=($_GET[cat_type]=='store')?'class="brndactive"':''?> href="<?=SITE_PATH?>store-category/shoes/<?=$items[2]?>/?cat_type=store" >Stores(<?=$get[store_count]?>)</a> 
-			| <a <?=($_GET[cat_type]=='brand')?'class="brndactive"':''?>  href="<?=SITE_PATH?>store-category/shoes/<?=$items[2]?>/?cat_type=brand">Brands(<?=$get[brand_count]?>)</a>
+            <div class="col-md-6 col-sm-6">
+			<div class="col-md-12 col-sm-12"> 
+			<a class="btn btn-link" href="<?=SITE_PATH?>">Home</a> 
+			| <a class="btn btn-link" <?=(!$_GET[cat_type])?'class="brndactive"':''?> href="<?=SITE_PATH?>store-category/shoes/<?=$items[2]?>" ><?=ucwords(strtolower($catname))?>(<?=($get[store_count]+$get[brand_count])?>)</a> | <a class="btn btn-link" <?=($_GET[cat_type]=='store')?'class="brndactive"':''?> href="<?=SITE_PATH?>store-category/shoes/<?=$items[2]?>/?cat_type=store" >Stores(<?=$get[store_count]?>)</a> 
+			| <a class="btn btn-link" <?=($_GET[cat_type]=='brand')?'class="brndactive"':''?>  href="<?=SITE_PATH?>store-category/shoes/<?=$items[2]?>/?cat_type=brand">Brands(<?=$get[brand_count]?>)</a>
 		</div>
 				<?php 
 				 
@@ -110,13 +110,15 @@ include "site/search.inc.php";
 					if(file_exists(UP_FILES_FS_PATH.'/orginal/'.$image) && $image!=""){
 						$img = SITE_PATH."uploaded_files/orginal/".$image;
 					}?>
-					<div class="catdetailbox">
-                	<div class="logobox"><img style="max-height:134px" src="<?=$img?>" width="184"  alt="<?=$title?>" title="<?=$title?>"  /></div>
-                    <div class="detailbox">
+					<div class="row" style="margin-top: 40px;
+border: solid 1px rgb(213, 213, 213);
+padding: 10px;">
+                	<div class="col-md-4 col-sm-4"><img class="img-responsive" src="<?=$img?>" alt="<?=$title?>" title="<?=$title?>"  /></div>
+                    <div class="col-md-8 col-sm-8">
 					    <?php
 						$link  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ;
 						?>
-                    	<div class="heading"><a style="text-decoration:none" class="newtab" href="<?=$link?>"><?=$title?></a></div>
+                    	<div class="col-md-12 col-sm-12"><a class="h4" style="text-decoration:none" href="<?=$link?>"><?=$title?></a></div>
 						<?php
 						$catslist = "";
 						$catqry = $cms->db_query("select name from #_store_menu where store_user_id = '$store_user_id' and parent = '0' limit 0, 4");
@@ -125,8 +127,8 @@ include "site/search.inc.php";
 						}
 						$catslist = substr($catslist,0,-2);
 						?>
-                        <div class="subtext">Category : <?=($catslist)?$catslist:'Not Set'?></div>
-						<div class="subrandbox"> 
+                        <div class="col-md-12 col-sm-12">Category : <?=($catslist)?$catslist:'Not Set'?></div>
+						<div class="col-md-12 col-sm-12"> 
 						<?php $qry ="select brand_id from #_request_brand where store_user_id ='$store_user_id' and 
 						status ='Active'  limit 0,6"; 
 					  $brnadsqry =$cms->db_query($qry);
@@ -144,14 +146,14 @@ include "site/search.inc.php";
 									if(file_exists(UP_FILES_FS_PATH.'/orginal/'.$image) && $image!=""){
 										$img = SITE_PATH."uploaded_files/orginal/".$image;
 									}
-									$imgs .= '<div class="imgbox"><img style="max-width:50px" src="'.$img.'"   height="25"   /></div>';
+									$imgs .= '<div class="col-md-4 col-sm-3"><img class="img-responsive" src="'.$img.'" /></div>';
 									$j++; 
 								
 								}								
 															
 							}
 							if($list!=""){?>
-								<div class="heading">Brands</div>
+								<div class="btn btn-default col-md-12 col-sm-12">Brands</div>
 								<div class="divider"></div>
 								<?=$imgs?>
 								<?php 
@@ -166,21 +168,21 @@ include "site/search.inc.php";
 				<?php
 				}
 			}?> 
-			<div class="pag_no" <?=(!$count)?'style="float:left;"':''?>><?php $Obj->getPageNo(); ?></div>	
+			<div class="col-md-12 col-sm-12" style="margin:10px 0px 50px 0px;" <?=(!$count)?'style="float:left;"':''?>><?php $Obj->getPageNo(); ?></div>	
             </div>
             
-            <div class="rightpanel">
-            	<div class="brandbox">
-                	<div class="heading">Popular Brands</div>
+            <div class="col-md-3 col-sm-3">
+            	<div class="col-md-12 col-sm-12">
+                	<div class="col-md-12 col-sm-12"><div class="heading">Popular Brands</div></div>
 					<?=$cms->getAllBrandsByCat($items[2])?>  
                 </div>
 
-				<div class="brandbox">
-                	<div class="heading">Product Categories</div>
+				<div class="col-md-12 col-sm-12">
+                	<div class="col-md-12 col-sm-12"><div class="heading">Product Categories</div></div>
 					<?=$cms->getAllProductCategoriesByCat($items[2],$_GET[cat_type],$_GET[pcatid])?>  
                 </div> 
-				<div class="brandbox">
-                	<div class="heading">Store Type</div>
+				<div class="col-md-12 col-sm-12">
+                	<div class="col-md-12 col-sm-12"><div class="heading">Store Type</div></div>
 					<?php 
 					$cururl  = explode('?',$cms->geturl()); 
 					//$mainlinik = SITE_PATH."store-category/".$items[1]."/".$items[2]."/?";  ?>

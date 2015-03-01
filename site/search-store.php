@@ -60,11 +60,11 @@ include "site/search.inc.php";
 
  ?>
 
-<div class="contentarea">
-  <div class="leftpanel">
-    <div class="categorybox">
+<div class="row" style="margin-top:10px;">
+  <div class="col-md-3 col-sm-3">
+    <div class="col-md-12 col-sm-12">
       <?php include "left.search.php"; ?>
-      <div class="heading">Category</div>
+      <div class="col-md-12 col-sm-12"><div class="heading">Category</div></div>
       <?php
 					$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active'  order by name";
 					$sql_city1_query=$cms->db_query($sql_city1);
@@ -82,19 +82,19 @@ include "site/search.inc.php";
 								$noStore = $cms->getSingleresult("select count(*) from #_store_detail where plan_id in (".implode(',',$plans).")");
 							} 
 						}?>
-      <div class="catlink"><a   <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>">
+      <div class="col-md-12 col-sm-12"><a class="btn btn-link" <?php if($items[2]==$pid){?> style=""<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>">
         <?=ucwords(strtolower($name))?> (<?=$noStore?>)</a></div>
       <?php }?>
     </div>
   </div>
-  <div class="midpanel">
+  <div class="col-md-6 col-sm-6">
     <?php
 		if($_GET[key]) $txt = "Your search result for ".$_GET[key]." ".ucfirst($_GET[searchfor]);
 		if($_GET[city]) $txt = "Your search result for all ".ucfirst($_GET[searchfor]) ." in ".$_GET[city];
 		if($_GET[city] && $_GET[key]) $txt = "Your search result for all ".$_GET[key]." ".ucfirst($_GET[searchfor]) ." in ".$_GET[city];
 		if(!$_GET[searchfor]) $txt = "Please select from search for dropdown";
 	?>
-    <div class="bardcom"> <a href="<?=SITE_PATH?>">Home</a><img src="<?=SITE_PATH?>image/arrow.png" width="18" height="11" alt="" style="margin:0 0 0 5px;"/> <a href="javascript:void(0)" > <?=$txt?></a></div>
+    <div class="col-md-12 col-sm-12"> <a class="btn btn-link" href="<?=SITE_PATH?>">Home</a><img src="<?=SITE_PATH?>image/arrow.png" width="18" height="11" alt="" style="margin:0 0 0 5px;"/> <a href="javascript:void(0)" > <?=$txt?></a></div>
     <?php 
 				 
 				
@@ -105,15 +105,17 @@ include "site/search.inc.php";
 					if(file_exists(UP_FILES_FS_PATH.'/orginal/'.$image) && $image!=""){
 						$img = SITE_PATH."uploaded_files/orginal/".$image;
 					}?>
-    <div class="catdetailbox">
-      <div class="logobox"><img style="max-height:134px" src="<?=$img?>" width="184"  alt="<?=$title?>" title="<?=$title?>"  /></div>
-      <div class="detailbox">
+    <div class="row" style="margin-top: 40px;
+border: solid 1px rgb(213, 213, 213);
+padding: 10px;">
+      <div class="col-md-4 col-sm-4"><img class="img-responsive" src="<?=$img?>" alt="<?=$title?>" title="<?=$title?>"  /></div>
+      <div class="col-md-8 col-sm-8">
         <?php
 						 
 						 
 						$link  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ;
 						?>
-        <div class="heading"><a class="newtab" style="text-decoration:none" href="<?=$link?>">
+        <div class="col-md-12 col-sm-12"><a class="h4" style="text-decoration:none" href="<?=$link?>">
           <?=ucwords(strtolower($title))?>
           </a></div>
         <?php
@@ -124,7 +126,7 @@ include "site/search.inc.php";
 						}
 						$catslist = substr($catslist,0,-2);
 						?>
-        <div class="subtext">Category :
+        <div class="col-md-12 col-sm-12">Category :
           <?=($catslist)?$catslist:'Not Set'?>
         </div>
         <?php
@@ -133,11 +135,11 @@ include "site/search.inc.php";
 		$pcount = mysql_num_rows($prodQry);
 			if($pcount){
 								?>
-        <div class="subtext">Products :
+        <div class="col-md-12 col-sm-12">Products :
           <?php			$i = 1;
 					   while($prodrs=$cms->db_fetch_array($prodQry)){
 						   $suf  =($i<$pcount)?',':'';?>   
-							<a class="newtab"  href="<?=$link?>/detail/<?=$adm->baseurl($prodrs[title])?>/<?=$prodrs[pid]?>"><?=ucwords(strtolower(trim($prodrs[title])))?><?=$suf?></a><?php
+							<a class=""  href="<?=$link?>/detail/<?=$adm->baseurl($prodrs[title])?>/<?=$prodrs[pid]?>"><?=ucwords(strtolower(trim($prodrs[title])))?><?=$suf?></a><?php
 							 $i++;
            
 			}?>
@@ -147,7 +149,7 @@ include "site/search.inc.php";
 		 $checkstores =$cms->db_query("select store_user_id  from #_request_brand where brand_id ='$store_user_id' and status ='Active' limit 0,6"); 
 		 $countstore = mysql_num_rows($checkstores);  
 		 if($countstore){
-			 echo '<div class="subtext">Stores :';
+			 echo '<div class="col-md-12 col-sm-12">Stores :';
 			 $i = 1;
 			 while($st=$cms->db_fetch_array($checkstores)){ 
 					$storename = trim($cms->getSingleresult("select title from #_store_detail where store_user_id = '".$st[store_user_id]."' "));
@@ -155,7 +157,7 @@ include "site/search.inc.php";
 					$link  = "http://".$store_url.".fizzkart.com";
 					if(!$storename) $storename = 'N/A';
 					$suf  =($i<$countstore)?'|':'';?>
-					<a class="newtab" href="<?=$link?>"><?=ucwords(strtolower(trim($storename)))?></a> <?=$suf?>
+					<a class="" href="<?=$link?>"><?=ucwords(strtolower(trim($storename)))?></a> <?=$suf?>
 					<?php
 					 
 					$i++;
@@ -164,7 +166,7 @@ include "site/search.inc.php";
 		 }
 		 ?>
 		 
-        <div class="subrandbox">
+        <div class="col-md-12 col-sm-12">
           <?php $qry ="select brand_id from #_request_brand where store_user_id ='$store_user_id' and status ='Active'
 				 limit 0,6"; 
 					  $brnadsqry =$cms->db_query($qry);
@@ -182,14 +184,14 @@ include "site/search.inc.php";
 									if(file_exists(UP_FILES_FS_PATH.'/orginal/'.$image) && $image!=""){
 										$img = SITE_PATH."uploaded_files/orginal/".$image;
 									}
-									$imgs .= '<div class="imgbox"><img style="max-width:50px" src="'.$img.'"   height="25"   /></div>';
+									$imgs .= '<div class="col-md-4 col-sm-3"><img class="img-responsive" src="'.$img.'"   /></div>';
 									$j++; 
 								
 								}								
 															
 							}
 							if($list!=""){?>
-							  <div class="heading">Brands</div>
+							  <div class="btn btn-default col-md-12 col-sm-12">Brands</div>
 							  <div class="divider"></div>
 							  <?=$imgs?>
 							  <?php 
@@ -203,30 +205,31 @@ include "site/search.inc.php";
 				}
 			}else{
 			?>
-    <div class="catdetailbox">
-      <div class="pag_no">
-        <div class="detailbox">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12">
           <p style="text-align:center"><b>No Record Found!</b></p>
         </div>
       </div>
     </div>
     <?php
 			}?>
-    <div class="pag_no">
+    <div class="col-md-12 col-sm-12" style="margin:10px 0px 50px 0px;">
       <?php $Obj->getPageNo(); ?>
     </div>
   </div>
-  <div class="rightpanel">
-    <div class="brandbox">
-      <div class="heading">Product Categories</div>
-      <?=$getProductCategory?>
+  <div class="col-md-3 col-sm-3">
+    <div class="col-md-12 col-sm-12">
+      <div class="col-md-12 col-sm-12"><div class="heading">Product Categories</div></div>
+      
+	  <?=$getProductCategory?>
     </div>
-    <div class="adspace">
+    <div class="col-md-12 col-sm-12">
 	<?php
 	$adv=$cms->db_query("select * from #_advertise where  status='Active' and place ='main-site' ");
 	$advcount = mysql_num_rows($adv);
 	while($advres=$cms->db_fetch_array($adv)){?>
-		<a href="<?=($advres[linkurl])?$advres[linkurl]:'#'?>"> <img src="<?=SITE_PATH?>uploaded_files/orginal/<?=$advres[image]?>" border="0" alt="<?=$advres[title]?>" title="<?=$advres[title]?>"> </a>
+		<a class="btn btn-link" href="<?=($advres[linkurl])?$advres[linkurl]:'#'?>"> <img src="<?=SITE_PATH?>uploaded_files/orginal/<?=$advres[image]?>" border="0" alt="<?=$advres[title]?>" title="<?=$advres[title]?>"> </a>
 		<?php
 	}?>	
     </div>

@@ -57,11 +57,11 @@ $sql="select * from  fz_products_user where  pid in (".implode(",",$searchP).") 
 $searchexe = $cms->db_query($sql);
 $count = mysql_num_rows($searchexe);
 include "site/search.inc.php";
-?> <div class="contentarea">
-        	<div class="leftpanel">
-            	<div class="categorybox">
+?> <div class="row" style="margin-top:10px;">
+        	<div class="col-md-3 col-sm-3">
+            	<div class="col-md-12 col-sm-12">
 					<?php include "left.search.php"; ?>
-                	<div class="heading">Category</div>
+                	<div class="col-md-12 col-sm-12"><div class="heading">Category</div></div>
 					<?php  
 					$curl1 = $cms->geturl();
 					$catQr=$cms->db_query("select pid,name,image,body from #_category where pid in (".implode(",",$getcats).") and status = 'Active'  order by name");
@@ -71,15 +71,15 @@ include "site/search.inc.php";
 					$strtoreplace1 = "&cat_id=$cat_id"; 
 					$curl1 = str_replace($strtoreplace1,"",$curl1);
 					?>  
-					<div class="catlink"><a <?php if($_GET[cat_id]==$cateres[pid]){?> style="color:#000;font-weight:bold;"<?php }?> 
+					<div class="col-md-12 col-sm-12"><a class="btn btn-link" <?php if($_GET[cat_id]==$cateres[pid]){?> style="color:#000;font-weight:bold;"<?php }?> 
 					href="<?=$curl1?>&cat_id=<?=$cateres[pid]?> "><?=$cms->removeSlash($cateres[name])?> (<?=$noProds?>)</a></div>
 					<?php }  ?> 
                 </div>
             </div>
             
-            <div class="midpanel">
-			<div class="bardcom"> 
-				<a href="#">Your product search result for <strong>'<?=$_GET[key]?>'</strong></a>  
+            <div class="col-md-6 col-sm-6">
+			<div class="col-md-12 col-sm-12"> 
+				<a class="btn btn-link" href="#">Your product search result for <strong>'<?=$_GET[key]?>'</strong></a>  
 			</div>
 				<?php 
 				 
@@ -90,9 +90,11 @@ include "site/search.inc.php";
 					if(file_exists(UP_FILES_FS_PATH.'/orginal/'.$image1) && $image1!=""){
 						$img = SITE_PATH."uploaded_files/orginal/".$image1;
 					}?>
-					<div class="catdetailbox">
-                	<div class="logobox"><img style="max-height:134px" src="<?=$img?>" width="184"  alt="<?=$title?>" title="<?=$title?>"  /></div>
-                    <div class="detailbox">
+					<div class="row" style="margin-top: 40px;
+border: solid 1px rgb(213, 213, 213);
+padding: 10px;">
+                	<div class="col-md-4 col-sm-4"><img class="img-responsive"src="<?=$img?>" alt="<?=$title?>" title="<?=$title?>"  /></div>
+                    <div class="col-md-8 col-sm-8">
 						<?php
 
 						$url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id ='".$store_user_id."' ");
@@ -101,7 +103,7 @@ include "site/search.inc.php";
 						$base  =  ($store_domain)?"http://".$store_domain:"http://".$url.".fizzkart.com" ; 
 						$link  =  $base."/detail/".$adm->baseurl($title)."/".$pid;
 						?>
-                    	<div class="heading"><a class="newtab" target="_blank" style="text-decoration:none" href="<?=$link?>"><?=$title?></a></div>
+                    	<div class="col-md-12 col-sm-12"><a class="h4" target="_blank" style="text-decoration:none" href="<?=$link?>"><?=$title?></a></div>
 						<?php 
 						$Cprice = $cms->getBothPrice($pid,$store_user_id);
 						$mainprice = $Cprice[0];
@@ -111,9 +113,9 @@ include "site/search.inc.php";
 						//if($offerprice<$price){ $pri =$offerprice; }else  $pri =$price;
 						$storeTitle = $cms->getSingleresult("select title from #_store_detail where store_user_id = '$store_user_id'"); 
 						?>
-						<div class="subtext">Store :  <a class="newtab"  href="<?=$link?>" target="_blank" ><?=$storeTitle?></a> </div>
-                        <div class="subtext">Price :  <?=($disprice >0 && $disprice < $mainprice)?$cms->price_format($disprice):$cms->price_format($mainprice)?></div>
-						 <div class="subtext" style="font-size:12px;"><?php
+						<div class="col-md-12 col-sm-12">Store :  <a class="newtab"  href="<?=$link?>" target="_blank" ><?=$storeTitle?></a> </div>
+                        <div class="col-md-12 col-sm-12">Price :  <?=($disprice >0 && $disprice < $mainprice)?$cms->price_format($disprice):$cms->price_format($mainprice)?></div>
+						 <div class="col-md-12 col-sm-12" style="font-size:12px;"><?php
 							$getprods22 = $cms->db_query("select * from #_product_feature  where  prod_id =  '$pid' and ftitle!='' and fdescription!=''    "  );
 							
 							if($kf1) echo " - ".$kf1."<br/>";
@@ -127,7 +129,7 @@ include "site/search.inc.php";
 							
 						?>							 
 						</div>  
-						<div class="subrandbox"> 
+						<div class="col-md-12 col-sm-12"> 
 						<?php  
 					  if($type=='brand'){
 					  $qry ="select store_user_id from #_barnds_product where brand_id ='$store_user_id' and prod_id = '$pid' and status ='Active' limit 0,6"; 
@@ -148,11 +150,11 @@ include "site/search.inc.php";
 								$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id ='".$serchres[store_user_id]."' ");
 								$base  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ; 
 						        $link  =  $base."/detail/".$adm->baseurl($title)."/".$pid;
-								$imgs .= '<div class="imgbox"><a class="newtab" href="'.$link.'"><img style="max-width:50px" src="'.$img.'"  title="'.$list.'"  height="25"   /></a></div>';
+								$imgs .= '<div class="col-md-4 col-sm-3"><a class="img-responsive" href="'.$link.'"><img style="" src="'.$img.'"  title="'.$list.'"   /></a></div>';
 								$j++;  			
 							}
 							if($imgs!=""){?>
-								<div class="heading">Dealers</div>
+								<div class="col-md-12 col-sm-12">Dealers</div>
 								<div class="divider"></div>
 								<?=$imgs?>
 								<?php 
@@ -168,14 +170,15 @@ include "site/search.inc.php";
 				<?php
 				}
 			}else{
-			?><div class="catdetailbox"><div class="pag_no"><div class="detailbox"><p style="text-align:center"><b>No Record Found!</b></p></div></div></div><?php
+			?><div class="col-md-12 col-sm-12">
+			<div class="col-md-12 col-sm-12"><div class="col-md-12 col-sm-12"><p style="text-align:center"><b>No Record Found!</b></p></div></div></div><?php
 			}?>
-			<div class="pag_no"><?php $Obj->getPageNo(); ?></div>	
+			<div class="col-md-12 col-sm-12"><?php $Obj->getPageNo(); ?></div>	
             </div>
             
-            <div class="rightpanel">
-            	<div class="brandbox">
-                	<div class="heading">Popular Brands</div>
+            <div class="col-md-3 col-sm-3">
+            	<div class="col-md-12 col-sm-12">
+                	<div class="col-md-12 col-sm-12"><div class="heading">Popular Brands</div></div>
 					<?php  
 					$curl = $cms->geturl();
 					$catQr=$cms->db_query("select title,store_user_id from #_store_detail where store_user_id in (".implode(",",$user).") and status = 'Active'");
@@ -185,17 +188,17 @@ include "site/search.inc.php";
 					$strtoreplace = "&brand=$brndid"; 
 					$curl = str_replace($strtoreplace,"",$curl);
 					?> 
-					<div class="logonamebox">
-					<a href="<?=$curl?>&brand=<?=$cateres[store_user_id]?>" <?php if($cateres[store_user_id]==$_GET[brand]){?> style="color:#000;font-weight:bold;"<?php }?>>
+					<div class="col-md-12 col-sm-12">
+					<a class="btn btn-link" href="<?=$curl?>&brand=<?=$cateres[store_user_id]?>" <?php if($cateres[store_user_id]==$_GET[brand]){?> style="color:#000;font-weight:bold;"<?php }?>>
 					<?=strtoupper($cateres[title])?>(<?=$noProds32?>)</a></div>
 					<?php }  ?>  
                 </div> 
-                <div class="adspace">
+                <div class="col-md-12 col-sm-12">
                 	<?php 
 						$adv=$cms->db_query("select * from #_advertise where  status='Active' and place ='main-site' ");
 						$advcount = mysql_num_rows($adv);
 						while($advres=$cms->db_fetch_array($adv)){?>
-							<a href="<?=($advres[linkurl])?$advres[linkurl]:'#'?>">
+							<a class="btn btn-link" href="<?=($advres[linkurl])?$advres[linkurl]:'#'?>">
 							<img src="<?=SITE_PATH?>uploaded_files/orginal/<?=$advres[image]?>" border="0" alt="<?=$advres[title]?>" title="<?=$advres[title]?>">
 							</a>
 						<?php

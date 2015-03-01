@@ -4,12 +4,11 @@ $metaTitle = $cms->getSingleresult("select metaTitle from #_updates where url='"
 $metaIntro = $cms->getSingleresult("select metaDesc from #_updates where url='".$items[1]."'");
 $metaKeyword = $cms->getSingleresult("select metaKey from #_updates where url='".$items[1]."'"); 
 ?> 
-<div class="updates_title_h3">
-<div class="updates_title_h3_title">
-<h3 style="margin-top:10px;margin-bottom:10px;">Fizzkart Updates </h3>
-
+<div class="row" style="margin-top:10px;margin-bottom:10px;">
+<div class="col-md-12 col-sm-12">
+<h3 style="text-align:center;">Fizzkart Updates</h3>
 </div>
-<div id="tabs">
+<div id="tabs" class="col-md-12 col-sm-12">
 			<?php
 			$selectTab = 0;
 			$updateQry=$cms->db_query("SELECT subtitle,title,url,body  FROM #_updates where store_user_id='0'  and status = 'Active' order by pid desc"); 
@@ -32,4 +31,4 @@ $metaKeyword = $cms->getSingleresult("select metaKey from #_updates where url='"
   	</div>
 </div>
  
-<div style="width:994px; height:10px;"></div>
+<div class="col-md-12 col-sm-12"></div>

@@ -1,4 +1,7 @@
 <script type="text/javascript" src="<?=SITE_PATH?>js/jquery-1.7.1.min.js"></script> 
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="<?=SITE_PATH?>js/jmpress.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(e) { 
@@ -74,6 +77,7 @@ $(window).load(function() {
     }); 
 });*/
 </script> 
+
 <script type="text/javascript">/*
 $(function(){
 	$('#slides').slides({
@@ -476,6 +480,7 @@ $(document).ready(function()
 				$("a[href^='http://als']").attr("target","_self");
 			});
 </script>
+
 <script type="text/javascript">
     $(document).ready(function(){
     	// Smart Tab
@@ -483,4 +488,3 @@ $(document).ready(function()
   		$('#tabs').smartTab({selected: '<?=$selectTab?>',saveState:false, autoProgress: false,stopOnFocus:true,transitionEffect:'vSlide'});
 	});
 </script>
-

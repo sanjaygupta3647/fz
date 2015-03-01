@@ -36,12 +36,17 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
 				$sql=$cms->db_query("select * from #_plans  where status='Active' and type = 'store' order by name"); 
 				$i = 1;
 				while($result=$cms->db_fetch_array($sql)){?>
-					 <li class="item <?=($i%2==0)?' color':''?>" ><a href="Javascript:void(0)"><?=ucwords(strtolower($result['name']))?></a>
-						<div class="tooltip-div" hidden="hidden">
-                        <span class="opener"></span>
-                        <span class="closetip">Close</span>
+					 <li class="item <?=($i%2==0)?' color':''?>" ><a data-toggle="modal" data-target="#myModal"><?=ucwords(strtolower($result['name']))?></a>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="color:black;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color:black;">Tariff & Hosting Plans for <?=ucwords(strtolower($result['name']))?></h4>
+      </div>
+      <div class="modal-body" style="height:195px;">
 						<div class="main_tooltip">
-						  <h2 class="tooltip_h2">Tariff & Hosting Plans for <?=ucwords(strtolower($result['name']))?></h2>
+						  
 						  <div class="plan_selection">
 							<ul><?php
 							  $qry = $cms->db_query("SELECT pid,noOfDays,amount,noOfMessage FROM `#_plans_hosting` where plan_id ='".$result['pid']."'  ");
@@ -60,7 +65,14 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
 							<p class="tooltip_p"><strong>Categories:</strong> <?=$result['body']?>.</p>
 						  </div>
 						</div>
-					  </div> 
+					  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> 
 					 </li><?php $i++;
 				}?>  
               </ul>
@@ -74,33 +86,46 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
 				$sql2=$cms->db_query("select * from #_plans  where status='Active' and type = 'brand' order by name "); 
 				$j = 1;
 				while($result2=$cms->db_fetch_array($sql2)){?>
-					 <li class="item <?=($j%2==0)?' color':''?>" ><a href="Javascript:void(0)"><?=ucwords(strtolower($result2['name']))?></a>
-					 
-					 
-					<div class="tooltip-div" style="position:absolute; left:0;">
-                    <span class="orange_right"></span>
-                        <span class="closetip">Close</span>
-						<div class="main_tooltip">
-						  <h2 class="tooltip_h2">Tariff & Hosting Plans for <?=ucwords(strtolower($result2['name']))?></h2>
-						  <div class="plan_selection">
-							<ul><?php
-							  $qry2 = $cms->db_query("SELECT pid,noOfDays,amount,noOfMessage FROM `#_plans_hosting` where plan_id ='".$result2['pid']."'  ");
-								if(mysql_num_rows($qry2)){  
-									while($res1 = $cms->db_fetch_array($qry2)){
-										@extract($res1); ?>
-										<li><a href="<?=SITE_PATH?>Step-1/skip/brand/<?=$result2['pid']?>/<?=$pid?>"><?=$noOfDays?> Days / <?=$cms->price_format($amount)?> / <?=$noOfMessage?> Message</a></li><?php 
-									}
-								
-								}?> 
-							</ul>
+					 <li class="item <?=($j%2==0)?' color':''?>" ><a data-toggle="modal" data-target="#myModal1"><?=ucwords(strtolower($result2['name']))?></a>
+					 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+						<div class="modal-content" style="color:black;">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel" style="color:black;">Tariff & Hosting Plans for <?=ucwords(strtolower($result2['name']))?></h4>
 						  </div>
-						  <div class="plan_description" id="tooltip_show">
-							<p class="tooltip_p"><strong>No. of Products:</strong> <?=$result2['noOfProducts']?></p>
-							<p class="tooltip_p"><strong>No. of Store:</strong><?=$result2['noOfStores']?></p>
-							<p class="tooltip_p"><strong>Categories:</strong> <?=$result2['body']?>.</p>
+						  <div class="modal-body" style="height:250px;">
+								<div class="main_tooltip">
+								  <h2 class="tooltip_h2"></h2>
+								  <div class="plan_selection">
+									<ul><?php
+									  $qry2 = $cms->db_query("SELECT pid,noOfDays,amount,noOfMessage FROM `#_plans_hosting` where plan_id ='".$result2['pid']."'  ");
+										if(mysql_num_rows($qry2)){  
+											while($res1 = $cms->db_fetch_array($qry2)){
+												@extract($res1); ?>
+												<li><a href="<?=SITE_PATH?>Step-1/skip/brand/<?=$result2['pid']?>/<?=$pid?>"><?=$noOfDays?> Days / <?=$cms->price_format($amount)?> / <?=$noOfMessage?> Message</a></li><?php 
+											}
+										
+										}?> 
+									</ul>
+								  </div>
+								  <div class="plan_description" id="tooltip_show">
+									<p class="tooltip_p"><strong>No. of Products:</strong> <?=$result2['noOfProducts']?></p>
+									<p class="tooltip_p"><strong>No. of Store:</strong><?=$result2['noOfStores']?></p>
+									<p class="tooltip_p"><strong>Categories:</strong> <?=$result2['body']?>.</p>
+								  </div>
+								</div>
+							
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+							
 						  </div>
 						</div>
-					  </div> 
+					  </div>
+					</div>
+					 
+					 
 					 </li>
 					 <?php $j++;
 				}?>

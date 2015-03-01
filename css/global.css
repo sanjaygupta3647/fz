@@ -767,7 +767,7 @@ div.tabdiv_right2 div.tabdiv_right1_info table table.trans-text_style tr:hover {
 	background-color: #428bca;
 }
 .registr_maindiv-2-left ul li:hover a {
-	color:#fff;
+	color:#000;
 }
 .registr_maindiv-2-left ul li.color:hover {
 	cursor: pointer;
@@ -848,10 +848,7 @@ div.tabdiv_right2 div.tabdiv_right1_info table table.trans-text_style tr:hover {
 	font-size: 13px;
 }
 .main_tooltip {
-	width: auto;
-	height: auto;
-	float: left;
-	color: #fff;
+	
 }
 .main_tooltip h2.tooltip_h2 {
 	margin: 0;
@@ -882,7 +879,7 @@ div.tabdiv_right2 div.tabdiv_right1_info table table.trans-text_style tr:hover {
 	background-color: transparent;
 }
 .plan_selection ul li a {
-	color: #fff;
+	color: #000;
 	text-decoration: none;
 	font-size: 20px;
 	font-weight: normal;

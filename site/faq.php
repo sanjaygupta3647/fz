@@ -6,11 +6,11 @@ $metaIntro = $cms->getSingleresult("select meta_description from #_meta_info whe
 $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where url='f.a.qs' and store_user_id = '0'");
 ?>
 
-<div class="contentarea">
+<div class="row" style="margin-top:20px;">
   <div class="registerheadbox">
     
   </div>
-  <div class="registerarea">
+  <div class="col-md-12 col-sm-12">
     <?php
 			$qry = $cms->db_query("SELECT noOfDays,amount FROM `#_plans_hosting` where pid ='".$_SESSION[planID]."'  ");
 			$res = $cms->db_fetch_array($qry);	
@@ -19,22 +19,22 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
 			$res2 = $cms->db_fetch_array($sql);	
 					 
 			?>
-    <div class="heading2">Frequently asked questions
+    <div class="heading2 col-md-12 col-sm-12">Frequently asked questions
       
     </div>
     <form method="post" action="" onSubmit="return formvalid(this);">
-      <div class="subarea">
-        <div class="contact_msg"></div>  
-         <div class="main_register">
-			<div class="basic" style="float:left;"  id="list1a">
+      <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12"></div>  
+         <div class="col-md-12 col-sm-12">
+			<div class="col-md-12 col-sm-12" id="list1a">
 			  <?php
 				$i = 1;
 				$rsAdmin=$cms->db_query("select * from #_faq where store_user_id='0' and ftype='Site' and status='Active'");
 				while($arrAdmin=$cms->db_fetch_array($rsAdmin)){
 				@extract($arrAdmin);
 			  ?>
-			  <a>Q:<?=$i?> <?=$qsn?></a>
-			  <div><?=$cms->removeSlash($body)?></div> <?php			  
+			  <a class="btn btn-primary col-md-12 col-sm-12" style="text-align:left;margin-top:10px;margin-bottom:10px;">Q:<?=$i?> <?=$qsn?></a>
+			  <div class="col-md-12 col-sm-12"><?=$cms->removeSlash($body)?></div> <?php			  
 			    $i++;
 				}?>
 				 

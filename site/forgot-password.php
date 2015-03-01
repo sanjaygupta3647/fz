@@ -43,9 +43,9 @@ include "site/search.inc.php";
 
  ?>
 
-<div class="contentarea">
+<div class="row" style="margin-top:20px;">
         	 
-            <div class="registerarea">
+            <div class="col-md-12 col-sm-12">
 				<?php
 			$qry = $cms->db_query("SELECT noOfDays,amount FROM `#_plans_hosting` where pid ='".$_SESSION[planID]."'  ");
 			$res = $cms->db_fetch_array($qry);	
@@ -54,12 +54,12 @@ include "site/search.inc.php";
 			$res2 = $cms->db_fetch_array($sql);	
 					 
 			?>
-            	<div class="heading"></div>
-				<form method="post" action="" onSubmit="return formvalid(this);">
-                <div class="subarea">
-                	<div class="stepbox"  style="width:auto; margin-left:30px;">Forgot Password</div>
+            	
+				<form method="post" class="form-horizontal" role="form" action="" onSubmit="return formvalid(this);">
+                <div class="">
+                	<div class="heading col-md-12 col-sm-12">Forgot Password</div>
 					
-                    <div class="registerbox">
+                    <div class="col-md-6 col-sm-6">
                     	<fieldset class="forgot_pass-field">
                         	<legend>Fill the following details  </legend>
 							<?php
@@ -68,13 +68,19 @@ include "site/search.inc.php";
 							<?php
 							}
 							?>
-                            <div class="formarea">
-                            	<label><?php if($_GET[user]!='memberuser'){ ?>Email Id <?php }else{ ?> User Name <?php } ?></label>
-                                <input  name="user_name" title="Email Id" lang="R" <?php if($_GET[user]!='memberuser'){ ?>placeholder="Enter Your Email Id" <?php }else{ ?> placeholder="Enter Your User Name" <?php } ?> value="<?=$user_name?>" type="text" class="login_text_fild">  
-                            </div>
+							<div class="form-group">
+								  <label for="Name" class="col-md-3 col-sm-3 control-label"><?php if($_GET[user]!='memberuser'){ ?>Email Id <?php }else{ ?> User Name <?php } ?></label>
+								  <div class="col-md-9 col-sm-9">
+									<input class="form-control" name="user_name" title="Email Id" lang="R" <?php if($_GET[user]!='memberuser'){ ?>placeholder="Enter Your Email Id" <?php }else{ ?> placeholder="Enter Your User Name" <?php } ?> value="<?=$user_name?>" type="text" class="login_text_fild"> 
+								  </div>
+							</div>
+                            
                         </fieldset> 
-                        <div class="blankspace">&nbsp;</div>
-                        <input type="submit" name="Submit"   value="Submit" class="proceedbtn" /> 
+                        <div class="form-group">
+							<div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
+								<input type="submit" name="Submit"  value="Submit" class="btn btn-primary" /> 
+							</div>
+						</div>
                     </div>
                 </div>
 				</form>
