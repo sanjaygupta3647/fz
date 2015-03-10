@@ -14,6 +14,7 @@
 	//@extract($_SESSION);  
 	@error_reporting(E_ALL ^ E_NOTICE); 
 	ini_set('register_globals', 'on');	
+	ini_set('display_errors', '0'); 
 	ini_set('memory_limit', '800M');
 	ini_set(max_upload_filesize,"300M");  
 	if ($HTTP_HOST == "127.0.0.1" || $HTTP_HOST == "localhost") {
