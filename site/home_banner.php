@@ -11,21 +11,21 @@
 
 
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="../image/banner1.jpg" alt="">
-    </div>
-
-    <div class="item">
-      <img src="../image/banner1.jpg" alt="">
-    </div>
-
-    <div class="item">
-      <img src="../image/banner1.jpg" alt="">
-    </div>
-
-    <div class="item">
-      <img src="../image/banner1.jpg" alt="">
-    </div>
+    
+     <?php
+		$beannerQry=$cms->db_query("SELECT image FROM #_slider where store_id='0' and slider_type='1' and status = 'Active' order by porder asc"); 
+		if(mysql_num_rows($beannerQry)){ 
+			$i=1;
+			while($res=$cms->db_fetch_array($beannerQry)){ 
+				?>
+					 <div class="item <?=$i==1?'active':''?>">
+					  <img src="http://fizzkart.com/uploaded_files/orginal/<?=$res[image]?>" alt="">
+					</div> 
+				<?php
+					$i++;
+			}
+		}?>
+   
   </div>
 
   

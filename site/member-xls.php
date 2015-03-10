@@ -1,7 +1,7 @@
 <?php 
 $header = "Name \t Email \t Confirm Orders \t Pending Orders \t Cancle Orders \t Confirm Amount \t Pending Amount \t Cancle Amount \t Status\n "; 
-$arr[] = 0;
-	$qry = $cms->db_query("select user_id from #_member_access where store_id ='".$_SESSION[uid]."'");
+$arr[] = 0; 
+	$qry = $cms->db_query("select user_id from #_member_access where store_id ='".$_SESSION[store_id]."'");
 	if(mysql_num_rows($qry)){
 		while ($res = $cms->db_fetch_array($qry)){@extract($res); 
 			if($user_id) $arr[] = $user_id;

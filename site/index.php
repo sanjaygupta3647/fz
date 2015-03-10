@@ -20,7 +20,7 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
 		<div class="input-group">
 		  <input type="text" class="form-control" name="search" value="" placeholder="Type your keyword...">
 		  <span class="input-group-btn">
-			<button class="btn btn-default" name="searchbtn" value="Search" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			<button class="btn btn-default" name="searchbtn" value="Search" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 		  </span>
 		</div>
 	  </div>

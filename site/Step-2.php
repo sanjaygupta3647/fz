@@ -1,7 +1,6 @@
 <?php  
 $metaTitle = "Fizzkart Registration Store ans Personal info";
-$metaKeyword = "Fizzkart Message,Fizzkart, Message";
-$regMode =  $cms->getSingleresult("select registrationBy from fz_setting ");
+$metaKeyword = "Fizzkart Message,Fizzkart, Message"; 
 $qry = $cms->db_query("SELECT noOfDays,amount FROM `#_plans_hosting` where pid ='".$_SESSION[planID]."'  ");
 $payres = $cms->db_fetch_array($qry);	
 
@@ -25,12 +24,7 @@ if(!$_SESSION[proceed]){ header("Location:".SITE_PATH."Step-1"); }
 			}
 			
 			$err = 0;
-			if($regMode=='coupon'){
-				if(!$_POST[vaucher]){
-					$err = 1;
-					$errms .= "Registration is allowed only with coupon!  <br/>";
-				}
-			}
+			 
 			if(!$_SESSION[tarifid]){
 				$err = 1;
 				$errms .= "Previous session expired,please go for first step again! <br/>";
@@ -63,8 +57,7 @@ if(!$_SESSION[proceed]){ header("Location:".SITE_PATH."Step-1"); }
 					 if($arr3['status']=='Inactive'){ 
 						 $err = 1;
 						 $errms .= "Sorry this coupon is expired now!"; 
-					 }
-
+					 } 
 				 }else{
 					$err = 1;
 					$errms .= "Sorry invalid coupon code!<br/>";
@@ -84,10 +77,7 @@ if(!$_SESSION[proceed]){ header("Location:".SITE_PATH."Step-1"); }
 					$couponLog[total_amont] = $payres[amount]; 
 					$couponLog[due_amount]=$dueAmount; 
 					$couponLog[trans_status]="sucsess"; 
-					if($regMode=='coupon' && $dueAmount>0){ 
-						$err = 1;
-						$errms .= "Registration is allowed only with coupon!  <br/>";
-					}
+					 
 					if(!$err){
 						$cms->sqlquery("rs","voucher_log",$couponLog);  
 						$couponreg = mysql_insert_id();
@@ -95,10 +85,7 @@ if(!$_SESSION[proceed]){ header("Location:".SITE_PATH."Step-1"); }
 							$cms->db_query("update #_gift_voucher set status='Inactive' where voucherCode ='".$cms->encryptcode($_POST[voucherCode])."' ");
 						}
 					}
-				}
-
-
-				  
+				} 
 			}
 			if(!$err){
 		    $city1=$cms->getSingleresult("select city from #_city where country_id='80' and pid='".$_POST[city_id]."'");  
@@ -130,6 +117,10 @@ if(!$_SESSION[proceed]){ header("Location:".SITE_PATH."Step-1"); }
 			$res = $cms->db_fetch_array($qry);
 		    $arr2[noOfDays] = $res[noOfDays];
 			$arr2[amount] = $res[amount];
+			$toPay =$res[amount]; 
+			if($couponLog[due_amount]){
+				$toPay =$couponLog[due_amount]; 
+			}
 			$arr2[noOfMessage] = $res[noOfMessage];
 			$arr2[city_id] = $_POST[city_id2];
 			$arr2[store_url] = $cms->subdomain(trim($_POST[title]));
@@ -143,27 +134,54 @@ if(!$_SESSION[proceed]){ header("Location:".SITE_PATH."Step-1"); }
 			$arr2[theme] = $_SESSION[theme];
 			$arr2[status] = "Inactive";
 			$cms->sqlquery("rs","store_detail",$arr2);
+            $last = mysql_insert_id();
+			$order_id = $last.$cms->generateOrderid();
+			$cms->db_query("update #_store_detail set order_id = '$order_id' where pid ='$last'  ");
 			if($couponreg){
 				$user_id = $cms->getSingleresult("SELECT pid FROM #_store_user where user_name='".$_POST[user_name]."' "); 
 				$cms->db_query("update fz_voucher_log set user_id ='$user_id' where pid ='".$couponreg."'  ");
 			}
- 		     
-			 
 			$store_url=$arr2[store_url];
             $cms->storeRegMail($city1,$city2,$store_url);
- 			    $mess = "Thanks for Registring with us as ".$store_url.".fizzkart.com, your account will be activate soon. Admin";
-				$number = $arr1[mobile];
-				$_SESSION[mess_registration] = "Thanks for Registring with us as ".$store_url.".fizzkart.com, your account will be activate soon.";
-				$cms->sendSms($number,$mess,0); 
-				unset($_SESSION[theme]);
-				unset($_SESSION[type]);
-				unset($_SESSION[tarifid]);
-				unset($_SESSION[planID]);
-				unset($_SESSION[proceed]);
-				unset($_SESSION[user_name]);
-				$_POST = false;
+			$mess = "Thanks for Registring with us as ".$store_url.".fizzkart.com, your account will be activate soon. Admin";
+			$number = $arr1[mobile];
+			$_SESSION[mess_registration] = "Thanks for Registring with us as ".$store_url.".fizzkart.com, your account will be activate soon.";
+			$cms->sendSms($number,$mess,0); 
+			unset($_SESSION[theme]);
+			unset($_SESSION[type]);
+			unset($_SESSION[tarifid]);
+			unset($_SESSION[planID]);
+			unset($_SESSION[proceed]);
+			unset($_SESSION[user_name]);
+			if($toPay){ 
+				/**************CC Avenue****************/ 
+				$working_key='DB832F9427C63F7A77823DFBA8118E30';  
+				$mr[merchant_id] = "49407";
+				$mr[billing_name] = $_POST[name]; 
+				$mr[redirect_url] = SITE_PATH."message";
+				$mr[cancel_url] = SITE_PATH."message";
+				$mr[order_id] = $order_id;
+				$mr[amount] = $toPay;
+				$mr[billing_address] =  $arr1[address];
+				$mr[billing_city] =  $city1;
+				$mr[billing_state] = '';
+				$mr[billing_zip] = $_POST[pincode];
+				$mr[billing_country] = "India";
+				$mr[billing_tel] = $_POST[mobile];
+				$mr[billing_email] = $_POST[email_id];
+				$mr[currency] = "INR";  
+				foreach ($mr as $key => $value){
+					$merchant_data.=$key.'='.$value.'&';
+				} 
+				$_SESSION[encrypted_data] = $cms->encrypt($merchant_data,$working_key); 
+				
+				$red = SITE_PATH."cc";
+				header("location: ".$red);	
+				/**************CC Avenue****************/  
+			}else{
 				$red = SITE_PATH."message";
-				header("location: ".$red);				 
+				header("location: ".$red);	
+			}
 			}
 }
 include "site/search.inc.php";

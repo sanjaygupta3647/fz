@@ -1,4 +1,5 @@
 <?php
+/*
 $working_key='DB832F9427C63F7A77823DFBA8118E30';  
 $mr[merchant_id] = "49407";
 $mr[billing_name] = "Sanjay Gupta"; 
@@ -18,12 +19,12 @@ foreach ($mr as $key => $value){
 	$merchant_data.=$key.'='.$value.'&';
 } 
 $encrypted_data=$cms->encrypt($merchant_data,$working_key); // Method for encrypting the data.
-
+*/
 ?>
 <form method="post" name="redirect" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction"> 
 <?php
 $access_code='AVBG04CB39AM96GBMA';
-echo "<input type=hidden name=encRequest value=$encrypted_data>";
+echo "<input type=hidden name=encRequest value='".$_SESSION[encrypted_data]."'>";
 echo "<input type=hidden name=access_code value=$access_code>";
 ?>
 </form>
