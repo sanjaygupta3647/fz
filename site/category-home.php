@@ -19,9 +19,9 @@
 			and t1.status = 'Active' and  t1.store_user_id = t2.pid and (t2.type = 'store' or t2.type = 'brand')" );
 		} 
 	}?>
-    <div class="col-md-3 col-sm-4 col-xs-12" style="margin-bottom:10px;">
+    <div class="col-md-3 col-sm-4 col-xs-6" style="margin-bottom:10px;">
       <div class="imgbox"><a href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>">
-	  <img src="<?=$cms->getImageUrl($image, 182, 124)?>" width="182" height="124" alt="<?=$adm->baseurl($name)?>" title="<?=$adm->baseurl($name)?>" /></a></div>
+	  <img src="<?=$cms->getImageUrl($image, 182, 124)?>" class="img-responsive" style="display:inline-block;" width="182" height="124" alt="<?=$adm->baseurl($name)?>" title="<?=$adm->baseurl($name)?>" /></a></div>
       <div class="cat-head"> <a style="text-decoration:none; color:black" href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"> <?=$name?></a>(<strong><?=$noStore?></strong>)</div>
       <div class="subtext"><?=$body?></div>
     </div><?php
