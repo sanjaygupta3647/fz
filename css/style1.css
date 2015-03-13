@@ -4,11 +4,10 @@ body{font-family:segoe ui;}
 .heading {
 background: #000;
 border-radius: 5px;
-font-family: Arial;
-font-size: 18px;
-color: #ff6600;
+font-size: 15px;
+color: #FFFFFF;
 text-align: left;
-padding: 7px 15px 7px 15px;
+padding: 4px 8px;
 }
 .heading2 {
 background: #dedede;
@@ -85,6 +84,7 @@ cursor: pointer;
 }
 .logonamebox {
 width: 100%;
+border-bottom: dotted 1px rgb(166, 166, 166);
 }
 .logonamebox a{
 font-weight: 400;
@@ -92,7 +92,7 @@ color: #428bca;
 cursor: pointer;
 border-radius: 0;
 display: inline-block;
-padding: 9px 30px;
+padding: 8px 30px;
 margin-bottom: 0;
 font-size: 14px;
 line-height: 1.42857143;

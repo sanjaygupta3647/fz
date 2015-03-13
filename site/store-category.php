@@ -69,7 +69,7 @@ include "site/search.inc.php";
         	<div class="col-md-3 col-sm-3">
             	<div class="col-md-12 col-sm-12">
 					<?php include "left.search.php"; ?>
-                	<div class="col-md-12 col-sm-12"><div class="heading">Category</div></div>
+                	<div><div class="heading">Category</div></div>
 					<?php
 					$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active' order by name";
 					$sql_city1_query=$cms->db_query($sql_city1);
@@ -89,7 +89,7 @@ include "site/search.inc.php";
 							}
 							
 						}?>
-					<div class="col-md-12 col-sm-12"><a class="btn btn-link" <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"><?=ucwords(strtolower($cms->removeSlash($name)))?> (<?=$noStore?>)</a>
+					<div style="border-bottom: dotted 1px rgb(166, 166, 166);"><a class="btn btn-link" <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"><?=ucwords(strtolower($cms->removeSlash($name)))?> (<?=$noStore?>)</a>
 					</div>
 					<?php }?> 
                 </div>
@@ -172,17 +172,17 @@ padding: 10px;">
             </div>
             
             <div class="col-md-3 col-sm-3">
-            	<div class="col-md-12 col-sm-12">
-                	<div class="col-md-12 col-sm-12"><div class="heading">Popular Brands</div></div>
+            	<div class="">
+                	<div class=""><div class="heading">Popular Brands</div></div>
 					<?=$cms->getAllBrandsByCat($items[2])?>  
                 </div>
 
-				<div class="col-md-12 col-sm-12">
-                	<div class="col-md-12 col-sm-12"><div class="heading">Product Categories</div></div>
+				<div style="margin-top: -2px;">
+                	<div><div class="heading">Product Categories</div></div>
 					<?=$cms->getAllProductCategoriesByCat($items[2],$_GET[cat_type],$_GET[pcatid])?>  
                 </div> 
-				<div class="col-md-12 col-sm-12">
-                	<div class="col-md-12 col-sm-12"><div class="heading">Store Type</div></div>
+				<div style="margin-top: -2px;">
+                	<div class=""><div class="heading">Store Type</div></div>
 					<?php 
 					$cururl  = explode('?',$cms->geturl()); 
 					//$mainlinik = SITE_PATH."store-category/".$items[1]."/".$items[2]."/?";  ?>

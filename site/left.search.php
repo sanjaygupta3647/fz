@@ -15,9 +15,9 @@ if($_POST[searchbtn]){
 	header("Location:".SITE_PATH."search/?search=1".$terms); die; 
 }
 ?>
-<div class="col-md-12 col-sm-12"><div class="heading">Refine Your Search</div></div>
-<form class="form-horizontal" role="form" method="post" action="" style="margin-top:50px;">
-<div class="col-md-12 col-sm-12">
+<div class=""><div class="heading">Refine Your Search</div></div>
+<form class="form-horizontal" role="form" method="post" action="" style="margin-top:11px;">
+<div>
 <div class="form-group" style="margin-left: -20px;
 margin-right: -10px;">
 	  <div class="col-md-12 col-sm-12">
@@ -59,7 +59,7 @@ margin-right: -10px;">
 </div>
 <div class="form-group">
 	<div class="col-md-12 col-sm-12">
-		<input type="submit" name="searchbtn" value="GO" class="btn btn-primary pull-right"  />
+		<input type="submit" style="padding: 4px 15px;" name="searchbtn" value="GO" class="btn btn-primary pull-right"  />
 	</div>
 </div>
 </div>

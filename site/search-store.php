@@ -220,7 +220,7 @@ padding: 10px;">
   </div>
   <div class="col-md-3 col-sm-3">
     <div class="col-md-12 col-sm-12">
-      <div class="col-md-12 col-sm-12"><div class="heading">Product Categories</div></div>
+      <div class=""><div class="heading">Product Categories</div></div>
       
 	  <?=$getProductCategory?>
     </div>
