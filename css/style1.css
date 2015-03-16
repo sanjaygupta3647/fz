@@ -56,7 +56,6 @@ color: #ff6600;
 width: auto;
 float: left;
 background-color: #00025a;
-font-family: Arial;
 font-size: 16px;
 color: #FFF;
 text-align: center;
@@ -71,7 +70,7 @@ border-bottom: 1px dotted #CCC;
 }
 .chhosebox3 input[type="radio"] + label {
 color: #333;
-font-size: 14px;
+font-size: 15px;
 }
 .chhosebox3 input[type="radio"] + label span {
 display: inline-block;
@@ -114,10 +113,16 @@ display: none;
 .trafibox {
 width: 100%;
 float: left;
-margin: 10px 0 10px 10px;
-background-color: #fff1e7;
+margin: 10px 0 10px 0px;
 }
 #tarifplan  .heading{color:white;}
+.planbox{
+margin-top:10px;
+}
+.plandetail
+{
+margin-top:10px;
+}
 @media (max-width: 768px)
 {
 .registr_maindiv-1 h2.benefit_plan-h2 { font-size:15px;}

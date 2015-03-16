@@ -342,7 +342,7 @@ div.basic div p {
 }
 }
 .reg_formtext {
-	font-family: "Microsoft New Tai Lue";
+	
 	font-size: 13px;
 	font-style: normal;
 	font-weight: normal;
@@ -395,15 +395,13 @@ div.registerarea table tr td input:hover[type=submit], input:hover[type=reset] {
 	transition: 0.3s all linear;
 }
 div.registerarea div.heading {
-	font-family: "Microsoft New Tai Lue";
 	font-size: 14px;
 	color: #00025a;
-	padding: 14px 15px;
+	padding: 5px 15px;
 	font-weight: bold;
 }
 div.registerarea {
 	margin: 20px 0px;
-	background-color: #eee;
 }
 div.subarea {
 	
@@ -411,7 +409,6 @@ div.subarea {
 div.subarea h2 {
 	margin: 0;
 	padding: 10px;
-	font-family: "Microsoft New Tai Lue";
 	font-size: 20px;
 	font-weight: bold;
 	font-style: normal;
@@ -444,7 +441,7 @@ div.subarea div.divfor_left-area, div.heading_comn h2 {
 	color: #000;
 	font-weight: normal;
 	font-size: 16px;
-	line-height: 50px;
+	line-height: 30px;
 }
 div.subarea div.divfor_left-area div {
 	width: 370px;
@@ -456,7 +453,7 @@ div.subarea div.divfor_left-area div div#label {
 	width: 100px;
 	float: left;
 	font-size: 14px;
-	font-family: "Microsoft New Tai Lue";
+	
 	text-align: right;
 	line-height: 30px;
 }
@@ -464,7 +461,7 @@ div.subarea div.divfor_left-area div div#inputs {
 	width: 250px;
 	float: left;
 	font-size: 14px;
-	font-family: "Microsoft New Tai Lue";
+	
 	text-align: left;
 	line-height: 25px;
 	margin: 0 0 0 15px;
@@ -493,7 +490,7 @@ div.subarea div.divfor_left-area div div#inputs input:hover[type=submit] {
 	transition: 0.3s all linear;
 }
 div.subarea div.divfor_left-area div div#inputs span {
-	font-family: "Microsoft New Tai Lue";
+	
 	font-size: 12px;
 }
 div.subarea div.divfor_right-area {
@@ -505,7 +502,7 @@ div.subarea div.divfor_left-area, div.divfor_right-area h2 {
 	
 	padding: 0;
 	color: #000;
-	font-family: "Microsoft New Tai Lue";
+	
 	font-weight: normal;
 	font-size: 16px;
 	line-height: 50px;
@@ -521,7 +518,7 @@ div.subarea div.divfor_left-area div div#inputs span a {
 	float: left;
 	background-color: #eeeeee;
 	border-radius: 5px;
-	font-family: "Microsoft New Tai Lue";
+	
 	text-decoration: none;
 	font-style: normal;
 	font-weight: normal;
@@ -589,7 +586,7 @@ div.subarea div.divfor_left-area div div#inputs span a {
 	float: left;
 	margin: 5px;
 	border-radius: 5px;
-	font-family: "Microsoft New Tai Lue";
+	
 }
 .active_arrow-pos {
 	background-position: left 20px;
@@ -679,7 +676,7 @@ div.tabdiv_right2 div.tabdiv_right1_info table table.trans-text_style tr:hover {
 	width: 765px;
 	height: auto;
 	float: left;
-	font-family: "Microsoft New Tai Lue";
+	
 	font-style: normal;
 	font-weight: normal;
 	text-decoration: none;
@@ -782,7 +779,7 @@ div.tabdiv_right2 div.tabdiv_right1_info table table.trans-text_style tr:hover {
 	background: url(../image/tariff_icon.png) 5px center no-repeat #fcf4f3;
 }
 .registr_maindiv-2-left ul li a {
-	font-family: "Microsoft New Tai Lue";
+	
 	font-size: 20px;
 	font-style: normal;
 	font-weight: normal;

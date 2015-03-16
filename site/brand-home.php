@@ -1,5 +1,5 @@
 <div class="brandbox row">
-	<div class="heading"><a  href="<?=SITE_PATH?>search/?search=1&searchfor=brand" title="View all brands" style="color:#ff6600; text-decoration:none">Our Brands</a></div>
+	<div class="heading"><a  href="<?=SITE_PATH?>search/?search=1&searchfor=brand" title="View all brands" style="color:#ffffff; text-decoration:none">Our Brands</a></div>
 	<?php			
 		$sql_city1="SELECT pid,name FROM `fz_store_user` where type ='brand' and status = 'Active' ORDER BY RAND()";
 		$sql_city1_query=$cms->db_query($sql_city1);

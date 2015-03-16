@@ -1,7 +1,7 @@
 <div class="row" style="margin-top:20px;">
 	<div class="heading col-md-12">
 		<!--<img src="<?=SITE_PATH?>images/heading-arrow-icon.jpg" width="11" height="7" alt="Heading" />-->
-		<a style="text-decoration:none;color:#ff6600;" href="<?=SITE_PATH?>search/?key=&searchfor=store">Our Stores</a>
+		<a style="text-decoration:none;color:#ffffff;" href="<?=SITE_PATH?>search/?key=&searchfor=store">Our Stores</a>
 	</div>
 	<div id="lista1" class="als-container col-md-12">
 		<span class="als-prev"><img src="image/thin_left_arrow_333.png" alt="prev" title="previous" /></span>

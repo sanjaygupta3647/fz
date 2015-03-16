@@ -55,7 +55,7 @@ if(!$heading)  $heading = "Registration Step 1";
       <form method="post" action="">
         <div class="registerbox col-md-12 col-sm-12">
           <div class="leftbox col-md-3 col-sm-4">Registration for</div>
-          <div class="rightbox col-md-9 col-sm-8">
+          <div class="rightbox col-md-9 col-sm-8" style="padding-left: 20px;">
             <div class="chhosebox">
               <input type="radio" id="radio1" name="type" value="store" checked="checked" />
               <label for="radio1"><span></span>Store Owner</label>
