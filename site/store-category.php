@@ -113,12 +113,12 @@ include "site/search.inc.php";
 					<div class="row" style="margin-top: 40px;
 border: solid 1px rgb(213, 213, 213);
 padding: 10px;">
-                	<div class="col-md-4 col-sm-4" style="padding: 40px 15px;"><img class="img-responsive" src="<?=$img?>" alt="<?=$title?>" title="<?=$title?>"  /></div>
-                    <div class="col-md-8 col-sm-8">
+                	<div class="col-md-3 col-sm-4" style="padding: 25px 0px;"><img class="img-responsive" src="<?=$img?>" alt="<?=$title?>" title="<?=$title?>"  /></div>
+                    <div class="col-md-9 col-sm-8">
 					    <?php
 						$link  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ;
 						?>
-                    	<div class="col-md-12 col-sm-12"><a class="h4" style="text-decoration:none;font-weight:bold;" href="<?=$link?>"><?=$title?></a></div>
+                    	<div class="col-md-12 col-sm-12"><a class="h4 newtab" style="text-decoration:none;font-weight:bold;" href="<?=$link?>"><?=$title?></a></div>
 						<?php
 						$catslist = "";
 						$catqry = $cms->db_query("select name from #_store_menu where store_user_id = '$store_user_id' and parent = '0' limit 0, 4");
@@ -127,8 +127,19 @@ padding: 10px;">
 						}
 						$catslist = substr($catslist,0,-2);
 						?>
-                        <div class="col-md-12 col-sm-12"><b>Category :</b> <?=($catslist)?$catslist:'Not Set'?></div>
-						<div class="col-md-12 col-sm-12"> 
+                        <div class="col-md-12 col-sm-12">
+						<div class="col-md-4 col-sm-4" style="text-align:left;padding:0px;">
+						<b>Category :</b></div>
+						<div class="col-md-8 col-sm-8" style="text-align:right;padding:0px;">
+						<span> <?=($catslist)?$catslist:'Not Set'?></span></div>
+						</div>
+						<div class="col-md-12 col-sm-12">
+						<div class="col-md-4 col-sm-4" style="text-align:left;padding:0px;">
+						<b>Brands :</b></div>
+						<div class="col-md-8 col-sm-8" style="text-align:right;padding:0px;">
+						<span> <?=($catslist)?$catslist:'Not Set'?></span></div>
+						</div>
+						<!--<div class="col-md-12 col-sm-12"> 
 						<?php $qry ="select brand_id from #_request_brand where store_user_id ='$store_user_id' and 
 						status ='Active'  limit 0,6"; 
 					  $brnadsqry =$cms->db_query($qry);
@@ -160,7 +171,7 @@ padding: 10px;">
 							}
 							
 						}?> 
-                    </div> 
+                    </div> -->
                     </div>
                     
                 </div>
