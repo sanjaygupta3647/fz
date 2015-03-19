@@ -14,7 +14,7 @@
     <div class="commonbox pull-right">
       <?php if($_SESSION[userid]==''){ ?>
       <img src="<?=SITE_PATH?>images/customer-login-icon.jpg" width="18" height="18" alt="Customer Login" />
-      <a href="<?=SITE_PATH?>Step-1">Member Sign up</a>
+      <a href="<?=SITE_PATH?>step-1">Member Sign up</a>
       <?php } ?>
     </div>
 	<div class="commonbox pull-right">
