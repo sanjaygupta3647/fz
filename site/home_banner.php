@@ -6,13 +6,12 @@
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
   </ol>
 
 
   <div class="carousel-inner" role="listbox">
     
-     <?php
+     <!--<?php
 		$beannerQry=$cms->db_query("SELECT image FROM #_slider where store_id='0' and slider_type='1' and status = 'Active' order by porder asc"); 
 		if(mysql_num_rows($beannerQry)){ 
 			$i=1;
@@ -24,8 +23,17 @@
 				<?php
 					$i++;
 			}
-		}?>
-   
+		}?>-->
+		
+		<div class="item active">
+			<img src="images/2.jpg" alt="Chania">
+		</div>
+		<div class="item">
+			<img src="images/2.jpg" alt="Chania">
+		</div>
+		<div class="item">
+			<img src="images/2.jpg" alt="Chania">
+		</div>
   </div>
 
   
