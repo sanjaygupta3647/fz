@@ -28,7 +28,7 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
 			<div class="col-md-11 col-sm-11"><h2 class="benefit_plan-h2">We Provide Best Benefit Plans to You</h2></div>
           </div>
           <div class="">
-            <div class="registr_maindiv-2-left col-md-5 col-sm-5" style="margin-bottom:20px;">
+            <div class="registr_maindiv-2-left col-md-6 col-sm-5" style="margin-bottom:20px;">
               
 			  <h2 class="plan_heading-h2">Our <span>Store Owner</span> Plans</h2>
               <ul>
@@ -78,7 +78,7 @@ $heading = $cms->getSingleresult("SELECT heading FROM `#_pages` where url ='tari
               </ul>
 				
             </div>
-            <div class="registr_maindiv-2-left col-md-5 col-sm-5 col-md-offset-2 col-sm-offset-2">
+            <div class="registr_maindiv-2-left col-md-6 col-sm-5 col-sm-offset-2">
               
 			  <h2 class="plan_heading-h2">Our <span>Brand Owner</span> Plans</h2>
               <ul>

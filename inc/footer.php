@@ -34,6 +34,7 @@
             <div class="footertext">
             <input type="text" name="email" id="subemail" placeholder="Enter Email to Subscribe" class="news_box" />
             <input type="button" name="submit" id="subscribe" value="Subscribe" class="subscribe_btn" /></div>
+			<br><br>
 			<span id="subscribeMsg"> </span>
             
           </div>

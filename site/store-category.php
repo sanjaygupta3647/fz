@@ -128,15 +128,15 @@ padding: 10px;">
 						$catslist = substr($catslist,0,-2);
 						?>
                         <div class="col-md-12 col-sm-12">
-						<div class="col-md-4 col-sm-4" style="text-align:left;padding:0px;">
+						<div class="col-md-3 col-sm-3" style="text-align:left;padding:0px;">
 						<b>Category :</b></div>
-						<div class="col-md-8 col-sm-8" style="text-align:right;padding:0px;">
+						<div class="col-md-9 col-sm-9" style="padding:0px;">
 						<span> <?=($catslist)?$catslist:'Not Set'?></span></div>
 						</div>
 						<div class="col-md-12 col-sm-12">
-						<div class="col-md-4 col-sm-4" style="text-align:left;padding:0px;">
+						<div class="col-md-3 col-sm-3" style="text-align:left;padding:0px;">
 						<b>Brands :</b></div>
-						<div class="col-md-8 col-sm-8" style="text-align:right;padding:0px;">
+						<div class="col-md-9 col-sm-9" style="padding:0px;">
 						<span> <?=($catslist)?$catslist:'Not Set'?></span></div>
 						</div>
 						<!--<div class="col-md-12 col-sm-12"> 
