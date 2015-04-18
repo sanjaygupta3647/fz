@@ -69,7 +69,10 @@ include "site/search.inc.php";
         	<div class="col-md-3 col-sm-3">
             	<div class="col-md-12 col-sm-12">
 					<?php include "left.search.php"; ?>
-                	<div><div class="heading">Category</div></div>
+					<div class="dropdown">
+                	<button type="button" class="heading dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Category <span class="caret" id="caret_v"></span>
+					</button>
+					<ul class="dropdown-menu" id="cat_rm" role="menu" aria-labelledby="dropdownMenu1" style="padding:0px;">
 					<?php
 					$sql_city1="select pid,name,image,body from #_category where parentId='0' and status = 'Active' order by name";
 					$sql_city1_query=$cms->db_query($sql_city1);
@@ -92,9 +95,13 @@ include "site/search.inc.php";
 					<div style="border-bottom: dotted 1px rgb(166, 166, 166);"><a class="btn btn-link" <?php if($items[2]==$pid){?> style="color:#000;font-weight:bold;"<?php }?> href="<?=SITE_PATH?>store-category/<?=$adm->baseurl($name)?>/<?=$pid?>"><?=ucwords(strtolower($cms->removeSlash($name)))?> (<?=$noStore?>)</a>
 					</div>
 					<?php }?> 
-                </div>
+					
+					</ul>
+					</div>
+				</div>
             </div>
-            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+			<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
             <div class="col-md-6 col-sm-6">
 			<div class="col-md-12 col-sm-12"> 
 			<a class="btn btn-link" href="<?=SITE_PATH?>">Home</a> 

@@ -15,6 +15,7 @@ if($_POST[searchbtn]){
 	header("Location:".SITE_PATH."search/?search=1".$terms); die; 
 }
 ?>
+<div id="search_rm">
 <div class=""><div class="heading">Refine Your Search</div></div>
 <form class="form-horizontal" role="form" method="post" action="" style="margin-top:11px;">
 <div>
@@ -64,3 +65,4 @@ margin-right: -10px;">
 </div>
 </div>
 </form>
+</div>
