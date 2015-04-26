@@ -1,4 +1,4 @@
-<?php 
+<?php  
 $metaTitle = $cms->getSingleresult("select meta_title from #_meta_info where url='home' and store_user_id = '0'");
 $metaIntro = $cms->getSingleresult("select meta_description from #_meta_info where url='home' and store_user_id = '0'");
 $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where url='home' and store_user_id = '0'");
@@ -24,10 +24,9 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
 		  </span>
 		</div>
 	  </div>
-		<label class="radio-inline" style="margin-left: 6px;"><input type="radio" name="searchfor" checked>Store</label>
-		<label class="radio-inline"><input type="radio" name="searchfor">Brand</label>
-		<label class="radio-inline"><input type="radio" name="searchfor">Product</label>
-		
+		<label class="radio-inline radio_btns" style="margin-left: 6px;"><input type="radio" name="searchfor" value="store" checked>Store</label>
+		<label class="radio-inline radio_btns"><input type="radio" name="searchfor" value="brand">Brand</label>
+		<label class="radio-inline radio_btns"><input type="radio" name="searchfor" value="product">Product</label> 
 	  <!--<div class="content-wrapper1" style="display:block;">
 			<div class="search-box1">
 				<div><input type="text" placeholder="Type your keyword..." class="searchformain" name="search"  value=""/>
@@ -41,8 +40,7 @@ $metaKeyword = $cms->getSingleresult("select meta_keyword from #_meta_info where
  			  </div>
 			</div>
 		</div>-->
-    </form>
-  
+    </form> 
   </div>
 </div>
 <?php include "site/home_banner.php"; ?>
