@@ -1,7 +1,6 @@
 <div class="row" style="margin-top:10px;">
 <div class="col-lg-9 col-md-8 col-sm-7">
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-
+<div id="myCarousel" class="carousel slide" data-ride="carousel"> 
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
