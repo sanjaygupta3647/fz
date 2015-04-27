@@ -18,8 +18,6 @@ if($_GET[key]){
 } 
 $searchP = array_unique($searchP); 
 
-
-
 $user[] = 0;
 $catQ = $cms->db_query("select store_user_id from #_products_user  where pid in (".implode(",",$searchP).") and status = 'Active' group by store_user_id "  );
 	if(mysql_num_rows($catQ)){
@@ -93,7 +91,7 @@ include "site/search.inc.php";
 					<div class="row" style="margin-top: 40px;
 border: solid 1px rgb(213, 213, 213);
 padding: 10px;">
-                	<div class="col-md-4 col-sm-4"><img class="img-responsive"src="<?=$img?>" alt="<?=$title?>" title="<?=$title?>"  /></div>
+                	<div class="col-md-4 col-sm-4"><img class="img-responsive" src="<?=$img?>" alt="<?=$title?>" title="<?=$title?>"  /></div>
                     <div class="col-md-8 col-sm-8">
 						<?php
 
@@ -150,7 +148,7 @@ padding: 10px;">
 								$store_url = $cms->getSingleresult("select store_url from #_store_detail where store_user_id ='".$serchres[store_user_id]."' ");
 								$base  =  ($store_domain)?"http://".$store_domain:"http://".$store_url.".fizzkart.com" ; 
 						        $link  =  $base."/detail/".$adm->baseurl($title)."/".$pid;
-								$imgs .= '<div class="col-md-4 col-sm-3"><a class="img-responsive" href="'.$link.'"><img style="" src="'.$img.'"  title="'.$list.'"   /></a></div>';
+								$imgs .= '<div class="col-md-4 col-sm-3"><a class="img-responsive" href="'.$link.'"><img class="img-responsive"  src="'.$img.'"  title="'.$list.'"   /></a></div>';
 								$j++;  			
 							}
 							if($imgs!=""){?>
