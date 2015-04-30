@@ -11,5 +11,4 @@
 	} 	
 	require_once "inc/frame.php";	 
 	die();
-
 ?>
