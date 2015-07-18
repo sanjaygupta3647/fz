@@ -1543,12 +1543,15 @@ public function getStyles($storeid){
 	return $arr;
 }
 public function sendSms($number,$mess,$storeid){
+	$senderid  = $this->getSingleresult("select senderid from  #_sms_cridential where store_id ='".$storeid."'  ");
+	if(!$senderid) $senderid = "FZKART";
 	$noOfMessage = $this->getSingleresult("select noOfMessage from #_store_detail where pid = '".$storeid."' ");
 	$currentUse = $this->getSingleresult("select count(*) from #_message_stats where store_id ='".$storeid."' ");
 	if($currentUse<$noOfMessage){
 		$this->db_query("insert into #_message_stats set msg = '$mess',number = '$number',store_id ='".$storeid."'  ");
 		$mess = urlencode($mess);
-		$url = "http://sms.softgains.com/sendurlcomma.aspx?user=20066766&pwd=b62k6d&senderid=FIZZKT&mobileno=".$number."&msgtext=".$mess;
+		//$url = "http://sms.softgains.com/sendurlcomma.aspx?user=20066766&pwd=b62k6d&senderid=FIZZKT&mobileno=".$number."&msgtext=".$mess;
+		$url="http://sms.fizzkart.com/api/sendmsg.php?user=arunmehtaca&pass=9999999990&sender=".$senderid."&phone=".$number."&text=".$mess."&priority=ndnd&stype=normal";
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$curl_scraped_page = curl_exec($ch);
@@ -2921,5 +2924,69 @@ function getPriceSize($pid,$current_store_user_id,$dsize){
 	 return $ms;
 
   }  
+  /**CCAVENUE**/
+	function encrypt($plainText,$key)
+	{
+		$secretKey = $this->hextobin(md5($key));
+		$initVector = pack("C*", 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f);
+	  	$openMode = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '','cbc', '');
+	  	$blockSize = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, 'cbc');
+		$plainPad = $this->pkcs5_pad($plainText, $blockSize);
+	  	if (mcrypt_generic_init($openMode, $secretKey, $initVector) != -1) 
+		{
+		      $encryptedText = mcrypt_generic($openMode, $plainPad);
+	      	      mcrypt_generic_deinit($openMode);
+		      			
+		} 
+		return bin2hex($encryptedText);
+	}
+
+	function decrypt($encryptedText,$key)
+	{
+		$secretKey = $this->hextobin(md5($key));
+		$initVector = pack("C*", 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f);
+		$encryptedText=$this->hextobin($encryptedText);
+	  	$openMode = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '','cbc', '');
+		mcrypt_generic_init($openMode, $secretKey, $initVector);
+		$decryptedText = mdecrypt_generic($openMode, $encryptedText);
+		$decryptedText = rtrim($decryptedText, "\0");
+	 	mcrypt_generic_deinit($openMode);
+		return $decryptedText;
+		
+	}
+	//*********** Padding Function *********************
+
+	function pkcs5_pad ($plainText, $blockSize)
+	{
+	    $pad = $blockSize - (strlen($plainText) % $blockSize);
+	    return $plainText . str_repeat(chr($pad), $pad);
+	}
+
+	//********** Hexadecimal to Binary function for php 4.0 version ********
+
+	function hextobin($hexString) 
+   	 { 
+        	$length = strlen($hexString); 
+        	$binString="";   
+        	$count=0; 
+        	while($count<$length) 
+        	{       
+        	    $subString =substr($hexString,$count,2);           
+        	    $packedString = pack("H*",$subString); 
+        	    if ($count==0)
+		    {
+				$binString=$packedString;
+		    } 
+        	    
+		    else 
+		    {
+				$binString.=$packedString;
+		    } 
+        	    
+		    $count+=2; 
+        	} 
+  	        return $binString; 
+    } 
+	/**CCAVENUE**/
 }
 ?>

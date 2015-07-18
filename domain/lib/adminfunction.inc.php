@@ -154,14 +154,22 @@ class ADMIN_DAL {
 	}
 	public function baseurl($vals){
 		$vals = str_replace(" ", "-",trim(strtolower($vals)));
+		$vals = str_replace("///", "-",$vals);
+		$vals = str_replace("//", "-",$vals);
 		$vals = str_replace("/", "-",$vals);
+		$vals = str_replace("/'", "-",$vals);
 		$vals = str_replace("(", "-",$vals);
+		$vals = str_replace(",", "",$vals);
 		$vals = str_replace(")", "-",$vals);
 		$vals = str_replace("&", "-",$vals);
-		$vals = str_replace("%", "-",$vals);
 		$vals = str_replace("#", "-",$vals);
 		$vals = str_replace("---", "-",$vals);
 		$vals = str_replace("--", "-",$vals);
+		$vals = str_replace("\'", "",$vals);
+		$vals = str_replace("'", "",$vals);
+		$vals = str_replace("\/", "",$vals);
+		$vals = str_replace("'", "",$vals);
+		$vals = str_replace('""', "",$vals);
 		return $vals;
 	}
 				

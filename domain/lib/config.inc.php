@@ -2,7 +2,7 @@
 	if(!defined('LOCAL_MODE')) {
 		die('<span style="font-family: tahoma, arial; font-size: 11px">config file cannot be included directly');
 	}
-	if ( 1|| LOCAL_MODE || $HTTP_HOST =='sanjay') {
+	if (LOCAL_MODE || $HTTP_HOST =='sanjay' || 1) {
 		$ARR_CFGS["db_host"] = 'localhost';
 		$ARR_CFGS["db_name"] = 'fizz'; 
     	$ARR_CFGS["db_user"] = 'root';
