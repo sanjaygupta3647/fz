@@ -12,11 +12,15 @@
 			$store_domain = $cms->getSingleresult("select store_domain from #_store_detail where store_user_id = '$pid' and status = 'Active' and our_popular_store= '1'");
 			 
 			if($brandurl) {
-	?>
+
+			$orgimage = "uploads/".$brandurl."/orginal/".$image; 
+			$imgpath = SITE_PATH."uploads/".$brandurl."/orginal/".$image; 
+		    if (is_file($orgimage)!=true)   $imgpath  = SITE_PATH."image/noimg.jpg";
+			?>
 			<div class="logobox col-md-2 col-sm-3 col-xs-5" style="margin-top:15px;margin-bottom: 20px;">
 				<div class="imgbox" align="center">
 				    <?php  $linkurl  =  ($store_domain)?"http://".$store_domain:"http://".$brandurl.".fizzkart.com" ?>
-					<a class="newtab" target="_blank" href="<?=$linkurl?>"><img src="<?=$cms->getImageUrl($image, 100, 27)?>" width="100"  height="27" alt="<?=$brandname?>" title="<?=$brandname?>" /></a>
+					<a class="newtab" target="_blank" href="<?=$linkurl?>"><img src="<?=$orgimage?>" width="100"  height="27" alt="<?=$brandname?>" title="<?=$brandname?>" /></a>
 				</div>
 				<div class="text" style="display:none;"><?=ucwords(strtolower(substr((($brandname)?$brandname:$name),0,12)))?></div>
 			</div> 
